@@ -1,106 +1,78 @@
+import StackingServices from "./components/StackingServices"
+import { benefits, services } from "./consts"
+
 export default function Home() {
+
   return (
     <>
-      <header>
-        <nav className="flex">
-          <ul className="flex gap-10 p-10 w-full">
-            <h1>Bicla</h1>
-            <li>
-              <a href="#introduccion">Introducción</a>
-            </li>
-            <li>
-              <a href="#servicios">Servicios</a>
-            </li>
-            <li>
-              <a href="#nosotros">Nosotros</a>
-            </li>
-            <li>
-              <a href="#contacto">Contacto</a>
-            </li>
+      <header className="bg-gray-100">
+        <nav className="flex font-mono justify-between px-10 py-6">
+          <h1 className="text-[16px] font-sans font-medium">Bicla:diseñoweb</h1>
+          <ul className="flex gap-10">
+            <li><a href="#inicio">Inicio</a></li><li><a href="#servicios">Servicios</a></li>
+            <li><a href="#nosotros">Nosotros</a></li>
+            <li><a href="#contacto">Contacto</a></li>
           </ul>
         </nav>
+        <div className="h-px mx-10 bg-black-text" />
       </header>
 
-      <main className="px-10 flex flex-col gap-10">
-        <section id="introduccion">
-          <h1>Bicla</h1>
-          <p>La mejor agencia web de la Argentina</p>
-          <p>
-            Si, leiste bien... te va gustando?
-          </p>
-          <p>
-            <a href="#contacto">Escribinos</a>
+      <main className="flex flex-col gap-10">
+        <section id="inicio" className="bg-gray-100 pt-12 px-10">
+          <div className="font-medium text-[108px]">
+            <h1 className="leading-[138px]">Somos Bicla,<br/> hacemos las mejores <br/> </h1>
+            <div className="flex items-center">
+              <h1>paginas web</h1>
+              <img src={"pistolita.png"} className="h-[141px] relative bottom-2 justify-between mx-15"/>
+            </div>
+            <h1>de Argentina</h1>
+          </div>
+
+          <div className="h-px my-5 bg-black-text" />
+
+          <p className="w-[600px] leading-[39px] font-mono font-light text-[30px] py-15">
+            Creo que esta última combinación puede acercarse
+            más a la referencia que me mostraste: limpia,
+            digital, pero con un toque divertido.
           </p>
         </section>
 
-        <section id="servicios">
-          <h2>Servicios</h2>
-          <ul>
-            <li>
-              <h3>Diseño web</h3>
-              <p>
-                diseño bien canchero mal
-              </p>
-            </li>
-            <li>
-              <h3>Desarrollo</h3>
-              <p>
-                Sitios chetos
-              </p>
-            </li>
-            <li>
-              <h3>Branding</h3>
-              <p>
-                aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-              </p>
-            </li>
-            <li>
-              <h3>Mantenimiento</h3>
-              <p>
-                Mantenimiento Mantenimiento Mantenimiento Mantenimiento Mantenimiento
-              </p>
-            </li>
-          </ul>
+        <section id="beneficios" className="grid grid-cols-4 gap-y-15 gap-x-40 m-auto">
+          {benefits.map((service, i) => (
+            <div key={i} className="w-[206px] flex flex-col gap-3">
+              <img src={service.img} alt="" className="w-[73px]" />
+              <h3 className="text-[24px] font-sans font-medium whitespace-pre-line">
+                {service.title}
+              </h3>
+              <p className="font-mono">{service.description}</p>
+            </div>
+          ))}
         </section>
 
-        <section id="nosotros">
-          <h2>Nosotros</h2>
-          <p>
-            nosotros nosotros nosotros nosotros nosotros nosotros nosotros nosotros nosotros
-            nosotros nosotros nosotros nosotros nosotros nosotros nosotros nosotros nosotros
-          </p>
-          <p>
-            nosotros nosotros nosotros nosotros nosotros nosotros nosotros
-          </p>
+        <StackingServices services={services} />
+        
+        <section>
+          <div className="p-10 flex justify-end w-full">
+            <p>Adicionales</p>
+          </div>
+          <div className="flex justify-between px-10">
+          {
+            [1,2,3,4].map(extra => (
+              <div className="w-[320px] h-[369px] border" key={extra}></div>
+            ))
+          }
+          </div>
         </section>
 
-        <section id="contacto">
-          <h2>Contacto</h2>
-          <p>Contanos qué necesitás y te respondemos.</p>
-          <p>
-            Email: <a href="mailto:hola@bicla.com">hola@bicla.com</a>
-          </p>
-          <p>Teléfono: +54 11 0000-0000</p>
-          <form action="#" method="get">
-            <p>
-              <label htmlFor="nombre">Nombre</label>
-              <br />
-              <input id="nombre" name="nombre" type="text" required />
-            </p>
-            <p>
-              <label htmlFor="email">Email</label>
-              <br />
-              <input id="email" name="email" type="email" required />
-            </p>
-            <p>
-              <label htmlFor="mensaje">Mensaje</label>
-              <br />
-              <textarea id="mensaje" name="mensaje" rows={5} required />
-            </p>
-            <p>
-              <button type="submit">Enviar</button>
-            </p>
-          </form>
+        <section id="proyectos" className="mb-50">
+          <p className="m-10">Proyectos super exitosos</p>
+          <div className=" h-[480px] border mx-10"></div>
+          <div className="flex justify-between px-10 mt-10">
+            <div className="bg-amber-100 w-[323px] h-[155px]"/>
+            <div className="bg-amber-100 w-[323px] h-[155px]"/>
+            <div className="bg-amber-100 w-[323px] h-[155px]"/>
+            <div className="bg-amber-100 w-[323px] h-[155px]"/>
+          </div>
         </section>
       </main>
 
