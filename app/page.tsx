@@ -1,3 +1,4 @@
+import LiveClock from "./components/LiveClock"
 import StackingServices from "./components/StackingServices"
 import { benefits, services } from "./consts"
 
@@ -66,18 +67,21 @@ export default function Home() {
 
         <section id="proyectos" className="mb-50">
           <p className="m-10">Proyectos super exitosos</p>
-          <div className=" h-[480px] border mx-10"></div>
           <div className="flex justify-between px-10 mt-10">
             <div className="bg-amber-100 w-[323px] h-[155px]"/>
             <div className="bg-amber-100 w-[323px] h-[155px]"/>
             <div className="bg-amber-100 w-[323px] h-[155px]"/>
             <div className="bg-amber-100 w-[323px] h-[155px]"/>
           </div>
+          <div className=" h-[480px] border m-10"></div>
         </section>
       </main>
 
-      <footer>
-        <p>© {new Date().getFullYear()} Bicla.</p>
+      <footer className="mx-10 border-t-2 h-15 font-mono flex justify-between items-center border-gray-400">
+        <p>02 ruedas</p>
+        <LiveClock />
+        <p>malenacosentino@gmail.com</p>
+        <p>Argentina·</p>
       </footer>
     </>
   );
