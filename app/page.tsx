@@ -124,7 +124,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="proyectos" className="mb-50 border-t-2 pt-10 px-10">
+        <section id="proyectos" className="mb-50 border-t-2 mt-20 pt-10 px-10">
           <div className="flex justify-between">
             <p className="font-medium text-[64px]">CONTACTANOS :)</p>
             <p>Miscelanea</p>
