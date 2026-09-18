@@ -1,6 +1,6 @@
 .game {
   position: relative;
-  width: 600px;
+  width: full;
   height: 225px;
   border: 1px solid black;
   overflow: hidden;
@@ -16,6 +16,7 @@
   background: #f3f4f6;
   cursor: pointer;
   user-select: none;
+  opacity: 0;
 }
 .score {
   position: absolute;
@@ -36,6 +37,7 @@
   gap: 8px;
   font-family: ui-monospace, monospace;
   text-align: center;
+  background-color: #f3f4f6;
 }
 
 .overlay {
@@ -103,16 +105,45 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  animation: block 2.2s infinite linear;
+  animation: horseMovement 2.2s infinite linear;
   animation-play-state: paused;
 }
 
-@keyframes block {
+@keyframes horseMovement {
   0% {
     right: -40px;
   }
 
   100% {
-    right: 620px;
+    right: 100%;
+  }
+}
+
+.gameWrapper {
+  display: grid;
+  transition:
+    opacity 700ms ease,
+    transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.gameWrapper.hidden {
+  display: none;
+}
+
+.gameWrapper.starting {
+  animation: gameEnter 700ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes gameEnter {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
