@@ -2,7 +2,7 @@ import LiveClock from "./components/LiveClock"
 import ScrambleButton from "./components/ScrambleButton";
 import StackingServices from "./components/StackingServices"
 import { benefits, services } from "./consts"
-import Dino from "./components/game/Dino"
+import Hero from "./components/Hero";
 export default function Home() {
 
   return (
@@ -20,24 +20,7 @@ export default function Home() {
       </header>
 
       <main className="flex flex-col gap-10">
-        <section id="inicio" className="bg-gray-100 pt-12 px-10">
-          <div className="font-medium text-[108px]">
-            <h1 className="leading-[138px]">Somos Bicla,<br/> hacemos las mejores <br/> </h1>
-            <div className="flex gap-10">
-              <p>paginas web</p>
-              <Dino/>
-            </div>
-            <h1>de Argentina</h1>
-          </div>
-          <div className="h-px my-5 bg-black-text" />
-
-          <p className="w-[600px] leading-[39px] font-mono font-light text-[30px] py-15">
-            Creo que esta última combinación puede acercarse
-            más a la referencia que me mostraste: limpia,
-            digital, pero con un toque divertido.
-          </p>
-        </section>
-
+        <Hero/>
         <section id="beneficios" className="grid grid-cols-4 gap-y-15 gap-x-40 m-auto">
           {benefits.map((service, i) => (
             <div key={i} className="w-[206px] flex flex-col gap-3">
