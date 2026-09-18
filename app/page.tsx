@@ -3,8 +3,51 @@ import ScrambleButton from "./components/ScrambleButton";
 import StackingServices from "./components/StackingServices"
 import { benefits, services } from "./consts"
 import Hero from "./components/Hero";
-export default function Home() {
 
+const servicesConst=[
+  {
+    name:"MARCA/BRANDING",
+    description:"No solo diseñamos la pagina, sino que ofrecemos branding, desde el diseño del logo hasta un manual de marca.",
+    img:"aa",
+  },
+  {
+    name:"MARCA/BRANDING",
+    description:"No solo diseñamos la pagina, sino que ofrecemos branding, desde el diseño del logo hasta un manual de marca.",
+    img:"aa",
+  },
+  {
+    name:"MARCA/BRANDING",
+    description:"No solo diseñamos la pagina, sino que ofrecemos branding, desde el diseño del logo hasta un manual de marca.",
+    img:"aa",
+  },
+  {
+    name:"MARCA/BRANDING",
+    description:"No solo diseñamos la pagina, sino que ofrecemos branding, desde el diseño del logo hasta un manual de marca.",
+    img:"aa",
+  },
+  {
+    name:"MARCA/BRANDING",
+    description:"No solo diseñamos la pagina, sino que ofrecemos branding, desde el diseño del logo hasta un manual de marca.",
+    img:"aa",
+  },
+  {
+    name:"MARCA/BRANDING",
+    description:"No solo diseñamos la pagina, sino que ofrecemos branding, desde el diseño del logo hasta un manual de marca.",
+    img:"aa",
+  },
+  {
+    name:"MARCA/BRANDING",
+    description:"No solo diseñamos la pagina, sino que ofrecemos branding, desde el diseño del logo hasta un manual de marca.",
+    img:"aa",
+  },
+  {
+    name:"MARCA/BRANDING",
+    description:"No solo diseñamos la pagina, sino que ofrecemos branding, desde el diseño del logo hasta un manual de marca.",
+    img:"aa",
+  },
+]
+
+export default function Home() {
   return (
     <>
       <header className="bg-gray-100">
@@ -13,7 +56,7 @@ export default function Home() {
           <ul className="flex gap-10">
             <li><a href="#inicio">Inicio</a></li><li><a href="#servicios">Servicios</a></li>
             <li><a href="#nosotros">Nosotros</a></li>
-            <li><a href="#contacto">Contacto</a></li>
+            <li><a href="#contacto" className="bg-[#F7FDFD] border px-[10px]">Asesorate</a></li>
           </ul>
         </nav>
         <div className="h-px mx-10 bg-black-text" />
@@ -48,7 +91,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="proyectos" className="mb-50">
+        <section id="proyectos" className="">
           <p className="m-10">Proyectos super exitosos</p>
           <div className="flex justify-between px-10 mt-10">
             <img src={"/kiosco.png"} className="bg-amber-100 w-[323px] h-[155px]"/>
@@ -57,6 +100,28 @@ export default function Home() {
             <img src={"/retina.png"} className="border w-[323px] h-[155px] bg-black"/>
           </div>
           <div className=" h-[480px] border m-10"></div>
+        </section>
+        
+        <section id="servicios" className="mx-10">
+          <div className="flex justify-end mb-25">
+            <p>Servicios</p>
+          </div>
+          <div className="grid grid-cols-4 gap-20 font-mono">
+            {
+              servicesConst.map(((service,i)=>(
+              <div key={i}>
+                <div className="flex justify-between">
+                  <p>{service.name}</p>
+                  <p>{"0"+ (i+1)}</p>
+                </div>
+                <div className="border h-[305px] flex justify-center items-center">IMAGEN</div>
+                <div className="border mt-5 p-5 text-[12px] h-[128px]">
+                  <p>{service.description}</p>
+                </div>
+              </div>
+              )))
+            }
+          </div>
         </section>
 
         <section id="proyectos" className="mb-50 border-t-2 pt-10 px-10">
