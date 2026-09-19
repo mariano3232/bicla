@@ -1,51 +1,9 @@
 import LiveClock from "./components/LiveClock"
 import ScrambleButton from "./components/ScrambleButton";
-import StackingServices from "./components/StackingServices"
-import { benefits, services } from "./consts"
+import StackingSteps from "./components/StackingSteps"
+import { benefits, steps, services } from "./consts"
 import Hero from "./components/Hero";
 
-const servicesConst=[
-  {
-    name:"MARCA/BRANDING",
-    description:"No solo diseñamos la pagina, sino que ofrecemos branding, desde el diseño del logo hasta un manual de marca.",
-    img:"aa",
-  },
-  {
-    name:"MARCA/BRANDING",
-    description:"No solo diseñamos la pagina, sino que ofrecemos branding, desde el diseño del logo hasta un manual de marca.",
-    img:"aa",
-  },
-  {
-    name:"MARCA/BRANDING",
-    description:"No solo diseñamos la pagina, sino que ofrecemos branding, desde el diseño del logo hasta un manual de marca.",
-    img:"aa",
-  },
-  {
-    name:"MARCA/BRANDING",
-    description:"No solo diseñamos la pagina, sino que ofrecemos branding, desde el diseño del logo hasta un manual de marca.",
-    img:"aa",
-  },
-  {
-    name:"MARCA/BRANDING",
-    description:"No solo diseñamos la pagina, sino que ofrecemos branding, desde el diseño del logo hasta un manual de marca.",
-    img:"aa",
-  },
-  {
-    name:"MARCA/BRANDING",
-    description:"No solo diseñamos la pagina, sino que ofrecemos branding, desde el diseño del logo hasta un manual de marca.",
-    img:"aa",
-  },
-  {
-    name:"MARCA/BRANDING",
-    description:"No solo diseñamos la pagina, sino que ofrecemos branding, desde el diseño del logo hasta un manual de marca.",
-    img:"aa",
-  },
-  {
-    name:"MARCA/BRANDING",
-    description:"No solo diseñamos la pagina, sino que ofrecemos branding, desde el diseño del logo hasta un manual de marca.",
-    img:"aa",
-  },
-]
 
 export default function Home() {
   return (
@@ -53,7 +11,7 @@ export default function Home() {
       <header className="bg-gray-100">
         <nav className="flex font-mono justify-between px-10 py-6">
           <h1 className="text-[16px] font-sans font-medium">Bicla:diseñoweb</h1>
-          <ul className="flex gap-10">
+          <ul className="flex gap-10 text-[15px]">
             <li><a href="#inicio">Inicio</a></li><li><a href="#servicios">Servicios</a></li>
             <li><a href="#nosotros">Nosotros</a></li>
             <li><a href="#contacto" className="bg-[#F7FDFD] border px-[10px]">Asesorate</a></li>
@@ -76,20 +34,7 @@ export default function Home() {
           ))}
         </section>
 
-        <StackingServices services={services} />
-        
-        <section>
-          <div className="p-10 flex justify-end w-full">
-            <p>Adicionales</p>
-          </div>
-          <div className="flex justify-between px-10">
-          {
-            [1,2,3,4].map(extra => (
-              <div className="w-[320px] h-[369px] border" key={extra}></div>
-            ))
-          }
-          </div>
-        </section>
+        <StackingSteps steps={steps} />
 
         <section id="proyectos" className="">
           <p className="m-10">Proyectos super exitosos</p>
@@ -108,7 +53,7 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-4 gap-20 font-mono">
             {
-              servicesConst.map(((service,i)=>(
+              services.map(((service,i)=>(
               <div key={i}>
                 <div className="flex justify-between">
                   <p>{service.name}</p>

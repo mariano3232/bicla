@@ -131,7 +131,7 @@ export default function Dino({ gameStatus, setGameStatus, score, setScore }) {
 
         {gameStatus === "starting" && (
           <div className={styles.overlay}>
-            <p>Get ready...</p>
+            <p>Preparado...</p>
           </div>
         )}
         <div className={styles.dino} ref={dinoRef} />
