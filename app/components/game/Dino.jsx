@@ -57,7 +57,7 @@ export default function Dino({ gameStatus, setGameStatus, score, setScore }) {
 
     setTimeout(() => {
       dino.classList.remove(styles.jump);
-    }, 1000);
+    }, 600);
   }, [gameStatus]);
 
   const start = useCallback(() => {
