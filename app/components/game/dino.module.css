@@ -68,7 +68,7 @@
 }
 
 .jump {
-  animation: jump 1s linear;
+  animation: jump 600ms linear;
 }
 
 @keyframes jump {
@@ -78,11 +78,11 @@
   }
   50% {
     bottom: 170px;
-    transform: rotate(-180deg);
+    transform: rotate(-30deg);
   }
   100% {
     bottom: 8px;
-    transform: rotate(-360deg);
+    transform: rotate(-30deg);
   }
 }
 
@@ -98,7 +98,7 @@
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center bottom;
-  background-color: red;
+  /* background-color: red; */
 }
 
 .gameWrapper {
