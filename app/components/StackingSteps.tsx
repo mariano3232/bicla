@@ -4,7 +4,7 @@ import { useLayoutEffect, useRef } from "react"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 
-type Service = {
+type Step = {
   title: string
   description: string
   misc: string
@@ -12,35 +12,40 @@ type Service = {
 
 const STACK_GAP = 92
 
-function ServiceCard({
-  service,
+function StepCard({
+  step,
   index,
 }: {
-  service: Service
+  step: Step
   index: number
 }) {
   return (
-    <article className="relative flex h-[369px] justify-between bg-white px-10 pt-5 pb-8">
-      <div className="absolute left-0 right-0 top-0 h-0.5">
+    <article className="relative flex h-[297px] justify-between bg-white border my-4 mx-20 px-10 pt-7 pb-18">
+
+      <div className="absolute left-0 right-0 top-0 h-[1px]">
         <div className="absolute inset-0 origin-left bg-black-text/20" />
-        <div className="js-progress-bar absolute inset-0 origin-left bg-black-text" />
+        <div className="js-progress-bar absolute inset-0 origin-left bg-gray-500"/>
       </div>
 
-      <h2 className="font-mono text-[64px] leading-none">
+      <h2 className="font-mono text-[60px] font-medium leading-none">
         {String(index + 1).padStart(2, "0")}
       </h2>
       <div className="flex flex-col justify-between">
-        <p className="w-[700px] font-sans text-[64px] leading-none">
-          {service.title}
+        <p className="w-[700px] font-sans font-medium text-[60px] leading-none">
+          {step.title}
         </p>
-        <p className="w-[342px] font-mono text-[21px]">{service.misc}</p>
+        <p className="w-[330px] font-mono text-[15px] font-light whitespace-pre-line text-justify">
+          {step.misc}
+        </p>
       </div>
-      <p className="w-[510px] pt-4 text-[24px]">{service.description}</p>
+      <p className="w-[484px] self-start font-mono text-[16px] font-normal leading-[21px] tracking-[-0.02em] whitespace-pre-line">
+        {step.description}
+      </p>
     </article>
   )
 }
 
-export default function StackingServices({ services }: { services: Service[] }) {
+export default function StackingSteps({ steps }: { steps: Step[] }) {
   const sectionRef = useRef<HTMLElement>(null)
 
   useLayoutEffect(() => {
@@ -109,18 +114,18 @@ export default function StackingServices({ services }: { services: Service[] }) 
       window.removeEventListener("resize", onResize)
       ctx.revert()
     }
-  }, [services.length])
+  }, [steps.length])
 
   return (
-    <section id="servicios" ref={sectionRef} className="mt-25">
-      {services.map((service, i) => (
+    <section id="pasos" ref={sectionRef} className="mt-25">
+      {steps.map((step, i) => (
         <div
-          key={service.title}
+          key={step.title}
           className="js-stacking-card-container sticky"
           style={{ top: i * STACK_GAP, zIndex: i + 1 }}
         >
           <div className="js-stacking-card">
-            <ServiceCard service={service} index={i} />
+            <StepCard step={step} index={i} />
           </div>
         </div>
       ))}
