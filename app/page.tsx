@@ -3,6 +3,7 @@ import ScrambleButton from "./components/ScrambleButton";
 import StackingSteps from "./components/StackingSteps"
 import { benefits, steps, services } from "./consts"
 import Hero from "./components/Hero";
+import ProjectGallery from "./components/ProjectGallery"
 
 
 export default function Home() {
@@ -22,7 +23,7 @@ export default function Home() {
 
       <main className="flex flex-col gap-10">
         <Hero/>
-        <section id="beneficios" className="grid grid-cols-4 gap-y-15 gap-x-40 m-auto">
+        <section id="beneficios" className="grid grid-cols-4 gap-y-15 gap-x-40 mx-20">
           {benefits.map((service, i) => (
             <div key={i} className="w-[206px] flex flex-col gap-3">
               <img src={service.img} alt="" className="w-[73px]" />
@@ -36,32 +37,26 @@ export default function Home() {
 
         <StackingSteps steps={steps} />
 
-        <section id="proyectos" className="">
-          <p className="m-10">Proyectos super exitosos</p>
-          <div className="flex justify-between px-10 mt-10">
-            <img src={"/kiosco.png"} className="bg-amber-100 w-[323px] h-[155px]"/>
-            <img src={"/revista.png"} className="border w-[323px] h-[155px]"/>
-            <img src={"/zrn.png"} className="border w-[323px] h-[155px]"/>
-            <img src={"/retina.png"} className="border w-[323px] h-[155px] bg-black"/>
-          </div>
-          <div className=" h-[480px] border m-10"></div>
-        </section>
+        <ProjectGallery />
         
-        <section id="servicios" className="mx-10">
+        <section id="servicios" className="mx-20">
           <div className="flex justify-end mb-25">
             <p>Servicios</p>
           </div>
           <div className="grid grid-cols-4 gap-20 font-mono">
             {
               services.map(((service,i)=>(
-              <div key={i}>
+              <div key={i} className="w-[265px]">
                 <div className="flex justify-between">
-                  <p>{service.name}</p>
+                  <p className="uppercase">{service.name}</p>
                   <p>{"0"+ (i+1)}</p>
                 </div>
-                <div className="border h-[305px] flex justify-center items-center">IMAGEN</div>
-                <div className="border mt-5 p-5 text-[12px] h-[128px]">
+                <div className="border border-black-text h-[305px] flex justify-center items-center">IMAGEN</div>
+                <div className="border border-black-text relative leading-[20px] font-mono font-regular mt-10 pt-5 px-2 text-[15px] h-[138px] tracking-[-2%]">
                   <p>{service.description}</p>
+                  {service.aditional?
+                  <p className="absolute bottom-2 right-2 underline tracking-[-2%] leading-[13px] text-[10px]">*Servicio<br/>adicional</p>
+                  :null}
                 </div>
               </div>
               )))
@@ -69,7 +64,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="proyectos" className="mb-50 border-t-2 mt-20 pt-10 px-10">
+        <section id="proyectos" className="mb-50 border-t-2 mt-20 pt-10 px-20">
           <div className="flex justify-between">
             <p className="font-medium text-[64px]">CONTACTANOS :)</p>
             <p>Miscelanea</p>
@@ -85,7 +80,7 @@ export default function Home() {
         </section>
       </main>
 
-      <footer className="mx-10 border-t-2 h-15 font-mono flex justify-between items-center border-gray-400">
+      <footer className="mx-20 border-t-2 h-15 font-mono flex justify-between items-center border-gray-400">
         <p>02 ruedas</p>
         <LiveClock />
         <p>malenacosentino@gmail.com</p>

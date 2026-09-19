@@ -77,43 +77,44 @@ export const steps = [
 
 export const services=[
   {
-    name:"MARCA/BRANDING",
-    description:"No solo diseñamos la pagina, sino que ofrecemos branding, desde el diseño del logo hasta un manual de marca.",
+    name:"IDENTIDAD/BRANDING",
+    description:"Construimos la identidad de tu marca, desde el concepto y la comunicación hasta su sistema visual. (paleta de colores, tono de voz, etc)",
     img:"aa",
   },
   {
-    name:"MARCA/BRANDING",
-    description:"No solo diseñamos la pagina, sino que ofrecemos branding, desde el diseño del logo hasta un manual de marca.",
+    name:"Diseño Web",
+    description:"Diseño de sitios personalizados desde 0, combinando estética, funcionalidad y adaptados a las necesidades de la marca",
     img:"aa",
   },
   {
-    name:"MARCA/BRANDING",
-    description:"No solo diseñamos la pagina, sino que ofrecemos branding, desde el diseño del logo hasta un manual de marca.",
+    name:"RE-DISEÑOS",
+    description:"Actualizamos y transformamos sitios existentes para adaptarlos a nuevas necesidades.",
     img:"aa",
   },
   {
-    name:"MARCA/BRANDING",
-    description:"No solo diseñamos la pagina, sino que ofrecemos branding, desde el diseño del logo hasta un manual de marca.",
+    name:"animación web",
+    description:"Damos movimiento a tu sitio a través de animaciones simples o complejas para hacerlo dinámico (Hover, efectos visuales, etc.)",
     img:"aa",
   },
   {
-    name:"MARCA/BRANDING",
-    description:"No solo diseñamos la pagina, sino que ofrecemos branding, desde el diseño del logo hasta un manual de marca.",
+    name:"UX / UI",
+    description:"Diseñamos interfaces intuitivas y experiencias de usuario pensadas para que navegar sea simple.",
     img:"aa",
   },
   {
-    name:"MARCA/BRANDING",
-    description:"No solo diseñamos la pagina, sino que ofrecemos branding, desde el diseño del logo hasta un manual de marca.",
+    name:"Hosting y Dominio",
+    description:"Ponemos tu sitio online y nos ocupamos de que funcione correctamente. (Dominio, hosting, instalación, etc.)",
     img:"aa",
   },
   {
-    name:"MARCA/BRANDING",
-    description:"No solo diseñamos la pagina, sino que ofrecemos branding, desde el diseño del logo hasta un manual de marca.",
+    name:"OPTIMIZACIÓN Y sEO",
+    description:"Optimizamos tu sitio para que los buscadores puedan entenderlo y encontrarlo.",
     img:"aa",
   },
   {
-    name:"MARCA/BRANDING",
-    description:"No solo diseñamos la pagina, sino que ofrecemos branding, desde el diseño del logo hasta un manual de marca.",
+    name:"Kit Instagram",
+    description:"Diseñamos la presencia visual de tu marca en IG. (Feed, destacadas, foto de perfil,adaptados a tus necesidades.)",
     img:"aa",
+    aditional:true,
   },
 ]

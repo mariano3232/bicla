@@ -20,7 +20,7 @@ function StepCard({
   index: number
 }) {
   return (
-    <article className="relative flex h-[297px] justify-between bg-white border my-4 mx-10 px-10 pt-7 pb-18">
+    <article className="relative flex h-[297px] justify-between bg-white border my-4 mx-20 px-10 pt-7 pb-18">
 
       <div className="absolute left-0 right-0 top-0 h-[1px]">
         <div className="absolute inset-0 origin-left bg-black-text/20" />
@@ -117,7 +117,7 @@ export default function StackingSteps({ steps }: { steps: Step[] }) {
   }, [steps.length])
 
   return (
-    <section id="servicios" ref={sectionRef} className="mt-25">
+    <section id="pasos" ref={sectionRef} className="mt-25">
       {steps.map((step, i) => (
         <div
           key={step.title}
