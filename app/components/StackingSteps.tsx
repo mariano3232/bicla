@@ -31,14 +31,14 @@ function StepCard({
         {String(index + 1).padStart(2, "0")}
       </h2>
       <div className="flex flex-col justify-between">
-        <p className="w-[700px] font-sans font-medium text-[60px] leading-none">
+        <p className="w-[550px] font-sans font-medium text-[60px] leading-none">
           {step.title}
         </p>
         <p className="w-[330px] font-mono text-[15px] font-light whitespace-pre-line text-justify">
           {step.misc}
         </p>
       </div>
-      <p className="w-[484px] self-start font-mono text-[16px] font-normal leading-[21px] tracking-[-0.02em] whitespace-pre-line">
+      <p className="w-[484px]self-start font-mono text-[16px] font-normal leading-[21px] tracking-[-0.02em] whitespace-pre-line">
         {step.description}
       </p>
     </article>

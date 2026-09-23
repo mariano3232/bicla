@@ -9,44 +9,61 @@ import ProjectGallery from "./components/ProjectGallery"
 export default function Home() {
   return (
     <>
-      <header className="bg-gray-100">
+      <header className="bg-[#B8F5EE]">
         <nav className="flex font-mono justify-between px-10 py-6">
           <h1 className="text-[16px] font-sans font-medium">Bicla:diseñoweb</h1>
           <ul className="flex gap-10 text-[15px]">
             <li><a href="#inicio">Inicio</a></li><li><a href="#servicios">Servicios</a></li>
             <li><a href="#nosotros">Nosotros</a></li>
-            <li><a href="#contacto" className="bg-[#F7FDFD] border px-[10px]">Asesorate</a></li>
+            <li><a href="#contacto" className="bg-[#F7FDFD] border px-[10px]">Contactanos</a></li>
           </ul>
         </nav>
         <div className="h-px mx-10 bg-black-text" />
       </header>
 
-      <main className="flex flex-col gap-10">
+      <main className="flex flex-col">
         <Hero/>
-        <section id="beneficios" className="grid grid-cols-4 gap-y-15 gap-x-40 mx-20">
+
+        {/* SEPARADOR */}
+        <div className="bg-black-text h-[1px] mx-20 mt-30 mb-5"></div>
+        <div className="flex justify-end font-mono mx-20 mb-60">
+          <p>¿Por qué contratarnos?</p>
+        </div>
+
+        <section id="beneficios" className="grid grid-cols-4 gap-y-15 gap-x-40 mx-20 font-mono">
           {benefits.map((service, i) => (
             <div key={i} className="w-[206px] flex flex-col gap-3">
               <img src={service.img} alt="" className="w-[73px]" />
-              <h3 className="text-[24px] font-sans font-medium whitespace-pre-line">
+              <h3 className="text-[20px] font-medium whitespace-pre-line">
                 {service.title}
               </h3>
-              <p className="font-mono">{service.description}</p>
+              <p>{service.description}</p>
             </div>
           ))}
         </section>
+        {/* SEPARADOR */}
+        <div className="bg-black-text h-[1px] mx-20 mt-60 mb-5"></div>
+        <div className="flex justify-end mx-20">
+          <p>Paso a paso</p>
+        </div>
 
         <StackingSteps steps={steps} />
-
+        
+        {/* SEPARADOR */}
+        <div className="bg-black-text h-[1px] mx-20 mt-50 mb-5"></div>
         <ProjectGallery />
         
+        {/* SEPARADOR */}
+        <div className="bg-black-text h-[1px] mx-20 mt-50 mb-5"></div>
+
         <section id="servicios" className="mx-20">
           <div className="flex justify-end mb-25">
             <p>Servicios</p>
           </div>
-          <div className="grid grid-cols-4 gap-20 font-mono">
+          <div className="grid w-full grid-cols-4 gap-20 font-mono">
             {
               services.map(((service,i)=>(
-              <div key={i} className="w-[265px]">
+              <div key={i} className="min-w-0 w-full">
                 <div className="flex justify-between">
                   <p className="uppercase">{service.name}</p>
                   <p>{"0"+ (i+1)}</p>
@@ -63,10 +80,13 @@ export default function Home() {
             }
           </div>
         </section>
+            
+        {/* SEPARADOR */}
+        <div className="bg-black-text h-[1px] mx-20 mt-50 mb-5"></div>
 
-        <section id="proyectos" className="mb-50 border-t-2 mt-20 pt-10 px-20">
+        <section id="proyectos" className="mb-50 pt-10 px-20">
           <div className="flex justify-between">
-            <p className="font-medium text-[64px]">CONTACTANOS :)</p>
+            <p className="font-medium text-[60px]">CONTACTANOS :)</p>
             <p>Miscelanea</p>
           </div>
           <div className="grid grid-cols-2 gap-y-5 gap-x-3 justify-between mt-20 mb-5">

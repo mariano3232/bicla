@@ -11,7 +11,7 @@ const spaceGrotesk = Space_Grotesk({
 const ibmPlexMono = IBM_Plex_Mono({
   variable: "--font-ibm-plex-mono",
   subsets: ["latin"],
-  weight: ["300", "400", "700"],
+  weight: ["300", "400","500", "700"],
 });
 
 export const metadata: Metadata = {

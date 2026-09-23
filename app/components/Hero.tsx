@@ -7,64 +7,80 @@ export default function Hero() {
   const [gameStatus, setGameStatus] = useState("idle");
   const [score, setScore] = useState(0);
 
-  return (
-    <section id="inicio" className="bg-gray-100 pt-12 px-10">
-    <div className="relative">
-  
-      {/* HERO */}
-      <div
-        className={`hero-content ${
-          gameStatus !== "idle" ? "hero-content--hidden" : ""
-        }`}
-      >
-        <div className="font-medium text-[108px]">
-          <h1 className="leading-[138px]">
-            Somos Bicla,
-            <br />
-            hacemos las mejores
-            <br />
-          </h1>
-  
-          <div className="flex gap-10">
-            <p>paginas web</p>
-            <div className="flex flex-col">
-                {score? <p className="text-[10px] mx-auto">Score: {score}</p> : null}
-                <img
-                src="/bike.png"
-                className="h-[141px] relative justify-between mx-15 cursor-pointer"
-                onClick={() => {setGameStatus("starting"); setScore(0)}}
-                alt="Iniciar juego"
-                />
-            </div>
-          </div>
+  const startGame = () => {
+    setGameStatus("starting");
+    setScore(0);
+  };
 
-          <h1>de Argentina</h1>
+  return (
+    <section id="inicio" className="bg-[#B8F5EE] pb-20 pt-60">
+      <div className="relative min-h-[360px] w-fit m-auto">
+        <div
+          className={`hero-content ${
+            gameStatus !== "idle" ? "hero-content--hidden" : ""
+          }`}
+        >
+          <h1 className="max-w-[1256px] font-sans text-[clamp(48px,7.29vw,105px)] font-medium leading-[1.24]">
+            <span className="flex items-end gap-3">
+              <span className="shrink-0 font-light whitespace-nowrap">
+                Somos <span className="font-medium">Bicla</span>,
+              </span>
+
+              <button
+                type="button"
+                className="relative shrink-0 cursor-pointer"
+                onClick={startGame}
+                aria-label="Iniciar juego"
+              >
+                {score ? (
+                  <p className="absolute -top-5 left-1/2 -translate-x-1/2 font-mono text-[10px]">
+                    Score: {score}
+                  </p>
+                ) : null}
+                <span className="absolute -top-1 right-0 font-sans text-[clamp(20px,2.5vw,32px)] font-medium leading-none">
+                  *
+                </span>
+                <img
+                  src="/bike.png"
+                  alt=""
+                  className="w-[123px] object-contain rotate-340"
+                />
+              </button>
+
+              <span
+                className="mb-[0.28em] flex min-w-0 flex-1 items-center gap-1"
+                aria-hidden="true"
+              >
+                <span className="h-px flex-1 bg-black-text" />
+                <svg
+                  viewBox="0 0 16 18"
+                  className="h-[clamp(14px,1.6vw,18px)] w-[clamp(12px,1.4vw,16px)] shrink-0 fill-none stroke-black-text stroke-[1.5]"
+                  aria-hidden="true"
+                >
+                  <path d="M2 2 L13 9 L2 16 Z" />
+                </svg>
+              </span>
+            </span>
+
+            <span className="mt-1 block whitespace-nowrap font-light">
+              Diseño digital <b className="font-medium">sin frenos.</b>
+            </span>
+          </h1>
+        </div>
+
+        <div
+          className={`game-container ${
+            gameStatus !== "idle" ? "game-container--visible" : ""
+          }`}
+        >
+          <Dino
+            gameStatus={gameStatus}
+            setGameStatus={setGameStatus}
+            score={score}
+            setScore={setScore}
+          />
         </div>
       </div>
-  
-      {/* GAME */}
-      <div
-        className={`game-container ${
-          gameStatus !== "idle" ? "game-container--visible" : ""
-        }`}
-      >
-        <Dino
-          gameStatus={gameStatus}
-          setGameStatus={setGameStatus}
-          score={score}
-          setScore={setScore}
-        />
-      </div>
-  
-    </div>
-  
-    <div className="h-px my-5 bg-black-text" />
-  
-    <p className="w-[600px] leading-[39px] font-mono font-light text-[30px] py-15">
-      Creo que esta última combinación puede acercarse más a
-      la referencia que me mostraste: limpia, digital, pero
-      con un toque divertido.
-    </p>
-  </section>
+    </section>
   );
 }
