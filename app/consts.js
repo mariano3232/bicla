@@ -1,48 +1,50 @@
 export const benefits = [
     {
-      title: "Contacto\ndirecto",
+      title: "01.No hay intermediarios",
       description:
-        "Sin intermediarios ya que somos un equipo de diseñador y programador.",
+        "Hablás directamente con quienes trabajan en tu proyecto.",
       img: "/servicio.png",
     },
     {
-      title: "Diseños Personalizados",
+      title: "02.Diseños Personalizados",
       description:
-        "Nos tomamos muy en serio nuestro trabajo por lo que no usamos plantillas para hacer webs genéricas",
+        "Cada sitio se diseña desde 0 y se adapta a tu marca.",
       img: "/servicio.png",
     },
     {
-      title: "Desarrollo\nIntegral",
+      title: "03.Desarrollo\nIntegral",
       description:
-        "No solo diseñamos la pagina, sino que ofrecemos branding, desde el diseño del logo hasta un manual de marca.",
+        "Nos ocupamos de todo el proyecto, de principio a fin.",
       img: "/servicio.png",
     },
     {
-      title: "Sitios\nSeguros",
+      title: "04.Sitios\nSeguros",
       description:
-        "Creo que esta última combinación puede acercarse más a la referencia que me.",
+        "Incluimos certificados SSL para proteger tu sitio y a sus usuarios.",
       img: "/servicio.png",
     },
     {
-      title: "Fácil\nNavegación",
+      title: "05.Fácil\nNavegación",
       description:
-        "UX/UI bla bla vla vlaUX/UI bla bla vla vla. UX/UI bla bla vla vla. UX/UI bla.",
+        "Creamos estructuras claras y fáciles de recorrer.",
       img: "/servicio.png",
     },
     {
-      title: "Redes\nSociales",
-      description: "Nos tomamos muy en serio nuestro trabajo por lo que.",
-      img: "/servicio.png",
-    },
-    {
-      title: "Desarrollo\nIntegral",
-      description: "No solo diseñamos la pagina, sino que ofrecemos branding.",
-      img: "/servicio.png",
-    },
-    {
-      title: "Carga\nRápida",
+      title: "06.Diseño\nResponsive",
       description:
-        "Creo que esta última combinación puede acercarse más a la referencia que me.",
+        "Tu sitio se adapta a cualquier pantalla y/o dispositivo.",
+      img: "/servicio.png",
+    },
+    {
+      title: "07.Servicio\nde SEO",
+      description:
+        "Hacemos tu sitio más fácil de encontrar por buscadores.",
+      img: "/servicio.png",
+    },
+    {
+      title: "08.Velocidad\nde Carga",
+      description:
+        "Priorizamos un sitio ágil, con tiempos de carga reducidos.",
       img: "/servicio.png",
     },
   ];
