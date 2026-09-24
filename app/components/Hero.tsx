@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import CloudLayer from "./game/CloudLayer";
 import Dino from "./game/Dino";
 
 export default function Hero() {
@@ -24,8 +25,9 @@ export default function Hero() {
               </span>
               <div className="flex min-w-0 flex-1 flex-col w-full h-[200px] justify-end">
                 {gameStatus === "idle" ? (
-                  <>
-                    <div className="flex justify-between items-end">
+                  <div className="relative flex w-full flex-1 flex-col justify-end overflow-hidden">
+                    <CloudLayer />
+                    <div className="relative z-10 flex justify-between items-end">
                       <div className="relative">
                         <img
                           src="/bike.png"
@@ -42,8 +44,8 @@ export default function Hero() {
                         className="w-[24px] mb-2 cursor-pointer"
                       />
                     </div>
-                    <div className="h-[2px] w-full bg-black-text" />
-                  </>
+                    <div className="relative z-10 h-[2px] w-full bg-black-text" />
+                  </div>
                 ) : (
                   <Dino
                     gameStatus={gameStatus}

@@ -6,9 +6,10 @@ import {
   useState,
 } from "react";
 
+import CloudLayer from "./CloudLayer";
+import { CLOUD_SPEED_RATIO, START_RIGHT } from "./clouds";
 import styles from "./dino.module.css";
 
-const START_RIGHT = -40;
 const BASE_CROSS_MS = 2500;
 const MIN_CROSS_MS = 1200;
 const SCORE_TICK_MS = 100;
@@ -197,6 +198,15 @@ export default function Dino({ gameStatus, setGameStatus, score, setScore }) {
     }
   }, [gameStatus]);
 
+  const getCloudSpeed = useCallback(() => {
+    const game = gameRef.current;
+    if (!game) return 0;
+
+    const travel = game.clientWidth - START_RIGHT;
+    const speed = travel / crossDuration(scoreRef.current);
+    return speed * CLOUD_SPEED_RATIO;
+  }, []);
+
   return (
     <div
       className={`${styles.gameWrapper} ${
@@ -217,8 +227,9 @@ export default function Dino({ gameStatus, setGameStatus, score, setScore }) {
             <p>Cargando...</p>
           </div>
         )}
+        <CloudLayer key={`clouds-${runId}`} getSpeed={getCloudSpeed} />
         <div className={styles.dino} ref={dinoRef} />
-        <div key={runId} className={styles.obstacles} ref={obstaclesRef} />
+        <div key={`obstacles-${runId}`} className={styles.obstacles} ref={obstaclesRef} />
         <div className="absolute bottom-1 w-full h-[2px] bg-black"></div>
       </div>
     </div>

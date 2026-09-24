@@ -54,6 +54,7 @@
   bottom: 2px;
   left: 32px;
   transform-origin: center;
+  z-index: 1;
 }
 
 .jump {
@@ -79,7 +80,7 @@
   position: absolute;
   inset: 0;
   pointer-events: none;
-
+  z-index: 1;
 }
 
 .enemy {
