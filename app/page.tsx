@@ -4,22 +4,14 @@ import StackingSteps from "./components/StackingSteps"
 import { benefits, steps, services } from "./consts"
 import Hero from "./components/Hero";
 import ProjectGallery from "./components/ProjectGallery"
+import SiteHeader from "./components/SiteHeader";
+import { GameProvider } from "./context/GameContext";
 
 
 export default function Home() {
   return (
-    <>
-      <header className="bg-[#B8F5EE]">
-        <nav className="flex font-mono justify-between px-10 py-6">
-          <h1 className="text-[16px] font-sans font-medium">Bicla:diseñoweb</h1>
-          <ul className="flex gap-10 text-[15px]">
-            <li><a href="#inicio">Inicio</a></li><li><a href="#servicios">Servicios</a></li>
-            <li><a href="#nosotros">Nosotros</a></li>
-            <li><a href="#contacto" className="bg-[#F7FDFD] border px-[10px]">Contactanos</a></li>
-          </ul>
-        </nav>
-        <div className="h-px mx-10 bg-black-text" />
-      </header>
+    <GameProvider>
+      <SiteHeader />
 
       <main className="flex flex-col">
         <Hero/>
@@ -30,7 +22,7 @@ export default function Home() {
           <p>¿Por qué contratarnos?</p>
         </div>
 
-        <section id="beneficios" className="grid grid-cols-4 gap-y-15 gap-x-40 mx-20 font-mono">
+        <section id="modalidad" className="grid grid-cols-4 gap-y-15 gap-x-40 mx-20 font-mono">
           {benefits.map((service, i) => (
             <div key={i} className="w-[206px] flex flex-col gap-3">
               <img src={service.img} alt="" className="w-[73px]" />
@@ -84,7 +76,14 @@ export default function Home() {
         {/* SEPARADOR */}
         <div className="bg-black-text h-[1px] mx-20 mt-50 mb-5"></div>
 
-        <section id="proyectos" className="mb-50 pt-10 px-20">
+        <section id="nosotros" className="mx-20">
+          <p className="font-medium text-[60px]">IDENTIDAD VISUAL</p>
+        </section>
+
+        {/* SEPARADOR */}
+        <div className="bg-black-text h-[1px] mx-20 mt-50 mb-5"></div>
+
+        <section id="contacto" className="mb-50 pt-10 px-20">
           <div className="flex justify-between">
             <p className="font-medium text-[60px]">CONTACTANOS :)</p>
             <p>Miscelanea</p>
@@ -101,11 +100,11 @@ export default function Home() {
       </main>
 
       <footer className="mx-20 border-t-2 h-15 font-mono flex justify-between items-center border-gray-400">
-        <p>02 ruedas</p>
+        <p>02·ruedas</p>
         <LiveClock />
         <p>malenacosentino@gmail.com</p>
         <p>Argentina·</p>
       </footer>
-    </>
+    </GameProvider>
   );
 }

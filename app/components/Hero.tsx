@@ -1,18 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useGame } from "../context/GameContext";
 import CloudLayer from "./game/CloudLayer";
 import Dino from "./game/Dino";
 
 export default function Hero() {
-
-  const [gameStatus, setGameStatus] = useState("idle");
-  const [score, setScore] = useState(0);
-
-  const startGame = () => {
-    setGameStatus("starting");
-    setScore(0);
-  };
+  const { gameStatus, setGameStatus, score, setScore, startGame } = useGame();
 
   return (
     <section id="inicio" className="bg-[#B8F5EE] pb-20 pt-60">

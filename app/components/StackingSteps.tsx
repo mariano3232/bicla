@@ -117,7 +117,7 @@ export default function StackingSteps({ steps }: { steps: Step[] }) {
   }, [steps.length])
 
   return (
-    <section id="pasos" ref={sectionRef} className="mt-25">
+    <section id="modalidad" ref={sectionRef} className="mt-25">
       {steps.map((step, i) => (
         <div
           key={step.title}

@@ -21,6 +21,6 @@ export default function LiveClock() {
   }, [])
 
   return <div className="flex items-center gap-1">
-    [ <div className="h-[7px] w-[7px] mr-1 rounded-full bg-[#A92F26]"/>{time} ]
+    [ <div className="h-[7px] w-[7px] mr-1 bg-[#A92F26]"/>{time} ]
   </div>
 }
