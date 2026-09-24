@@ -14,9 +14,9 @@ const MIN_CROSS_MS = 1200;
 const SCORE_TICK_MS = 100;
 
 const ENEMY_TYPES = [
-  { src: "/caballo.png", w: 90, h: 57 },
-  { src: "/pistolita.png", w: 56, h: 56 },
-  { src: "/servicio.png", w: 70, h: 70 },
+  { src: "/chip.png", w: 30, h: 30 },
+  { src: "/taza.png", w: 30, h: 30 },
+  { src: "/doschips.png", w: 30, h: 60 },
 ];
 
 function crossDuration(score) {
@@ -57,7 +57,7 @@ export default function Dino({ gameStatus, setGameStatus, score, setScore }) {
 
     setTimeout(() => {
       dino.classList.remove(styles.jump);
-    }, 590);
+    }, 890);
   }, [gameStatus]);
 
   const start = useCallback(() => {
@@ -200,8 +200,8 @@ export default function Dino({ gameStatus, setGameStatus, score, setScore }) {
   return (
     <div
       className={`${styles.gameWrapper} ${
-        gameStatus === "idle" ? styles.hidden : ""
-      } ${gameStatus === "starting" ? styles.starting : ""}`}
+        gameStatus === "starting" ? styles.starting : ""
+      }`}
     >
       <div
         ref={gameRef}
@@ -214,12 +214,12 @@ export default function Dino({ gameStatus, setGameStatus, score, setScore }) {
 
         {gameStatus === "starting" && (
           <div className={styles.overlay}>
-            <p>Preparado...</p>
+            <p>Cargando...</p>
           </div>
         )}
         <div className={styles.dino} ref={dinoRef} />
         <div key={runId} className={styles.obstacles} ref={obstaclesRef} />
-        <div className="absolute bottom-1 w-full h-2 bg-black"></div>
+        <div className="absolute bottom-1 w-full h-[2px] bg-black"></div>
       </div>
     </div>
   );
