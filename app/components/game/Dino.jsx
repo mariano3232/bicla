@@ -214,12 +214,12 @@ export default function Dino({ gameStatus, setGameStatus, score, setScore }) {
 
         {gameStatus === "starting" && (
           <div className={styles.overlay}>
-            <p>Preparado...</p>
+            <p>Cargando...</p>
           </div>
         )}
         <div className={styles.dino} ref={dinoRef} />
         <div key={runId} className={styles.obstacles} ref={obstaclesRef} />
-        <div className="absolute bottom-1 w-full h-2 bg-black"></div>
+        <div className="absolute bottom-1 w-full h-[2px] bg-black"></div>
       </div>
     </div>
   );

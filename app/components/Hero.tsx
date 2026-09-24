@@ -18,11 +18,11 @@ export default function Hero() {
       <div className="w-fit m-auto">
         <div className="hero-content">
           <h1 className="max-w-[1256px] font-sans text-[clamp(48px,7.29vw,105px)] font-medium leading-[1.24]">
-            <span className="flex items-start gap-3">
+            <span className="flex gap-3 items-end h-[200px]">
               <span className="shrink-0 font-light whitespace-nowrap">
                 Somos <span className="font-medium">Bicla</span>,
               </span>
-              <div className="flex min-w-0 flex-1 flex-col w-full">
+              <div className="flex min-w-0 flex-1 flex-col w-full h-[200px] justify-end">
                 {gameStatus === "idle" ? (
                   <>
                     <div className="flex justify-between items-end">
@@ -35,7 +35,6 @@ export default function Hero() {
                         />
                         <p className="absolute text-[30px] right-4 -top-7">*</p>
                       </div>
-
                       <img
                         src="/play.png"
                         alt=""
@@ -43,7 +42,6 @@ export default function Hero() {
                         className="w-[24px] mb-2 cursor-pointer"
                       />
                     </div>
-
                     <div className="h-[2px] w-full bg-black-text" />
                   </>
                 ) : (

@@ -38,7 +38,7 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  background: white;
+  /* background: white; */
   font-family: ui-monospace, monospace;
   text-align: center;
 }
@@ -51,7 +51,7 @@
   background-repeat: no-repeat;
   background-position: center;
   position: absolute;
-  bottom: 8px;
+  bottom: 2px;
   left: 32px;
   transform-origin: center;
 }
@@ -62,15 +62,15 @@
 
 @keyframes jump {
   0% {
-    bottom: 8px;
+    bottom: 2px;
     transform: rotate(0deg);
   }
   50% {
-    bottom: 150px;
+    bottom: 120px;
     transform: rotate(-30deg);
   }
   100% {
-    bottom: 8px;
+    bottom: 2px;
     transform: rotate(-30deg);
   }
 }
@@ -84,11 +84,11 @@
 
 .enemy {
   position: absolute;
-  bottom: 8px;
+  bottom: 4px;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center bottom;
-  background-color: red;
+  /* background-color: red; */
 }
 
 .gameWrapper {
