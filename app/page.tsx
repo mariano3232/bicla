@@ -6,6 +6,7 @@ import Hero from "./components/Hero";
 import ProjectGallery from "./components/ProjectGallery"
 import SiteHeader from "./components/SiteHeader";
 import { GameProvider } from "./context/GameContext";
+import ContactForm from "./components/ContactForm";
 
 
 export default function Home() {
@@ -82,21 +83,7 @@ export default function Home() {
 
         {/* SEPARADOR */}
         <div className="bg-black-text h-[1px] mx-20 mt-50 mb-5"></div>
-
-        <section id="contacto" className="mb-50 pt-10 px-20">
-          <div className="flex justify-between">
-            <p className="font-medium text-[60px]">CONTACTANOS :)</p>
-            <p>Miscelanea</p>
-          </div>
-          <div className="grid grid-cols-2 gap-y-5 gap-x-3 justify-between mt-20 mb-5">
-            <input type="text" className="border-1 border-[#1E1E1E] h-[50px] px-10" placeholder="Nombre"/>
-            <input type="text" className="border-1 border-[#1E1E1E] h-[50px] px-10" placeholder="Mail"/>
-            <input type="text" className="border-1 border-[#1E1E1E] h-[50px] px-10" placeholder="Teléfono"/>
-            <input type="text" className="border-1 border-[#1E1E1E] h-[50px] px-10" placeholder="Asunto"/>
-            <input type="text" className="col-span-2 border-1 h-[153px] border-[#1E1E1E] px-10" placeholder="Mensaje"/>
-          </div>
-          <ScrambleButton text="Enviar"/>
-        </section>
+        <ContactForm/>
       </main>
 
       <footer className="mx-20 border-t-2 h-15 font-mono flex justify-between items-center border-gray-400">

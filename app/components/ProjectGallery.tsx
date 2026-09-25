@@ -75,7 +75,7 @@ export default function ProjectGallery() {
             key={project.img}
             src={project.img}
             alt=""
-            className={`absolute inset-0 h-[695px] w-full object-cover transition-opacity duration-500 ${selected === project ? "opacity-100" : "opacity-0"}`}
+            className={`absolute inset-0 h-full m-auto transition-opacity duration-500 ${selected === project ? "opacity-100" : "opacity-0"}`}
           />
         ))}
       </div>
