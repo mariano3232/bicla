@@ -25,7 +25,7 @@ export default function Home() {
         <section id="modalidad" className="grid grid-cols-4 gap-y-15 gap-x-40 mx-20 font-mono">
           {benefits.map((service, i) => (
             <div key={i} className="w-[206px] flex flex-col gap-3">
-              <img src={service.img} alt="" className="w-[73px]" />
+              <img src={service.img} alt="" className="h-[80px] w-fit" />
               <h3 className="text-[20px] font-medium whitespace-pre-line">
                 {service.title}
               </h3>
