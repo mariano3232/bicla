@@ -24,13 +24,13 @@ export default function Home() {
         </div>
 
         <section id="modalidad" className="grid grid-cols-4 gap-y-15 gap-x-40 mx-20 font-mono">
-          {benefits.map((service, i) => (
+          {benefits.map((benefit, i) => (
             <div key={i} className="w-[206px] flex flex-col gap-3">
-              <img src={service.img} alt="" className="h-[80px] w-fit" />
+              <img src={benefit.img} alt="" className="h-[80px] w-fit" />
               <h3 className="text-[20px] font-medium whitespace-pre-line">
-                {service.title}
+                {benefit.title}
               </h3>
-              <p>{service.description}</p>
+              <p>{benefit.description}</p>
             </div>
           ))}
         </section>
@@ -39,7 +39,7 @@ export default function Home() {
         <div className="flex justify-end mx-20">
           <p>Paso a paso</p>
         </div>
-
+        
         <StackingSteps steps={steps} />
         
         {/* SEPARADOR */}

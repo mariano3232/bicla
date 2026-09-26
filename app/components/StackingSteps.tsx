@@ -1,6 +1,6 @@
 "use client"
 
-import { useLayoutEffect, useRef } from "react"
+import { useLayoutEffect, useRef, useState } from "react"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 
@@ -11,6 +11,17 @@ type Step = {
 }
 
 const STACK_GAP = 92
+/** Espacio bajo el header */
+const STACK_TOP_EXTRA = 12
+const DEFAULT_HEADER_HEIGHT = 88
+/** Más alto = el stacking arranca antes (con menos scroll). */
+const SCROLL_START_OFFSET = 0
+
+function getStackTopBase() {
+  const header = document.querySelector("header")
+  const headerHeight = header?.getBoundingClientRect().height ?? DEFAULT_HEADER_HEIGHT
+  return headerHeight + STACK_TOP_EXTRA
+}
 
 function StepCard({
   step,
@@ -47,12 +58,16 @@ function StepCard({
 
 export default function StackingSteps({ steps }: { steps: Step[] }) {
   const sectionRef = useRef<HTMLElement>(null)
+  const [stackTopBase, setStackTopBase] = useState(DEFAULT_HEADER_HEIGHT + STACK_TOP_EXTRA)
 
   useLayoutEffect(() => {
     gsap.registerPlugin(ScrollTrigger)
 
     const section = sectionRef.current
     if (!section) return
+
+    const topBase = getStackTopBase()
+    setStackTopBase(topBase)
 
     const cards = Array.from(
       section.querySelectorAll<HTMLElement>(".js-stacking-card"),
@@ -69,8 +84,8 @@ export default function StackingSteps({ steps }: { steps: Step[] }) {
       cards.forEach((card, i) => {
         const bar = card.querySelector(".js-progress-bar")
         const next = containers[i + 1]
-        const stickTop = STACK_GAP * i
-        const nextStickTop = STACK_GAP * (i + 1)
+        const stickTop = topBase + STACK_GAP * i
+        const nextStickTop = topBase + STACK_GAP * (i + 1)
 
         gsap.fromTo(
           bar,
@@ -81,8 +96,10 @@ export default function StackingSteps({ steps }: { steps: Step[] }) {
             ease: "none",
             scrollTrigger: {
               trigger: containers[i],
-              start: `top ${stickTop}px`,
-              end: next ? `top ${nextStickTop}px` : `bottom ${stickTop}px`,
+              start: `top ${stickTop + SCROLL_START_OFFSET}px`,
+              end: next
+                ? `top ${nextStickTop + SCROLL_START_OFFSET}px`
+                : `bottom ${stickTop}px`,
               scrub: true,
             },
           },
@@ -98,8 +115,8 @@ export default function StackingSteps({ steps }: { steps: Step[] }) {
             ease: "none",
             scrollTrigger: {
               trigger: next,
-              start: `top ${cardHeight}px`,
-              end: `top ${nextStickTop}px`,
+              start: `top ${cardHeight + SCROLL_START_OFFSET}px`,
+              end: `top ${nextStickTop + SCROLL_START_OFFSET}px`,
               scrub: true,
             },
           },
@@ -107,7 +124,11 @@ export default function StackingSteps({ steps }: { steps: Step[] }) {
       })
     }, section)
 
-    const onResize = () => ScrollTrigger.refresh()
+    const onResize = () => {
+      const base = getStackTopBase()
+      setStackTopBase(base)
+      ScrollTrigger.refresh()
+    }
     window.addEventListener("resize", onResize)
 
     return () => {
@@ -117,12 +138,17 @@ export default function StackingSteps({ steps }: { steps: Step[] }) {
   }, [steps.length])
 
   return (
-    <section id="modalidad" ref={sectionRef} className="mt-25">
+    <section
+      id="modalidad"
+      ref={sectionRef}
+      className="mt-25"
+      style={{ paddingBottom: stackTopBase + (steps.length - 1) * STACK_GAP }}
+    >
       {steps.map((step, i) => (
         <div
           key={step.title}
           className="js-stacking-card-container sticky"
-          style={{ top: i * STACK_GAP, zIndex: i + 1 }}
+          style={{ top: stackTopBase + i * STACK_GAP, zIndex: i + 1 }}
         >
           <div className="js-stacking-card">
             <StepCard step={step} index={i} />

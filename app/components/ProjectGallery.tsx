@@ -53,13 +53,13 @@ export default function ProjectGallery() {
           </button>
       </div>
 
-      <div className="relative my-14 h-[695px] w-full border">
+      <div className="relative my-14 h-[483px] w-full border">
         {PROJECTS.map((project) => (
           <img
             key={project.img}
             src={project.img}
             alt=""
-            className={`absolute inset-0 h-full m-auto transition-opacity duration-500 ${selected === project ? "opacity-100" : "opacity-0"}`}
+            className={`absolute inset-0 h-full m-auto transition-opacity duration-300 ${selected === project ? "opacity-100" : "opacity-0"}`}
           />
         ))}
       </div>
