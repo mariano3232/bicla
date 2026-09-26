@@ -47,7 +47,7 @@ export default function Home() {
         <ProjectGallery />
         
         {/* SEPARADOR */}
-        <div className="bg-black-text h-[1px] mx-20 mt-50 mb-5"></div>
+        <div className="bg-black-text h-[1px] mx-20 mt-30 mb-5"></div>
 
         <section id="servicios" className="mx-20">
           <div className="flex justify-end mb-25">
@@ -74,13 +74,6 @@ export default function Home() {
           </div>
         </section>
             
-        {/* SEPARADOR */}
-        <div className="bg-black-text h-[1px] mx-20 mt-50 mb-5"></div>
-
-        <section id="nosotros" className="mx-20">
-          <p className="font-medium text-[60px]">IDENTIDAD VISUAL</p>
-        </section>
-
         {/* SEPARADOR */}
         <div className="bg-black-text h-[1px] mx-20 mt-50 mb-5"></div>
         <ContactForm/>
