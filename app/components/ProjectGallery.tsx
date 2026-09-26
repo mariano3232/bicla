@@ -24,7 +24,7 @@ export default function ProjectGallery() {
         <p>Proyectos exitosos</p>
       </div>
       <div className="mt-5 flex justify-between">
-        {PROJECTS.map((project) => (
+        {PROJECTS.filter(e=>e.name !== "RetinaType").map((project) => (
           <button
             key={project.mini}
             type="button"
@@ -34,21 +34,21 @@ export default function ProjectGallery() {
             <img
               src={project.mini}
               alt=""
-              className={`h-[142px] w-[296px] transition-opacity duration-500 ${project.className} ${selected === project ? "opacity-100" : "opacity-70"}`}
+              className={`h-[142px] w-[296px] transition-opacity duration-500 ${selected === project ? "opacity-100" : "opacity-70"}`}
             />
           </button>
         ))}
         <button
           type="button"
           onClick={() => setSelected(PROJECTS[3])}
-          className="cursor-pointer relative border"
+          className="cursor-pointer relative"
         >
-          <FollowEye className="absolute top-[65px] left-[46px]" mouse={retinaMouse} />
-          <FollowEye className="absolute top-[75px] right-[63px]" mouse={retinaMouse} />
+          <FollowEye className="absolute top-[65px] left-[51px] border border-red-" mouse={retinaMouse} />
+          <FollowEye className="absolute top-[75px] right-[68px] border border-red-" mouse={retinaMouse} />
           <img
             src="/retina.png"
             alt=""
-            className={`h-[142px] border-2 border-black w-[296px] transition-opacity duration-500`}
+            className={`h-[142px] border-2 border-black min-w-[296px] transition-opacity duration-500`}
           />
           </button>
       </div>
