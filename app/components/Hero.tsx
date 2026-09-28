@@ -2,10 +2,15 @@
 
 import { useGame } from "../context/GameContext";
 import CloudLayer from "./game/CloudLayer";
-import Dino from "./game/Dino";
+import Dino, { playGameMusic } from "./game/Dino";
 
 export default function Hero() {
   const { gameStatus, setGameStatus, score, setScore, startGame } = useGame();
+
+  const beginGame = () => {
+    playGameMusic();
+    startGame();
+  };
 
   return (
     <section
@@ -37,14 +42,14 @@ export default function Hero() {
                           src="/bike.png"
                           alt=""
                           className="w-[123px] relative bottom-3 object-contain rotate-340 cursor-pointer"
-                          onClick={startGame}
+                          onClick={beginGame}
                         />
                         <p className="absolute text-[30px] right-4 -top-7">*</p>
                       </div>
                       <img
                         src="/play.png"
                         alt=""
-                        onClick={startGame}
+                        onClick={beginGame}
                         className="w-[24px] mb-2 cursor-pointer"
                       />
                     </div>

@@ -23,6 +23,48 @@ const ENEMY_TYPES = [
   { src: "/caballo.png", w: 80, h: 60, mb:100 },
 ];
 
+let gameMusic = null;
+
+function getGameMusic() {
+  if (typeof window === "undefined") return null;
+
+  if (!gameMusic) {
+    gameMusic = new Audio("/musica.mp3");
+    gameMusic.volume = 0.3;
+    gameMusic.loop = true;
+    gameMusic.preload = "auto";
+  }
+
+  return gameMusic;
+}
+
+export function playGameMusic() {
+  const music = getGameMusic();
+  if (!music || !music.paused) return;
+
+  music.play().catch(() => {});
+}
+
+export function stopGameMusic() {
+  const music = getGameMusic();
+  if (!music) return;
+
+  music.pause();
+  music.currentTime = 0;
+}
+
+
+function jumpAudio() {
+  const audio = new Audio('/blip.wav');
+  audio.volume = 0.5;
+  audio.play();
+}
+function hitAudio() {
+  const audio = new Audio('/hit.wav');
+  audio.volume = 0.5;
+  audio.play();
+}
+
 function crossDuration(score) {
   return Math.max(MIN_CROSS_MS, BASE_CROSS_MS - score * 2);
 }
@@ -67,7 +109,7 @@ export default function Dino({ gameStatus, setGameStatus, score, setScore }) {
     const duration = jumpDuration(scoreRef.current);
     dino.style.setProperty("--jump-ms", `${duration}ms`);
     dino.classList.add(styles.jump);
-
+    jumpAudio()
     setTimeout(() => {
       dino.classList.remove(styles.jump);
     }, duration);
@@ -79,6 +121,7 @@ export default function Dino({ gameStatus, setGameStatus, score, setScore }) {
 
     setRunId((id) => id + 1);
     setGameStatus("starting");
+    playGameMusic();
   }, [setGameStatus, setScore]);
 
   const onInteract = useCallback(() => {
@@ -89,6 +132,12 @@ export default function Dino({ gameStatus, setGameStatus, score, setScore }) {
 
     jump();
   }, [jump, start, gameStatus]);
+
+  useEffect(() => {
+    if (gameStatus === "starting" || gameStatus === "playing") {
+      playGameMusic();
+    }
+  }, [gameStatus]);
 
   useEffect(() => {
     if (gameStatus !== "starting") return;
@@ -183,6 +232,8 @@ export default function Dino({ gameStatus, setGameStatus, score, setScore }) {
             dinoBox.top < box.bottom -10;
 
           if (hit) {
+            stopGameMusic();
+            hitAudio();
             setGameStatus("idle");
             return;
           }
