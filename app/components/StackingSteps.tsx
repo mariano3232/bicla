@@ -23,6 +23,19 @@ function getStackTopBase() {
   return headerHeight + STACK_TOP_EXTRA
 }
 
+function RichText({ text }: { text: string }) {
+  const parts = text.split(/(\*\*[^*]+\*\*)/g)
+  return parts.map((part, i) =>
+    part.startsWith("**") ? (
+      <strong key={i} className="font-bold">
+        {part.slice(2, -2)}
+      </strong>
+    ) : (
+      <span key={i}>{part}</span>
+    ),
+  )
+}
+
 function StepCard({
   step,
   index,
@@ -50,7 +63,7 @@ function StepCard({
         </p>
       </div>
       <p className="w-[484px]self-start font-mono text-[16px] font-normal leading-[21px] tracking-[-0.02em] whitespace-pre-line">
-        {step.description}
+        <RichText text={step.description} />
       </p>
     </article>
   )

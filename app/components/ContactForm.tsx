@@ -37,7 +37,7 @@ export default function ContactForm() {
     <form id="contacto" ref={form} onSubmit={sendEmail} className="mb-50 pt-10 px-20">
       <div className="flex justify-between">
         <p className="font-medium text-[60px]">CONTACTANOS :)</p>
-        <p>Miscelanea</p>
+        <p className="font-mono text-end">¿QUÉ TENÉS EN MENTE? /<br/> ESCRIBINOS</p>
       </div>
       <div className="grid grid-cols-2 gap-y-5 gap-x-3 justify-between mt-20 mb-5">
         <input name="nombre" type="text" required className="border-1 border-[#1E1E1E] h-[50px] px-10" placeholder="Nombre" />

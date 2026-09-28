@@ -8,18 +8,29 @@ export default function Hero() {
   const { gameStatus, setGameStatus, score, setScore, startGame } = useGame();
 
   return (
-    <section id="inicio" className="bg-[#B8F5EE] pb-20 pt-60">
-      <div className="w-fit m-auto">
-        <div className="hero-content">
+    <section
+      id="inicio"
+      className="col-span-3 col-start-1 row-start-1 grid grid-cols-subgrid bg-[#B8F5EE] pb-20 pt-60"
+    >
+      <div className="col-start-2 hero-content">
           <h1 className="max-w-[1256px] font-sans text-[clamp(48px,7.29vw,105px)] font-medium leading-[1.24]">
             <span className="flex gap-3 items-end h-[200px]">
               <span className="shrink-0 font-light whitespace-nowrap">
                 Somos <span className="font-medium">Bicla</span>,
               </span>
-              <div className="flex min-w-0 flex-1 flex-col w-full h-[200px] justify-end">
+              <div className="flex min-w-0 flex-1 flex-col w-full h-[200px] justify-between">
                 {gameStatus === "idle" ? (
                   <div className="relative flex w-full flex-1 flex-col justify-end overflow-hidden">
                     <CloudLayer />
+
+                    <div className="absolute top-0 flex justify-between pr-3 w-full">
+                      <p className="font-mono text-[18px]">Score: {score}</p>
+                      <div className="flex gap-2">
+                        <img src="/sonido.png" alt="" className="h-[20px]" />
+                        <img src="/musica.png" alt="" className="h-[20px]" />
+                      </div>
+                    </div>
+
                     <div className="relative z-10 flex justify-between items-end">
                       <div className="relative">
                         <img
@@ -54,7 +65,6 @@ export default function Hero() {
               Diseño digital <b className="font-medium">sin frenos.</b>
             </span>
           </h1>
-        </div>
       </div>
     </section>
   );

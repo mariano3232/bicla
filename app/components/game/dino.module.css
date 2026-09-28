@@ -8,9 +8,6 @@
   user-select: none;
 }
 .score {
-  position: absolute;
-  top: 12px;
-  left: 16px;
   z-index: 2;
   font-family: ui-monospace, monospace;
   font-size: 18px;
@@ -58,7 +55,7 @@
 }
 
 .jump {
-  animation: jump 900ms linear;
+  animation: jump var(--jump-ms, 1000ms) linear;
 }
 
 @keyframes jump {
@@ -67,7 +64,7 @@
     transform: rotate(0deg);
   }
   50% {
-    bottom: 120px;
+    bottom: 150px;
     transform: rotate(-30deg);
   }
   100% {
