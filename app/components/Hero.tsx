@@ -24,7 +24,7 @@ export default function Hero() {
                     <CloudLayer />
 
                     <div className="absolute top-0 flex justify-between pr-3 w-full">
-                      <p className="font-mono text-[18px]">Score: {score}</p>
+                      {score?<p className="font-mono text-[16px]">Score: {score}</p>:<div/>}
                       <div className="flex gap-2">
                         <img src="/sonido.png" alt="" className="h-[20px]" />
                         <img src="/musica.png" alt="" className="h-[20px]" />
