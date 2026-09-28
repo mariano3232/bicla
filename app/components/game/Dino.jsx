@@ -10,18 +10,27 @@ import CloudLayer from "./CloudLayer";
 import { CLOUD_SPEED_RATIO, START_RIGHT } from "./clouds";
 import styles from "./dino.module.css";
 
-const BASE_CROSS_MS = 2500;
-const MIN_CROSS_MS = 1200;
+const BASE_CROSS_MS = 2200;
+const MIN_CROSS_MS = 800;
+const BASE_JUMP_MS = 1200;
+const JUMP_FOLLOWS_SPEED = 0.4;
 const SCORE_TICK_MS = 100;
 
 const ENEMY_TYPES = [
-  { src: "/chip.png", w: 30, h: 30 },
-  { src: "/taza.png", w: 30, h: 30 },
+  { src: "/engranaje.png", w: 40, h: 40 },
+  { src: "/tipos.png", w: 60, h: 50 },
   { src: "/doschips.png", w: 30, h: 60 },
+  { src: "/caballo.png", w: 80, h: 60, mb:100 },
 ];
 
 function crossDuration(score) {
-  return Math.max(MIN_CROSS_MS, BASE_CROSS_MS - score * 6);
+  return Math.max(MIN_CROSS_MS, BASE_CROSS_MS - score * 2);
+}
+
+function jumpDuration(score) {
+  const speedRatio = BASE_CROSS_MS / crossDuration(score);
+  const jumpRatio = 1 + (speedRatio - 1) * JUMP_FOLLOWS_SPEED;
+  return BASE_JUMP_MS / jumpRatio;
 }
 
 function spawnGapPx(score) {
@@ -30,8 +39,9 @@ function spawnGapPx(score) {
 
 function pickType(score) {
   const pool = [ENEMY_TYPES[0]];
-  if (score >= 12) pool.push(ENEMY_TYPES[1]);
-  if (score >= 40) pool.push(ENEMY_TYPES[2]);
+  if (score >= 100) pool.push(ENEMY_TYPES[1]);
+  if (score >= 200) pool.push(ENEMY_TYPES[2]);
+  if (score >= 200) pool.push(ENEMY_TYPES[3]);
   return pool[Math.floor(Math.random() * pool.length)];
 }
 
@@ -54,11 +64,13 @@ export default function Dino({ gameStatus, setGameStatus, score, setScore }) {
       return;
     }
 
+    const duration = jumpDuration(scoreRef.current);
+    dino.style.setProperty("--jump-ms", `${duration}ms`);
     dino.classList.add(styles.jump);
 
     setTimeout(() => {
       dino.classList.remove(styles.jump);
-    }, 890);
+    }, duration);
   }, [gameStatus]);
 
   const start = useCallback(() => {
@@ -126,6 +138,7 @@ export default function Dino({ gameStatus, setGameStatus, score, setScore }) {
       el.className = styles.enemy;
       el.style.width = `${type.w}px`;
       el.style.height = `${type.h}px`;
+      el.style.bottom = `${type.mb}px`;
       el.style.backgroundImage = `url(${type.src})`;
       const right = START_RIGHT + extraRight;
       el.style.right = `${right}px`;
@@ -166,7 +179,8 @@ export default function Dino({ gameStatus, setGameStatus, score, setScore }) {
           const hit =
             dinoBox.left < box.right - 10 &&
             dinoBox.right > box.left + 10 &&
-            dinoBox.bottom > box.top + 10;
+            dinoBox.bottom > box.top + 10 &&
+            dinoBox.top < box.bottom -10;
 
           if (hit) {
             setGameStatus("idle");
@@ -213,15 +227,21 @@ export default function Dino({ gameStatus, setGameStatus, score, setScore }) {
         gameStatus === "starting" ? styles.starting : ""
       }`}
     >
+      <div className="flex justify-between pr-3 w-full">
+        <p className={styles.score}>Score: {score}</p>
+        <div className="flex gap-2">
+          <img src="/sonido.png" alt="" className="h-[20px]" />
+          <img src="/musica.png" alt="" className="h-[20px]" />
+        </div>
+      </div>
+
       <div
         ref={gameRef}
         className={styles.game}
         onClick={onInteract}
         role="button"
         tabIndex={0}
-      >
-        <p className={styles.score}>Score: {score}</p>
-
+      >  
         {gameStatus === "starting" && (
           <div className={styles.overlay}>
             <p>Cargando...</p>

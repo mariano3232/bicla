@@ -23,8 +23,8 @@ export default function ProjectGallery() {
       <div className="flex justify-end mb-12">
         <p>Proyectos exitosos</p>
       </div>
-      <div className="mt-5 flex justify-between">
-        {PROJECTS.filter(e=>e.name !== "RetinaType").map((project) => (
+      <div className="mt-5 mb-30 flex justify-between">
+        {PROJECTS.filter(e=>e.name !== "RetinaType").map((project,i) => (
           <button
             key={project.mini}
             type="button"
@@ -36,6 +36,10 @@ export default function ProjectGallery() {
               alt=""
               className={`h-[142px] w-[296px] transition-opacity duration-500 ${selected === project ? "opacity-100" : "opacity-70"}`}
             />
+            <div className="flex text-[15px] mt-3 justify-between font-mono">
+              <p>{project.name}</p>
+              <p>{"0" + (i+1)}</p>
+            </div>
           </button>
         ))}
         <button
@@ -48,19 +52,25 @@ export default function ProjectGallery() {
           <img
             src="/retina.png"
             alt=""
-            className={`h-[142px] border-2 border-black min-w-[296px] transition-opacity duration-500`}
+            className={`h-[142px] border-2 border-black min-w-[300px] transition-opacity duration-500`}
           />
+          <div className="flex text-[15px] mt-3 justify-between font-mono">
+            <p>Web móvil</p>
+            <p>04</p>
+          </div>
           </button>
       </div>
 
-      <div className="relative my-14 h-[695px] w-full border">
-        {PROJECTS.map((project) => (
-          <img
-            key={project.img}
-            src={project.img}
-            alt=""
-            className={`absolute inset-0 h-full m-auto transition-opacity duration-500 ${selected === project ? "opacity-100" : "opacity-0"}`}
-          />
+      <div className="relative my-14 h-[483px] w-full border">
+        {PROJECTS.map((project,i) => (
+          <div key={project.img} className="flex flex-col">
+            <img
+              src={project.img}
+              alt=""
+              className={`absolute inset-0 h-full m-auto transition-opacity duration-300 ${selected === project ? "opacity-100" : "opacity-0"}`}
+            />
+          </div>
+          
         ))}
       </div>
       <div>
