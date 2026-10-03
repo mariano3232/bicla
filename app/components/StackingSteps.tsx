@@ -27,7 +27,7 @@ function RichText({ text }: { text: string }) {
   const parts = text.split(/(\*\*[^*]+\*\*)/g)
   return parts.map((part, i) =>
     part.startsWith("**") ? (
-      <strong key={i} className="font-bold">
+      <strong key={i} className="font-medium">
         {part.slice(2, -2)}
       </strong>
     ) : (
@@ -152,7 +152,7 @@ export default function StackingSteps({ steps }: { steps: Step[] }) {
 
   return (
     <section
-      id="modalidad"
+      id="inicio"
       ref={sectionRef}
       className="mt-25"
       style={{ paddingBottom: stackTopBase + (steps.length - 1) * STACK_GAP }}

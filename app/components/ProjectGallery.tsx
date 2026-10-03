@@ -4,8 +4,6 @@ import { PROJECTS } from "../consts";
 import FollowEye from "./FollowEye";
 import ScrambleText from "./ScrambleText";
 
-
-
 export default function ProjectGallery() {
   const [selected, setSelected] = useState(PROJECTS[0])
   const [retinaMouse, setRetinaMouse] = useState<{ x: number; y: number } | null>(null)
@@ -16,12 +14,10 @@ export default function ProjectGallery() {
     return () => window.removeEventListener("mousemove", onMove)
   }, [])
 
-  
-
   return (
     <section id="proyectos" className="mx-20">
       <div className="flex justify-end mb-12">
-        <p>Proyectos exitosos</p>
+        <p>Proyectos</p>
       </div>
       <div className="mt-5 mb-30 flex justify-between">
         {PROJECTS.filter(e=>e.name !== "RetinaType").map((project,i) => (
@@ -36,7 +32,7 @@ export default function ProjectGallery() {
               alt=""
               className={`h-[142px] w-[296px] transition-opacity duration-500 ${selected === project ? "opacity-100" : "opacity-70"}`}
             />
-            <div className="flex text-[15px] mt-3 justify-between font-mono">
+            <div className="flex text-[14px] mt-3 justify-between font-mono">
               <p>{project.type}</p>
               <p>{"0" + (i+1)}</p>
             </div>
@@ -92,7 +88,7 @@ export default function ProjectGallery() {
                 <span>{project.name}</span>
               </button>
             ))}
-            <p className="mt-10">{selected.duration}</p>
+            <p className="mt-10 font-light">{selected.duration}</p>
           </div>
         </div>
       </div>
