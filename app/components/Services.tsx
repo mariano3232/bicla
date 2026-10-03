@@ -89,7 +89,7 @@ export default function Services() {
           <ServiceItem
             name="Hosting y Dominio"
             number="06"
-            image={<img src="/gif/online.gif" className={narrowImage} />}
+            image={<img src="/gif/online.gif" className={"border-0 " + narrowImage} />}
             description="Ponemos tu sitio online y nos ocupamos de que funcione correctamente. (Dominio, hosting, instalación, etc.)"
           />
         </div>

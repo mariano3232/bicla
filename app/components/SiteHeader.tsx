@@ -6,19 +6,16 @@ import { useGame } from "../context/GameContext";
 
 const NAV_ITEMS = [
   { label: "Inicio", id: "inicio" },
-  { label: "Modalidad", id: "modalidad" },
   { label: "Proyectos", id: "proyectos" },
   { label: "Servicios", id: "servicios" },
-  { label: "Nosotros", id: "nosotros" },
   { label: "Contacto", id: "contacto" },
 ] as const;
 
 const SECTION_LABELS: Record<string, string> = {
   inicio: "Inicio",
-  modalidad: "Modalidad",
+  // modalidad: "Modalidad",
   proyectos: "Proyectos",
-  servicios: "Contactos",
-  nosotros: "Nosotros",
+  servicios: "Servicios",
   contacto: "Contacto",
 };
 
@@ -27,6 +24,7 @@ const TRACKED_SECTIONS = Object.keys(SECTION_LABELS);
 export default function SiteHeader() {
   const { gameStatus } = useGame();
   const [activeSection, setActiveSection] = useState("inicio");
+  const [showDivider, setShowDivider] = useState(true);
 
   useEffect(() => {
     const sections = TRACKED_SECTIONS.map((id) =>
@@ -58,6 +56,26 @@ export default function SiteHeader() {
     return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+    const hero = document.getElementById("inicio");
+    const nav = document.querySelector("header nav");
+    if (!hero || !(nav instanceof HTMLElement)) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setShowDivider(entry.isIntersecting);
+      },
+      {
+        rootMargin: `-${nav.offsetHeight}px 0px 0px 0px`,
+        threshold: 0,
+      },
+    );
+
+    observer.observe(hero);
+
+    return () => observer.disconnect();
+  }, []);
+
   const isPlaying =
     gameStatus === "playing" || gameStatus === "starting";
 
@@ -85,7 +103,7 @@ export default function SiteHeader() {
           </li>
         </ul>
       </nav>
-      <div className="h-px mx-10 bg-black-text" />
+      {showDivider && <div className="h-px mx-10 bg-black-text" />}
     </header>
   );
 }

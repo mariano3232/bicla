@@ -1,5 +1,4 @@
 import LiveClock from "./components/LiveClock"
-import ScrambleButton from "./components/ScrambleButton";
 import StackingSteps from "./components/StackingSteps"
 import { benefits, steps } from "./consts"
 import Hero from "./components/Hero";
@@ -28,11 +27,11 @@ export default function Home() {
         {/* SEPARADOR */}
         <div className="bg-black-text h-[1px] mx-20 mt-10 mb-5"></div>
 
-        <div className="flex justify-end font-mono mx-20 mb-60">
+        <div className="flex justify-end font-mono mx-20 mb-10 text-[15px]">
           <p>¿Por qué contratarnos?</p>
         </div>
 
-        <section id="modalidad" className="grid grid-cols-4 gap-y-15 gap-x-40 mx-20 font-mono">
+        <section id="inicio" className="grid grid-cols-4 gap-y-15 gap-x-40 mx-20 font-mono">
           {benefits.map((benefit, i) => (
             <div key={i} className="w-[206px] flex flex-col gap-3">
               <img src={benefit.img} alt="" className="h-[60px] mb-4 w-fit" />
@@ -44,7 +43,7 @@ export default function Home() {
           ))}
         </section>
         {/* SEPARADOR */}
-        <div className="bg-black-text h-[1px] mx-20 mt-60 mb-5"></div>
+        <div className="bg-black-text h-[1px] mx-20 mt-30 mb-5"></div>
         <div className="flex justify-end mx-20">
           <p>Paso a paso</p>
         </div>
@@ -56,7 +55,7 @@ export default function Home() {
         <ProjectGallery />
         
         {/* SEPARADOR */}
-        <div className="bg-black-text h-[1px] mx-20 mt-30 mb-5"></div>
+        <div className="bg-black-text h-[1px] mx-20 mt-10 mb-5"></div>
 
         <Services />
             
