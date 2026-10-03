@@ -1,13 +1,13 @@
 import LiveClock from "./components/LiveClock"
 import ScrambleButton from "./components/ScrambleButton";
 import StackingSteps from "./components/StackingSteps"
-import { benefits, steps, services } from "./consts"
+import { benefits, steps } from "./consts"
 import Hero from "./components/Hero";
 import ProjectGallery from "./components/ProjectGallery"
 import SiteHeader from "./components/SiteHeader";
 import { GameProvider } from "./context/GameContext";
 import ContactForm from "./components/ContactForm";
-
+import Services from "./components/Services";
 
 export default function Home() {
   return (
@@ -58,30 +58,7 @@ export default function Home() {
         {/* SEPARADOR */}
         <div className="bg-black-text h-[1px] mx-20 mt-30 mb-5"></div>
 
-        <section id="servicios" className="mx-20">
-          <div className="flex justify-end mb-25">
-            <p>Servicios</p>
-          </div>
-          <div className="grid w-full grid-cols-4 gap-20 font-mono">
-            {
-              services.map(((service,i)=>(
-              <div key={i} className="min-w-0 w-full">
-                <div className="flex justify-between">
-                  <p className="uppercase">{service.name}</p>
-                  <p>{"0"+ (i+1)}</p>
-                </div>
-                <div className="border border-black-text h-[305px] flex justify-center items-center">IMAGEN</div>
-                <div className="border border-black-text relative leading-[20px] font-mono font-regular mt-10 pt-5 px-2 text-[15px] h-[138px] tracking-[-2%]">
-                  <p>{service.description}</p>
-                  {service.aditional?
-                  <p className="absolute bottom-2 right-2 underline tracking-[-2%] leading-[13px] text-[10px]">*Servicio<br/>adicional</p>
-                  :null}
-                </div>
-              </div>
-              )))
-            }
-          </div>
-        </section>
+        <Services />
             
         {/* SEPARADOR */}
         <div className="bg-black-text h-[1px] mx-20 mt-50 mb-5"></div>
@@ -91,7 +68,7 @@ export default function Home() {
       <footer className="mx-20 border-t-2 h-15 font-mono flex justify-between items-center border-gray-400">
         <p>02·ruedas</p>
         <LiveClock />
-        <p>malenacosentino@gmail.com</p>
+        <p>somos@biclaweb.com</p>
         <p>Argentina·</p>
       </footer>
     </GameProvider>
