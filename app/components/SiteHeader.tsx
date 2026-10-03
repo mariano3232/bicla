@@ -58,17 +58,23 @@ export default function SiteHeader() {
     return () => observer.disconnect();
   }, []);
 
-  const selectedLabel =
-    gameStatus === "playing" || gameStatus === "starting"
-      ? "Playbicla"
-      : SECTION_LABELS[activeSection] ?? "Inicio";
+  const isPlaying =
+    gameStatus === "playing" || gameStatus === "starting";
+
+  const selectedLabel = isPlaying
+    ? "Playbicla"
+    : SECTION_LABELS[activeSection] ?? "Inicio";
+
+  const visibleNavItems = isPlaying
+    ? NAV_ITEMS
+    : NAV_ITEMS.filter(({ id }) => id !== activeSection);
 
   return (
     <header className="bg-[#B8F5EE] z-10 fixed top-0 w-full">
       <nav className="flex font-mono items-center justify-between px-10 h-[51px]">
         <h1 className="text-[16px] font-sans font-medium">Bicla:diseñoweb</h1>
         <ul className="flex gap-10 text-[15px]">
-          {NAV_ITEMS.map(({ label, id }) => (
+          {visibleNavItems.map(({ label, id }) => (
             <li key={id}>
               <a href={`#${id}`}>{label}</a>
             </li>

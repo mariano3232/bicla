@@ -30,10 +30,10 @@ export default function Hero() {
 
                     <div className="absolute top-0 flex justify-between pr-3 w-full">
                       {score?<p className="font-mono text-[16px]">Score: {score}</p>:<div/>}
-                      <div className="flex gap-2">
+                      {/* <div className="flex gap-2">
                         <img src="/sonido.png" alt="" className="h-[20px]" />
                         <img src="/musica.png" alt="" className="h-[20px]" />
-                      </div>
+                      </div> */}
                     </div>
 
                     <div className="relative z-10 flex justify-between items-end">

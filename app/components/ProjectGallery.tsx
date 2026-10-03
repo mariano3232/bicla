@@ -37,7 +37,7 @@ export default function ProjectGallery() {
               className={`h-[142px] w-[296px] transition-opacity duration-500 ${selected === project ? "opacity-100" : "opacity-70"}`}
             />
             <div className="flex text-[15px] mt-3 justify-between font-mono">
-              <p>{project.name}</p>
+              <p>{project.type}</p>
               <p>{"0" + (i+1)}</p>
             </div>
           </button>
