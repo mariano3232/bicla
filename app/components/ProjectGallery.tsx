@@ -3,6 +3,7 @@ import { useEffect, useState } from "react"
 import { PROJECTS } from "../consts";
 import FollowEye from "./FollowEye";
 import ScrambleText from "./ScrambleText";
+import { VideoPlayer } from "./VideoPlayer";
 
 export default function ProjectGallery() {
   const [selected, setSelected] = useState(PROJECTS[0])
@@ -57,16 +58,26 @@ export default function ProjectGallery() {
           </button>
       </div>
 
-      <div className="relative my-14 h-[483px] w-full border">
-        {PROJECTS.map((project,i) => (
-          <div key={project.img} className="flex flex-col">
+      <div className="relative my-14 aspect-[16/9] max-h-[500px] w-full overflow-hidden border">
+        {PROJECTS.map((project) => (
+          project.video ? (
+            <div
+              key={project.img}
+              className={`absolute inset-0 flex h-full items-center justify-center transition-opacity duration-300 ${selected === project ? "z-10 opacity-100" : "pointer-events-none opacity-0"}`}
+            >
+              <VideoPlayer
+                src={project.video}
+                className="h-full w-auto max-w-full object-contain"
+              />
+            </div>
+          ) : (
             <img
+              key={project.img}
               src={project.img}
               alt=""
-              className={`absolute inset-0 h-full m-auto transition-opacity duration-300 ${selected === project ? "opacity-100" : "opacity-0"}`}
+              className={`absolute inset-0 m-auto h-full w-full object-contain transition-opacity duration-300 ${selected === project ? "opacity-100" : "pointer-events-none opacity-0"}`}
             />
-          </div>
-          
+          )
         ))}
       </div>
       <div>
