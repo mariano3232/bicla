@@ -88,7 +88,7 @@ export default function SiteHeader() {
     : NAV_ITEMS.filter(({ id }) => id !== activeSection);
 
   return (
-    <header className="bg-[#B8F5EE] z-10 fixed top-0 w-full">
+    <header className="bg-[#B8F5EE] z-99 fixed top-0 w-full">
       <nav className="flex font-mono items-center justify-between px-10 h-[51px]">
         <h1 className="text-[16px] font-sans font-medium">Bicla:diseñoweb</h1>
         <ul className="flex gap-10 text-[15px]">

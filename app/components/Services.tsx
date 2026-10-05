@@ -97,7 +97,7 @@ export default function Services() {
           <ServiceItem
             name="Optimización y SEO"
             number="07"
-            image={<img src="/gif/construction.webp" className={narrowImage} />}
+            image={<img src="/gif/seo.gif" className={"border-0 "+narrowImage} />}
             description="Optimizamos tu sitio para que los buscadores puedan entenderlo y encontrarlo."
           />
           <ServiceItem
@@ -111,10 +111,10 @@ export default function Services() {
             extra={<p className="absolute right-2 bottom-2 text-[10px] leading-[13px] tracking-[-0.02em] underline">*Servicio<br/>adicional</p>}
           />
           <ServiceItem
-            name="Optimización y SEO"
+            name="Desarrollo a medida"
             number="09"
-            image={<img src="/gif/construction.webp" className={narrowImage} />}
-            description="Optimizamos tu sitio para que los buscadores puedan entenderlo y encontrarlo."
+            image={<img src="/gif/desarrolloIntegral.gif" className={narrowImage} />}
+            description="Creamos funcionalidades y soluciones específicas para las necesidades de cada proyecto. (Paneles, formularios, etc.)."
           />
         </div>
       </div>
