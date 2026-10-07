@@ -16,22 +16,22 @@ export default function ProjectGallery() {
   }, [])
 
   return (
-    <section id="proyectos" className="mx-20">
-      <div className="flex justify-end mb-12">
+    <section id="proyectos" className="mx-5 md:mx-10 xl:mx-20">
+      <div className="mb-12 flex justify-end">
         <p>Proyectos</p>
       </div>
-      <div className="mt-5 mb-30 flex justify-between">
+      <div className="mb-16 mt-5 grid grid-cols-2 gap-4 xl:mb-30 xl:flex xl:justify-between xl:gap-6">
         {PROJECTS.filter(e=>e.name !== "RetinaType").map((project,i) => (
           <button
             key={project.mini}
             type="button"
             onClick={() => setSelected(project)}
-            className="cursor-pointer"
+            className="min-w-0 cursor-pointer xl:w-full xl:max-w-[296px]"
           >
             <img
               src={project.mini}
               alt=""
-              className={`h-[142px] w-[296px] transition-opacity duration-500 ${selected === project ? "opacity-100" : "opacity-70"}`}
+              className={`aspect-[296/142] h-auto w-full object-cover transition-opacity duration-500 xl:h-[142px] xl:aspect-auto ${selected === project ? "opacity-100" : "opacity-70"}`}
             />
             <div className="flex text-[14px] mt-3 justify-between font-mono">
               <p>{project.type}</p>
@@ -42,15 +42,17 @@ export default function ProjectGallery() {
         <button
           type="button"
           onClick={() => setSelected(PROJECTS[3])}
-          className="cursor-pointer relative"
+          className="relative min-w-0 cursor-pointer xl:w-full xl:max-w-[300px]"
         >
-          <FollowEye className="absolute top-[65px] left-[51px] border border-red-" mouse={retinaMouse} />
-          <FollowEye className="absolute top-[75px] right-[68px] border border-red-" mouse={retinaMouse} />
-          <img
-            src="/retina.png"
-            alt=""
-            className={`h-[142px] border-2 border-black min-w-[300px] transition-opacity duration-500`}
-          />
+          <div className="relative">
+            <FollowEye className="absolute top-[45.8%] left-[17%] border border-red-" mouse={retinaMouse} />
+            <FollowEye className="absolute top-[52.8%] right-[22.7%] border border-red-" mouse={retinaMouse} />
+            <img
+              src="/retina.png"
+              alt=""
+              className="aspect-[300/142] h-auto w-full border-2 border-black object-cover transition-opacity duration-500 xl:h-[142px] xl:aspect-auto"
+            />
+          </div>
           <div className="flex text-[15px] mt-3 justify-between font-mono">
             <p>Web móvil</p>
             <p>04</p>
@@ -81,11 +83,11 @@ export default function ProjectGallery() {
         ))}
       </div>
       <div>
-        <div className="text-[15px] font-mono flex justify-between">
-          <div className="flex flex-col gap-8 w-[313px]">
-            <p className="w-[313px] font-light text-[14px]">{selected.misc}</p>
+        <div className="flex flex-col gap-10 font-mono text-[15px] lg:flex-row lg:justify-between">
+          <div className="flex w-full flex-col gap-8 lg:w-auto">
+            <p className="max-w-[313px] text-[14px] font-light">{selected.misc}</p>
             {/* <ScrambleText className="w-[313px] font-light text-[14px]" text={selected.misc}/> */}
-            <ScrambleText className="w-[550px] h-[200px]" step={6} text={selected.description}/>
+            <ScrambleText className="h-auto min-h-[120px] w-full lg:h-[200px] lg:w-[550px]" step={6} text={selected.description}/>
           </div>
           <div className="flex flex-col gap-1">
             {PROJECTS.map((project) => (

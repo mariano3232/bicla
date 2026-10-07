@@ -15,15 +15,15 @@ export default function Hero() {
   return (
     <section
       id="inicio"
-      className="col-span-3 col-start-1 row-start-1 grid grid-cols-subgrid bg-[#B8F5EE] pb-20 pt-60"
+      className="col-span-3 col-start-1 row-start-1 bg-[#B8F5EE] pb-12 pt-36 md:pb-16 md:pt-48 xl:grid xl:grid-cols-subgrid xl:pb-20 xl:pt-60"
     >
-      <div className="col-start-2 hero-content">
+      <div className="hero-content px-5 md:px-10 xl:col-start-2 xl:px-0">
           <h1 className="max-w-[1256px] font-sans text-[clamp(48px,7.29vw,105px)] font-medium leading-[1.24]">
-            <span className="flex gap-3 items-end h-[200px]">
-              <span className="shrink-0 font-light whitespace-nowrap">
+            <span className="flex h-auto flex-col gap-3 xl:h-[200px] xl:flex-row xl:items-end">
+              <span className="shrink-0 font-light xl:whitespace-nowrap">
                 Somos <span className="font-medium">Bicla</span>,
               </span>
-              <div className="flex min-w-0 flex-1 flex-col w-full h-[200px] justify-between">
+              <div className="flex h-[190px] w-full min-w-0 flex-1 flex-col justify-between md:h-[200px]">
                 {gameStatus === "idle" ? (
                   <div className="relative flex w-full flex-1 flex-col justify-end overflow-hidden">
                     <CloudLayer />
@@ -66,7 +66,7 @@ export default function Hero() {
               </div>
             </span>
 
-            <span className="mt-1 block whitespace-nowrap font-light">
+            <span className="mt-1 block font-light xl:whitespace-nowrap">
               Diseño digital <b className="font-medium">sin frenos.</b>
             </span>
           </h1>
