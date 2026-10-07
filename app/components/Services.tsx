@@ -6,8 +6,6 @@ function ServiceItem({
   image,
   description,
   wide = false,
-  headerClass = "",
-  textClass = "",
   extra = null,
 }: {
   name: string
@@ -15,20 +13,18 @@ function ServiceItem({
   image: ReactNode
   description: string
   wide?: boolean
-  headerClass?: string
-  textClass?: string
   extra?: ReactNode
 }) {
   return (
     <div className={wide ? "w-[544px]" : "w-[268px]"}>
-      <div className={["flex justify-between uppercase", headerClass].filter(Boolean).join(" ")}>
+      <div className="flex justify-between uppercase">
         <p>{name}</p>
         <p>{number}</p>
       </div>
       {image}
-      <div className={["relative mt-[23px] h-[138px] border border-black-text px-3 pt-[18px] leading-[20px] tracking-[-0.02em]", textClass].filter(Boolean).join(" ")}>
-        <p>{description}</p>
-        {extra}
+      <div className="relative mt-[23px] flex h-[138px] flex-col border border-black-text px-3 pt-[18px] pb-2 leading-[20px] tracking-[-0.02em]">
+        <p className={extra ? "leading-[18px]" : undefined}>{description}</p>
+        {extra ? <div className="mt-auto self-end">{extra}</div> : null}
       </div>
     </div>
   )
@@ -95,21 +91,21 @@ export default function Services() {
         </div>
         <div className="flex justify-between">
           <ServiceItem
-            name="Optimización y SEO"
-            number="07"
-            image={<img src="/gif/seo.gif" className={"border-0 "+narrowImage} />}
-            description="Optimizamos tu sitio para que los buscadores puedan entenderlo y encontrarlo."
-          />
-          <ServiceItem
             name="Kit Instagram"
             number="08"
-            wide
-            headerClass="w-[268px]"
-            textClass="w-full"
-            image={<img src="/gif/construction.webp" className="mt-[11px] h-[306px] w-full border border-black-text" />}
+            image={<img src="/gif/ig.gif" className={narrowImage + " object-cover"} />}
             description="Diseñamos la presencia visual de tu marca en IG. (Feed, destacadas, foto de perfil,adaptados a tus necesidades.)"
-            extra={<p className="absolute right-2 bottom-2 text-[10px] leading-[13px] tracking-[-0.02em] underline">*Servicio<br/>adicional</p>}
+            extra={<p className="text-[10px] leading-[13px] tracking-[-0.02em] underline">*Servicio adicional</p>}
           />
+
+          <ServiceItem
+            name="Optimización y SEO"
+            number="07"
+            wide
+            image={<img src="/gif/seobig.gif" className={wideImage} />}
+            description="Optimizamos tu sitio para que los buscadores puedan entenderlo y encontrarlo."
+          />
+          
           <ServiceItem
             name="Desarrollo a medida"
             number="09"
