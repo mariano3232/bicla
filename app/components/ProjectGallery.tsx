@@ -33,7 +33,7 @@ export default function ProjectGallery() {
               alt=""
               className={`aspect-[296/142] h-auto w-full object-cover transition-opacity duration-500 xl:h-[142px] xl:aspect-auto ${selected === project ? "opacity-100" : "opacity-70"}`}
             />
-            <div className="flex text-[14px] mt-3 justify-between font-mono">
+            <div className="mt-3 flex justify-between font-mono text-[12px] md:text-[14px]">
               <p>{project.type}</p>
               <p>{"0" + (i+1)}</p>
             </div>
@@ -53,14 +53,14 @@ export default function ProjectGallery() {
               className="aspect-[300/142] h-auto w-full border-2 border-black object-cover transition-opacity duration-500 xl:h-[142px] xl:aspect-auto"
             />
           </div>
-          <div className="flex text-[15px] mt-3 justify-between font-mono">
+          <div className="mt-3 flex justify-between font-mono text-[12px] md:text-[15px]">
             <p>Web móvil</p>
             <p>04</p>
           </div>
           </button>
       </div>
 
-      <div className="relative my-14 aspect-[16/9] max-h-[500px] w-full overflow-hidden border">
+      <div className="relative my-8 aspect-[16/9] max-h-[200px] w-full overflow-hidden border md:my-14 md:max-h-[500px]">
         {PROJECTS.map((project) => (
           project.video ? (
             <div
@@ -83,9 +83,9 @@ export default function ProjectGallery() {
         ))}
       </div>
       <div>
-        <div className="flex flex-col gap-10 font-mono text-[15px] lg:flex-row lg:justify-between">
+        <div className="flex flex-col gap-10 font-mono text-[13px] md:text-[15px] lg:flex-row lg:justify-between">
           <div className="flex w-full flex-col gap-8 lg:w-auto">
-            <p className="max-w-[313px] text-[14px] font-light">{selected.misc}</p>
+            <p className="max-w-[313px] text-[12px] font-light md:text-[14px]">{selected.misc}</p>
             {/* <ScrambleText className="w-[313px] font-light text-[14px]" text={selected.misc}/> */}
             <ScrambleText className="h-auto min-h-[120px] w-full lg:h-[200px] lg:w-[550px]" step={6} text={selected.description}/>
           </div>

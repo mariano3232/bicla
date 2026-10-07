@@ -22,7 +22,7 @@ function ServiceItem({
         <p>{number}</p>
       </div>
       {image}
-      <div className="relative mt-[23px] flex min-h-[138px] flex-col border border-black-text px-3 pt-[18px] pb-2 leading-[20px] tracking-[-0.02em] xl:h-[138px]">
+      <div className="relative mt-3 flex min-h-[96px] flex-col border border-black-text px-3 pt-3 pb-2 text-[12px] leading-[16px] tracking-[-0.02em] md:mt-[23px] md:min-h-[138px] md:pt-[18px] md:text-[15px] md:leading-[20px] xl:h-[138px]">
         <p className={extra ? "leading-[18px]" : undefined}>{description}</p>
         {extra ? <div className="mt-auto self-end">{extra}</div> : null}
       </div>
@@ -30,8 +30,8 @@ function ServiceItem({
   )
 }
 
-const narrowImage = "mt-[11px] aspect-[265/306] h-auto w-full border border-black-text object-cover md:aspect-auto md:h-[306px] xl:w-[265px]"
-const wideImage = "mt-[11px] aspect-[544/306] h-auto w-full border border-black-text object-cover md:aspect-auto md:h-[306px]"
+const narrowImage = "mt-[11px] h-[150px] w-full border border-black-text object-cover md:h-[306px] xl:w-[265px]"
+const wideImage = "mt-[11px] h-[150px] w-full border border-black-text object-cover md:h-[306px]"
 
 export default function Services() {
   return (
@@ -40,7 +40,7 @@ export default function Services() {
       <div className="flex justify-end mb-25">
         <p>Servicios</p>
       </div>
-      <div className="flex flex-col gap-y-[51px] font-mono text-[15px]">
+      <div className="flex flex-col gap-y-[51px] font-mono text-[13px] md:text-[15px]">
         <div className="grid grid-cols-1 gap-y-[51px] md:grid-cols-2 md:gap-x-6 xl:flex xl:justify-between">
           <ServiceItem
             name="Identidad/Branding"
@@ -74,7 +74,7 @@ export default function Services() {
             name="UX / UI"
             number="05"
             image={
-              <div className="relative mt-[11px] aspect-[265/306] h-auto w-full border border-black-text bg-[#F3F3F6] md:aspect-auto md:h-[306px] xl:w-[265px]">
+              <div className="relative mt-[11px] h-[150px] w-full border border-black-text bg-[#F3F3F6] md:h-[306px] xl:w-[265px]">
                 <div className="absolute top-[6%] left-[11%] h-[85%] w-[81%] overflow-hidden">
                   <img src="/gif/uxui.gif" className="absolute top-[-34.82%] left-[-22.63%] h-[191.16%] w-[145.79%] max-w-none" />
                 </div>
