@@ -2,49 +2,49 @@ export const benefits = [
     {
       title: "01.No hay intermediarios",
       description:
-        "Hablás directamente con quienes trabajan en tu proyecto.",
+        "Hablás directamente con\nquienes trabajan en tu\nproyecto.",
       img: "/benefits/comments-solid.png",
     },
     {
       title: "02.Diseños Personalizados",
       description:
-        "Cada sitio se diseña desde 0 y se adapta a tu marca.",
+        "Cada sitio se diseña\ndesde 0 y se adapta a tu\nmarca.",
       img: "/benefits/lightbulb-solid.png",
     },
     {
       title: "03.Desarrollo\nIntegral",
       description:
-        "Nos ocupamos de todo el proyecto, de principio a fin.",
+        "Nos ocupamos de todo el\nproyecto, de principio a\nfin.",
       img: "/benefits/box-heart-solid.png",
     },
     {
       title: "04.Sitios\nSeguros",
       description:
-        "Incluimos certificados SSL para proteger tu sitio y a sus usuarios.",
+        "Incluimos certificados\nSSL para proteger tu\nsitio y a sus usuarios.",
       img: "/benefits/lock.png",
     },
     {
       title: "05.Fácil\nNavegación",
       description:
-        "Creamos estructuras claras y fáciles de recorrer.",
+        "Creamos estructuras\nclaras y fáciles de\nrecorrer.",
       img: "/benefits/click.png",
     },
     {
       title: "06.Diseño\nResponsive",
       description:
-        "Tu sitio se adapta a cualquier pantalla y/o dispositivo.",
+        "Tu sitio se adapta a\ncualquier pantalla y/o\ndispositivo.",
       img: "/benefits/pc.png",
     },
     {
       title: "07.Servicio\nde SEO",
       description:
-        "Hacemos tu sitio más fácil de encontrar por buscadores.",
+        "Hacemos tu sitio más\nfácil de encontrar por\nbuscadores.",
       img: "/benefits/search.png",
     },
     {
       title: "08.Velocidad\nde Carga",
       description:
-        "Priorizamos un sitio ágil, con tiempos de carga reducidos.",
+        "Priorizamos un sitio\nágil, con tiempos de\ncarga reducidos.",
       img: "/benefits/thunder.png",
     },
   ];
@@ -106,7 +106,7 @@ export const PROJECTS = [
     type: "Website Comex",
     color: "bg-[#98BCCF]",
     mini: "/zrn.png",
-    video:"/videos/zrn.mp4",
+    video:"/videos/zrn.mov",
     img: "/bigzrn.png",
     className: "border",
     misc: "BRANDING 01/ IDENTIDAD VISUAL 02 / DISEÑO WEB 03 / RESPONSIVE 04",

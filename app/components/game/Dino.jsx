@@ -75,8 +75,16 @@ function jumpDuration(score) {
   return BASE_JUMP_MS / jumpRatio;
 }
 
-function spawnGapPx(score) {
-  return Math.max(800, 1100 - score * 1.2) + Math.random() * 280;
+function fieldScale(game) {
+  const height = game?.clientHeight || 200;
+  if (height >= 170) return 1;
+  return height / 200;
+}
+
+function spawnGapPx(score, width) {
+  const desktop = Math.max(800, 1100 - score * 1.2) + Math.random() * 280;
+  const widthScale = Math.min(1, Math.max(0.42, width / 1000));
+  return desktop * widthScale;
 }
 
 function pickType(score) {
@@ -183,16 +191,19 @@ export default function Dino({ gameStatus, setGameStatus, score, setScore }) {
     let scoreAcc = 0;
 
     const spawn = (type, extraRight = 0) => {
+      const scale = fieldScale(game);
+      const width = Math.round(type.w * scale);
+      const height = Math.round(type.h * scale);
       const el = document.createElement("div");
       el.className = styles.enemy;
-      el.style.width = `${type.w}px`;
-      el.style.height = `${type.h}px`;
-      el.style.bottom = `${type.mb}px`;
+      el.style.width = `${width}px`;
+      el.style.height = `${height}px`;
+      if (type.mb) el.style.bottom = `${Math.round(type.mb * scale)}px`;
       el.style.backgroundImage = `url(${type.src})`;
       const right = START_RIGHT + extraRight;
       el.style.right = `${right}px`;
       root.appendChild(el);
-      obstacles.push({ el, right, w: type.w });
+      obstacles.push({ el, right, w: width });
     };
 
     const tick = (now) => {
@@ -206,7 +217,7 @@ export default function Dino({ gameStatus, setGameStatus, score, setScore }) {
       const newest = obstacles[obstacles.length - 1];
       if (!newest || newest.right > nextGap) {
         spawn(pickType(scoreNow));
-        nextGap = spawnGapPx(scoreNow);
+        nextGap = spawnGapPx(scoreNow, game.clientWidth);
       }
 
       const dino = dinoRef.current;
@@ -274,15 +285,15 @@ export default function Dino({ gameStatus, setGameStatus, score, setScore }) {
 
   return (
     <div
-      className={`${styles.gameWrapper} ${
+      className={`${styles.gameWrapper} flex flex-col ${
         gameStatus === "starting" ? styles.starting : ""
       }`}
     >
-      <div className="flex justify-between pr-3 w-full">
+      <div className="flex w-full shrink-0 justify-between pr-3">
         <p className={styles.score}>Score: {score}</p>
         <div className="flex gap-2">
-          <img src="/sonido.png" alt="" className="h-[20px]" />
-          <img src="/musica.png" alt="" className="h-[20px]" />
+          <img src="/sonido.png" alt="" className="h-[14px] md:h-[20px]" />
+          <img src="/musica.png" alt="" className="h-[14px] md:h-[20px]" />
         </div>
       </div>
 

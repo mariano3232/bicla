@@ -18,12 +18,12 @@ export default function Hero() {
       className="col-span-3 col-start-1 row-start-1 bg-[#B8F5EE] pb-12 pt-36 md:pb-16 md:pt-48 xl:grid xl:grid-cols-subgrid xl:pb-20 xl:pt-60"
     >
       <div className="hero-content px-5 md:px-10 xl:col-start-2 xl:px-0">
-          <h1 className="max-w-[1256px] font-sans text-[clamp(48px,7.29vw,105px)] font-medium leading-[1.24]">
+          <h1 className="max-w-[1256px] font-sans text-[32px] font-medium leading-[1.15] md:text-[clamp(48px,7.29vw,105px)] md:leading-[1.24]">
             <span className="flex h-auto flex-col gap-3 xl:h-[200px] xl:flex-row xl:items-end">
               <span className="shrink-0 font-light xl:whitespace-nowrap">
                 Somos <span className="font-medium">Bicla</span>,
               </span>
-              <div className="flex h-[190px] w-full min-w-0 flex-1 flex-col justify-between md:h-[200px]">
+              <div className="flex min-h-[150px] w-full min-w-0 flex-1 flex-col justify-end md:h-[200px]">
                 {gameStatus === "idle" ? (
                   <div className="relative flex w-full flex-1 flex-col justify-end overflow-hidden">
                     <CloudLayer />
@@ -41,16 +41,16 @@ export default function Hero() {
                         <img
                           src="/bike.png"
                           alt=""
-                          className="w-[123px] relative bottom-3 object-contain rotate-340 cursor-pointer"
+                          className="relative bottom-2 w-[78px] cursor-pointer object-contain rotate-340 md:bottom-3 md:w-[123px]"
                           onClick={beginGame}
                         />
-                        <p className="absolute text-[30px] right-4 -top-7">*</p>
+                        <p className="absolute -top-5 right-2 text-[20px] md:-top-7 md:right-4 md:text-[30px]">*</p>
                       </div>
                       <img
                         src="/play.png"
                         alt=""
                         onClick={beginGame}
-                        className="w-[24px] mb-2 cursor-pointer"
+                        className="mb-2 w-[16px] cursor-pointer md:w-[24px]"
                       />
                     </div>
                     <div className="relative z-10 h-[2px] w-full bg-black-text" />

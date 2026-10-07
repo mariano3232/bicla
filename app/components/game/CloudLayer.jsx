@@ -34,15 +34,18 @@ export default function CloudLayer({ active = true, className = "", getSpeed }) 
 
     const spawnCloud = () => {
       const type = pickCloudType();
+      const fieldH = container.clientHeight || 200;
+      const scale = fieldH < 170 ? 0.65 : 1;
+      const sized = { ...type, w: type.w * scale, h: type.h * scale };
       const el = document.createElement("div");
       el.className = styles.cloud;
-      el.style.width = `${type.w}px`;
-      el.style.height = `${type.h}px`;
+      el.style.width = `${sized.w}px`;
+      el.style.height = `${sized.h}px`;
       el.style.backgroundImage = `url(${type.src})`;
-      el.style.top = `${cloudTopPx(type)}px`;
+      el.style.top = `${cloudTopPx(sized, Math.max(8, fieldH * 0.38))}px`;
       el.style.right = `${START_RIGHT}px`;
       cloudRoot.appendChild(el);
-      clouds.push({ el, right: START_RIGHT, w: type.w });
+      clouds.push({ el, right: START_RIGHT, w: sized.w });
     };
 
     const tick = (now) => {
