@@ -16,13 +16,13 @@ function ServiceItem({
   extra?: ReactNode
 }) {
   return (
-    <div className={wide ? "w-[544px]" : "w-[268px]"}>
+    <div className={wide ? "w-full min-w-0 md:col-span-2 xl:w-[544px]" : "w-full min-w-0 xl:w-[268px]"}>
       <div className="flex justify-between uppercase">
         <p>{name}</p>
         <p>{number}</p>
       </div>
       {image}
-      <div className="relative mt-[23px] flex h-[138px] flex-col border border-black-text px-3 pt-[18px] pb-2 leading-[20px] tracking-[-0.02em]">
+      <div className="relative mt-[23px] flex min-h-[138px] flex-col border border-black-text px-3 pt-[18px] pb-2 leading-[20px] tracking-[-0.02em] xl:h-[138px]">
         <p className={extra ? "leading-[18px]" : undefined}>{description}</p>
         {extra ? <div className="mt-auto self-end">{extra}</div> : null}
       </div>
@@ -30,18 +30,18 @@ function ServiceItem({
   )
 }
 
-const narrowImage = "mt-[11px] h-[306px] w-[265px] border border-black-text"
-const wideImage = "mt-[11px] h-[306px] w-full border border-black-text object-cover"
+const narrowImage = "mt-[11px] aspect-[265/306] h-auto w-full border border-black-text object-cover md:aspect-auto md:h-[306px] xl:w-[265px]"
+const wideImage = "mt-[11px] aspect-[544/306] h-auto w-full border border-black-text object-cover md:aspect-auto md:h-[306px]"
 
 export default function Services() {
   return (
-    <section id="servicios" className="mx-20">
+    <section id="servicios" className="mx-5 md:mx-10 xl:mx-20">
       <div className="mx-auto w-full max-w-[1440px]">
       <div className="flex justify-end mb-25">
         <p>Servicios</p>
       </div>
       <div className="flex flex-col gap-y-[51px] font-mono text-[15px]">
-        <div className="flex justify-between">
+        <div className="grid grid-cols-1 gap-y-[51px] md:grid-cols-2 md:gap-x-6 xl:flex xl:justify-between">
           <ServiceItem
             name="Identidad/Branding"
             number="01"
@@ -62,7 +62,7 @@ export default function Services() {
             description="Actualizamos y transformamos sitios existentes para adaptarlos a nuevas necesidades."
           />
         </div>
-        <div className="flex justify-between">
+        <div className="grid grid-cols-1 gap-y-[51px] md:grid-cols-2 md:gap-x-6 xl:flex xl:justify-between">
           <ServiceItem
             name="animación web"
             number="04"
@@ -74,7 +74,7 @@ export default function Services() {
             name="UX / UI"
             number="05"
             image={
-              <div className="relative mt-[11px] h-[306px] w-[265px] border border-black-text bg-[#F3F3F6]">
+              <div className="relative mt-[11px] aspect-[265/306] h-auto w-full border border-black-text bg-[#F3F3F6] md:aspect-auto md:h-[306px] xl:w-[265px]">
                 <div className="absolute top-[6%] left-[11%] h-[85%] w-[81%] overflow-hidden">
                   <img src="/gif/uxui.gif" className="absolute top-[-34.82%] left-[-22.63%] h-[191.16%] w-[145.79%] max-w-none" />
                 </div>
@@ -89,10 +89,10 @@ export default function Services() {
             description="Ponemos tu sitio online y nos ocupamos de que funcione correctamente. (Dominio, hosting, instalación, etc.)"
           />
         </div>
-        <div className="flex justify-between">
+        <div className="grid grid-cols-1 gap-y-[51px] md:grid-cols-2 md:gap-x-6 xl:flex xl:justify-between">
           <ServiceItem
             name="Kit Instagram"
-            number="08"
+            number="07"
             image={<img src="/gif/ig.gif" className={narrowImage + " object-cover"} />}
             description="Diseñamos la presencia visual de tu marca en IG. (Feed, destacadas, foto de perfil,adaptados a tus necesidades.)"
             extra={<p className="text-[10px] leading-[13px] tracking-[-0.02em] underline">*Servicio adicional</p>}
@@ -100,7 +100,7 @@ export default function Services() {
 
           <ServiceItem
             name="Optimización y SEO"
-            number="07"
+            number="08"
             wide
             image={<img src="/gif/seobig.gif" className={wideImage} />}
             description="Optimizamos tu sitio para que los buscadores puedan entenderlo y encontrarlo."
@@ -109,7 +109,7 @@ export default function Services() {
           <ServiceItem
             name="Desarrollo a medida"
             number="09"
-            image={<img src="/gif/desarrolloIntegral.gif" className={narrowImage} />}
+            image={<img src="/gif/desarrollointegral.gif" className={narrowImage} />}
             description="Creamos funcionalidades y soluciones específicas para las necesidades de cada proyecto. (Paneles, formularios, etc.)."
           />
         </div>

@@ -88,22 +88,22 @@ export default function SiteHeader() {
     : NAV_ITEMS.filter(({ id }) => id !== activeSection);
 
   return (
-    <header className="bg-[#B8F5EE] z-99 fixed top-0 w-full">
-      <nav className="flex font-mono items-center justify-between px-10 h-[51px]">
-        <h1 className="text-[16px] font-sans font-medium">Bicla:diseñoweb</h1>
-        <ul className="flex gap-10 text-[15px]">
+    <header className="fixed top-0 z-99 w-full bg-[#B8F5EE]">
+      <nav className="flex flex-col gap-2 px-5 py-2 font-mono md:h-[51px] md:flex-row md:items-center md:justify-between md:px-10 md:py-0 xl:px-20">
+        <h1 className="font-sans text-[16px] font-medium">Bicla:diseñoweb</h1>
+        <ul className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[14px] md:gap-10 md:text-[15px]">
           {visibleNavItems.map(({ label, id }) => (
             <li key={id}>
               <a href={`#${id}`}>{label}</a>
             </li>
           ))}
-          <li className="px-[10px] flex items-center gap-1">
+          <li className="flex items-center gap-1 md:px-[10px]">
             (<img src="/enter.png" alt="" className="h-[10px]" />
             {selectedLabel})
           </li>
         </ul>
       </nav>
-      {showDivider && <div className="h-px mx-10 bg-black-text" />}
+      {showDivider && <div className="mx-5 h-px bg-black-text md:mx-10 xl:mx-20" />}
     </header>
   );
 }

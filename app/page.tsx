@@ -14,10 +14,10 @@ export default function Home() {
       <SiteHeader />
 
       <main className="flex flex-col">
-        <div className="grid grid-cols-[1fr_max-content_1fr]">
+        <div className="grid xl:grid-cols-[1fr_max-content_1fr]">
         <Hero/>
-        <section className="col-start-2">
-          <p className="font-mono font-light w-[561px] my-30 ml-3">
+        <section className="px-5 md:px-10 xl:col-start-2 xl:px-0">
+          <p className="my-16 w-full max-w-[561px] font-mono font-light md:my-24 xl:my-30 xl:ml-3">
             Somos un estudio de diseño digital que crea marcas, sitios web y proyectos digitales.
             Nos gusta pensar ideas, darles una forma y llevarlas a la pantalla. Trabajamos cada proyecto de manera integral, desde el concepto y la identidad hasta el diseño y desarrollo.
           </p>
@@ -25,16 +25,16 @@ export default function Home() {
         </div>
 
         {/* SEPARADOR */}
-        <div className="bg-black-text h-[1px] mx-20 mt-10 mb-5"></div>
+        <div className="mx-5 mb-5 mt-10 h-[1px] bg-black-text md:mx-10 xl:mx-20"></div>
 
-        <div className="flex justify-end font-mono mx-20 mb-10 text-[15px]">
+        <div className="mx-5 mb-10 flex justify-end font-mono text-[15px] md:mx-10 xl:mx-20">
           <p>¿Por qué contratarnos?</p>
         </div>
 
-        <section id="inicio" className="grid grid-cols-4 gap-y-15 gap-x-40 mx-20 font-mono">
+        <section id="inicio" className="mx-5 grid grid-cols-1 gap-x-8 gap-y-15 font-mono sm:grid-cols-2 md:mx-10 xl:mx-20 xl:grid-cols-4 xl:gap-x-40">
           {benefits.map((benefit, i) => (
-            <div key={i} className="w-[206px] flex flex-col gap-3">
-              <img src={benefit.img} alt="" className="h-[60px] mb-4 w-fit" />
+            <div key={i} className="flex w-full flex-col gap-3">
+              <img src={benefit.img} alt="" className="mb-4 h-[60px] w-fit" />
               <h3 className="text-[20px] font-medium whitespace-pre-line">
                 {benefit.title}
               </h3>
@@ -43,28 +43,28 @@ export default function Home() {
           ))}
         </section>
         {/* SEPARADOR */}
-        <div className="bg-black-text h-[1px] mx-20 mt-30 mb-5"></div>
-        <div className="flex justify-end mx-20">
+        <div className="mx-5 mb-5 mt-16 h-[1px] bg-black-text md:mx-10 xl:mx-20 xl:mt-30"></div>
+        <div className="mx-5 flex justify-end md:mx-10 xl:mx-20">
           <p>Paso a paso</p>
         </div>
         
         <StackingSteps steps={steps} />
         
         {/* SEPARADOR */}
-        <div className="bg-black-text h-[1px] mx-20 mt-0 mb-5"></div>
+        <div className="mx-5 mb-5 mt-0 h-[1px] bg-black-text md:mx-10 xl:mx-20"></div>
         <ProjectGallery />
         
         {/* SEPARADOR */}
-        <div className="bg-black-text h-[1px] mx-20 mt-10 mb-5"></div>
+        <div className="mx-5 mb-5 mt-10 h-[1px] bg-black-text md:mx-10 xl:mx-20"></div>
 
         <Services />
             
         {/* SEPARADOR */}
-        <div className="bg-black-text h-[1px] mx-20 mt-50 mb-5"></div>
+        <div className="mx-5 mb-5 mt-20 h-[1px] bg-black-text md:mx-10 xl:mx-20 xl:mt-50"></div>
         <ContactForm/>
       </main>
 
-      <footer className="mx-20 border-t-2 h-15 font-mono flex justify-between items-center border-gray-400">
+      <footer className="mx-5 flex min-h-15 flex-wrap items-center justify-between gap-x-6 gap-y-2 border-t-2 border-gray-400 py-3 font-mono md:mx-10 xl:mx-20">
         <p>02·ruedas</p>
         <LiveClock />
         <p>somos@biclaweb.com</p>

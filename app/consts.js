@@ -84,7 +84,7 @@ export const PROJECTS = [
     color: "bg-[#3C4AAB]",
     mini: "/kiosco.png",
     img: "/bigkiosco.png",
-    video: "/videos/kiosco.mp4",
+    video: "/videos/kiosco11fin.mov",
     className: "bg-amber-100",
     misc: "DISEÑO WEB 01/ DESARROLLO 02 / PANEL DE ADMINISTRACIÓN 03 / RESPONSIVE 04",
     description: "Una web pensada para celulares, desarrollada para darle mayor visibilidad al lugar y comunicar sus nuevos productos, descuentos y promociones. Además de la landing, desarrollamos un panel de administración que permite actualizar precios, imágenes y contenido sin depender de nosotros.",

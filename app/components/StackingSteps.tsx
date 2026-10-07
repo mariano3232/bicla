@@ -44,25 +44,25 @@ function StepCard({
   index: number
 }) {
   return (
-    <article className="relative flex h-[297px] justify-between bg-white border my-4 mx-20 px-10 pt-7 pb-18">
+    <article className="relative mx-5 my-4 flex h-auto flex-col gap-6 border bg-white px-5 pb-8 pt-7 md:mx-10 md:px-10 xl:mx-20 xl:h-[297px] xl:flex-row xl:justify-between xl:gap-8 xl:px-10 xl:pb-18">
 
       <div className="absolute left-0 right-0 top-0 h-[1px]">
         <div className="absolute inset-0 origin-left bg-black-text/20" />
         <div className="js-progress-bar absolute inset-0 origin-left bg-gray-500"/>
       </div>
 
-      <h2 className="font-mono text-[60px] font-medium leading-none">
+      <h2 className="font-mono text-3xl font-medium leading-none xl:text-[60px]">
         {String(index + 1).padStart(2, "0")}
       </h2>
-      <div className="flex flex-col justify-between">
-        <p className="w-[550px] font-sans font-medium text-[60px] leading-none">
+      <div className="flex min-w-0 flex-col gap-4 xl:h-full xl:max-w-[550px] xl:justify-between">
+        <p className="font-sans text-3xl font-medium leading-none xl:text-[60px]">
           {step.title}
         </p>
-        <p className="w-[330px] font-mono text-[15px] font-light whitespace-pre-line text-justify">
+        <p className="font-mono text-[15px] font-light whitespace-pre-line xl:max-w-[330px] xl:text-justify">
           {step.misc}
         </p>
       </div>
-      <p className="w-[484px]self-start font-mono text-[16px] font-normal leading-[21px] tracking-[-0.02em] whitespace-pre-line">
+      <p className="min-w-0 self-start font-mono text-[16px] font-normal leading-[21px] tracking-[-0.02em] whitespace-pre-line xl:max-w-[484px]">
         <RichText text={step.description} />
       </p>
     </article>
