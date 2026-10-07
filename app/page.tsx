@@ -33,7 +33,7 @@ export default function Home() {
 
         <section id="inicio" className="mx-5 grid grid-cols-1 gap-x-8 gap-y-15 font-mono sm:grid-cols-2 md:mx-10 xl:mx-20 xl:grid-cols-4 xl:gap-x-40">
           {benefits.map((benefit, i) => (
-            <div key={i} className="flex w-full flex-col gap-3 items-center text-center xl:text-start xl:items-left">
+            <div key={i} className="flex w-full flex-col gap-3 items-center text-center md:text-start md:items-start">
               <img src={benefit.img} alt="" className="mb-2 h-[60px] w-fit md:mb-4 md:h-[80px]" />
               <h3 className="text-[16px] font-medium whitespace-pre-line md:text-[20px]">
                 {benefit.title}
