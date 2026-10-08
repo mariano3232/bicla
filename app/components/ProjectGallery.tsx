@@ -1,4 +1,5 @@
 "use client"
+
 import { useEffect, useState } from "react"
 import { PROJECTS } from "../consts";
 import FollowEye from "./FollowEye";
@@ -7,7 +8,12 @@ import { VideoPlayer } from "./VideoPlayer";
 
 export default function ProjectGallery() {
   const [selected, setSelected] = useState(PROJECTS[0])
+  const [videoOpen, setVideoOpen] = useState(false)
   const [retinaMouse, setRetinaMouse] = useState<{ x: number; y: number } | null>(null)
+
+  useEffect(() => {
+    setVideoOpen(false)
+  }, [selected])
 
   useEffect(() => {
     const onMove = (e: MouseEvent) => setRetinaMouse({ x: e.clientX, y: e.clientY })
@@ -60,28 +66,25 @@ export default function ProjectGallery() {
           </button>
       </div>
 
-      <div className="relative my-8 aspect-[16/9] max-h-[200px] w-full overflow-hidden border md:my-14 md:max-h-[500px]">
-        {PROJECTS.map((project) => (
-          project.video ? (
-            <div
-              key={project.img}
-              className={`absolute inset-0 flex h-full items-center justify-center transition-opacity duration-300 ${selected === project ? "z-10 opacity-100" : "pointer-events-none opacity-0"}`}
-            >
-              <VideoPlayer
-                src={project.video}
-                className="h-full w-auto max-w-full object-contain"
-              />
-            </div>
-          ) : (
-            <img
-              key={project.img}
-              src={project.img}
-              alt=""
-              className={`absolute inset-0 m-auto h-full w-full object-contain transition-opacity duration-300 ${selected === project ? "opacity-100" : "pointer-events-none opacity-0"}`}
-            />
-          )
-        ))}
+      <div>
+        <ScrambleText className="" text={selected?.name} step={6}/>
+        <button
+          type="button"
+          onClick={() => setVideoOpen(true)}
+          className="mb-8 cursor-pointer border border-black-text px-8 py-2 font-mono text-[14px]"
+        >
+          Ver presentación
+        </button>
       </div>
+      
+      
+      {selected.video ? (
+        <VideoPlayer
+          src={selected.video}
+          open={videoOpen}
+          onClose={() => setVideoOpen(false)}
+        />
+      ) : null}
       <div>
         <div className="flex flex-col gap-10 font-mono text-[13px] md:text-[15px] lg:flex-row lg:justify-between">
           <div className="flex w-full flex-col gap-8 lg:w-auto">

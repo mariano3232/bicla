@@ -2,7 +2,7 @@
 import React from 'react'
 import { useScramble } from 'use-scramble';
 
-export default function ScrambleText({ text, className, step=1 }: { text: string, className: string, step?:number }) {
+export default function ScrambleText({ text, className="", step=1 }: { text: string, className: string, step?:number }) {
 
     const { ref, replay } = useScramble({ 
         text,

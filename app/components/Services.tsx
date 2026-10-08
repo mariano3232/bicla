@@ -4,6 +4,7 @@ function ServiceItem({
   name,
   number,
   image,
+  imageMobile = null,
   description,
   wide = false,
   extra = null,
@@ -11,6 +12,7 @@ function ServiceItem({
   name: string
   number: string
   image: ReactNode
+  imageMobile?: ReactNode
   description: string
   wide?: boolean
   extra?: ReactNode
@@ -21,7 +23,8 @@ function ServiceItem({
         <p>{name}</p>
         <p>{number}</p>
       </div>
-      {image}
+      {imageMobile ? <div className="md:hidden">{imageMobile}</div> : null}
+      <div className={imageMobile ? "hidden md:block" : undefined}>{image}</div>
       <div className="relative mt-3 flex min-h-[96px] flex-col border border-black-text px-3 pt-3 pb-2 text-[12px] leading-[16px] tracking-[-0.02em] md:mt-[23px] md:min-h-[138px] md:pt-[18px] md:text-[15px] md:leading-[20px] xl:h-[138px]">
         <p className={extra ? "leading-[18px]" : undefined}>{description}</p>
         {extra ? <div className="mt-auto self-end">{extra}</div> : null}
@@ -30,8 +33,8 @@ function ServiceItem({
   )
 }
 
-const narrowImage = "mt-[11px] h-[150px] w-full border border-black-text object-cover md:h-[306px] xl:w-[265px]"
-const wideImage = "mt-[11px] h-[150px] w-full border border-black-text object-cover md:h-[306px]"
+const narrowImage = "mt-[11px]  w-full border border-black-text object-cover md:h-[306px] xl:w-[265px]"
+const wideImage = "mt-[11px]  w-full border border-black-text object-cover md:h-[306px]"
 
 export default function Services() {
   return (
@@ -59,6 +62,7 @@ export default function Services() {
             name="Re-diseños"
             number="03"
             image={<img src="/gif/rediseño.gif" className={narrowImage} />}
+            imageMobile={<img src="/gif/rediseñoMobile.gif" className={narrowImage} />}
             description="Actualizamos y transformamos sitios existentes para adaptarlos a nuevas necesidades."
           />
         </div>
@@ -73,19 +77,14 @@ export default function Services() {
           <ServiceItem
             name="UX / UI"
             number="05"
-            image={
-              <div className="relative mt-[11px] h-[150px] w-full border border-black-text bg-[#F3F3F6] md:h-[306px] xl:w-[265px]">
-                <div className="absolute top-[6%] left-[11%] h-[85%] w-[81%] overflow-hidden">
-                  <img src="/gif/uxui.gif" className="absolute top-[-34.82%] left-[-22.63%] h-[191.16%] w-[145.79%] max-w-none" />
-                </div>
-              </div>
-            }
+            image={<img src="/gif/uxui.gif" className={narrowImage} />}
             description="Diseñamos interfaces intuitivas y experiencias de usuario pensadas para que navegar sea simple."
           />
           <ServiceItem
             name="Hosting y Dominio"
             number="06"
             image={<img src="/gif/online.gif" className={"border-0 " + narrowImage} />}
+            imageMobile={<img src="/gif/onlineMobile.gif" className={narrowImage} />}
             description="Ponemos tu sitio online y nos ocupamos de que funcione correctamente. (Dominio, hosting, instalación, etc.)"
           />
         </div>
