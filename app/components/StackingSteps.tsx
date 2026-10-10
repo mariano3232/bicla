@@ -106,7 +106,7 @@ function StepsCarousel({ steps }: { steps: Step[] }) {
           </div>
         ))}
       </div>
-      <div className="mt-2 flex items-center justify-end gap-4 px-5 font-mono text-[13px] md:px-10">
+      <div className="mt-10 flex items-center justify-end gap-4 px-5 font-mono text-[13px] md:px-10">
         <button
           type="button"
           aria-label="Paso anterior"
