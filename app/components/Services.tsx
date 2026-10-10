@@ -48,7 +48,7 @@ export default function Services() {
           <ServiceItem
             name="Identidad/Branding"
             number="01"
-            image={<img src="/gif/ZRN.gif" className={narrowImage} />}
+            image={<img src="/gif/ZRN.gif" className={narrowImage + " px-6"} />}
             description="Construimos la identidad de tu marca, desde el concepto y la comunicación hasta su sistema visual. (paleta de colores, tono de voz, etc)"
           />
           <ServiceItem
@@ -62,7 +62,7 @@ export default function Services() {
             name="Re-diseños"
             number="03"
             image={<img src="/gif/rediseño.gif" className={narrowImage} />}
-            imageMobile={<img src="/gif/rediseñoMobile.gif" className={narrowImage} />}
+            // imageMobile={<img src="/gif/rediseñoMobile.gif" className={narrowImage} />}
             description="Actualizamos y transformamos sitios existentes para adaptarlos a nuevas necesidades."
           />
         </div>

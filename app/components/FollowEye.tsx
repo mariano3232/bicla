@@ -52,10 +52,10 @@ export default function FollowEye({ className, mouse }: FollowEyeProps) {
   return (
     <div
       ref={eyeRef}
-      className={`pointer-events-none h-2 w-2 rounded-full ${className ?? ""}`}
+      className={`pointer-events-none h-16 w-16 rounded-full ${className ?? ""}`}
     >
       <div
-        className="absolute left-1/2 top-1/2 h-1 w-1 rounded-full bg-white"
+        className="absolute left-1/2 top-1/2 h-12 w-12 rounded-full bg-white"
         style={{
           transform: `translate(calc(-50% + ${offset.x}px), calc(-50% + ${offset.y}px))`,
         }}

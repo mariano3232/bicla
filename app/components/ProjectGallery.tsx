@@ -11,6 +11,13 @@ export default function ProjectGallery() {
   const [videoOpen, setVideoOpen] = useState(false)
   const [retinaMouse, setRetinaMouse] = useState<{ x: number; y: number } | null>(null)
 
+  const index = Math.max(0, PROJECTS.findIndex((project) => project.id === selected.id))
+
+  function go(delta: number) {
+    const next = (index + delta + PROJECTS.length) % PROJECTS.length
+    setSelected(PROJECTS[next])
+  }
+
   useEffect(() => {
     setVideoOpen(false)
   }, [selected])
@@ -23,61 +30,10 @@ export default function ProjectGallery() {
 
   return (
     <section id="proyectos" className="mx-5 md:mx-10 xl:mx-20">
-      <div className="mb-12 flex justify-end">
+      <div className="mb-8 flex justify-end md:mb-12">
         <p>Proyectos</p>
       </div>
-      <div className="mb-16 mt-5 grid grid-cols-2 gap-4 xl:mb-30 xl:flex xl:justify-between xl:gap-6">
-        {PROJECTS.filter(e=>e.name !== "RetinaType").map((project,i) => (
-          <button
-            key={project.mini}
-            type="button"
-            onClick={() => setSelected(project)}
-            className="min-w-0 cursor-pointer xl:w-full xl:max-w-[296px]"
-          >
-            <img
-              src={project.mini}
-              alt=""
-              className={`aspect-[296/142] h-auto w-full object-cover transition-opacity duration-500 xl:h-[142px] xl:aspect-auto ${selected === project ? "opacity-100" : "opacity-70"}`}
-            />
-            <div className="mt-3 flex justify-between font-mono text-[12px] md:text-[14px]">
-              <p>{project.type}</p>
-              <p>{"0" + (i+1)}</p>
-            </div>
-          </button>
-        ))}
-        <button
-          type="button"
-          onClick={() => setSelected(PROJECTS[3])}
-          className="relative min-w-0 cursor-pointer xl:w-full xl:max-w-[300px]"
-        >
-          <div className="relative">
-            <FollowEye className="absolute top-[45.8%] left-[17%] border border-red-" mouse={retinaMouse} />
-            <FollowEye className="absolute top-[52.8%] right-[22.7%] border border-red-" mouse={retinaMouse} />
-            <img
-              src="/retina.png"
-              alt=""
-              className="aspect-[300/142] h-auto w-full border-2 border-black object-cover transition-opacity duration-500 xl:h-[142px] xl:aspect-auto"
-            />
-          </div>
-          <div className="mt-3 flex justify-between font-mono text-[12px] md:text-[15px]">
-            <p>Web móvil</p>
-            <p>04</p>
-          </div>
-          </button>
-      </div>
 
-      <div>
-        <ScrambleText className="" text={selected?.name} step={6}/>
-        <button
-          type="button"
-          onClick={() => setVideoOpen(true)}
-          className="mb-8 cursor-pointer border border-black-text px-8 py-2 font-mono text-[14px]"
-        >
-          Ver presentación
-        </button>
-      </div>
-      
-      
       {selected.video ? (
         <VideoPlayer
           src={selected.video}
@@ -85,27 +41,76 @@ export default function ProjectGallery() {
           onClose={() => setVideoOpen(false)}
         />
       ) : null}
-      <div>
-        <div className="flex flex-col gap-10 font-mono text-[13px] md:text-[15px] lg:flex-row lg:justify-between">
-          <div className="flex w-full flex-col gap-8 lg:w-auto">
-            <p className="max-w-[313px] text-[12px] font-light md:text-[14px]">{selected.misc}</p>
-            {/* <ScrambleText className="w-[313px] font-light text-[14px]" text={selected.misc}/> */}
-            <ScrambleText className="h-auto min-h-[120px] w-full lg:h-[200px] lg:w-[550px]" step={6} text={selected.description}/>
+
+      <div className="flex flex-col gap-8 font-mono text-[13px] md:gap-10 md:text-[15px] xl:flex-row xl:items-start">
+        <div className="relative w-full min-w-0 max-w-[740px] xl:flex-[1.4]">
+          <img
+            src={selected.img}
+            alt=""
+            className={`h-auto w-full ${selected.id === 4 ? "" : "border"}`}
+          />
+          {selected.id === 4 ? (
+            <FollowEye className="absolute top-[33%] left-[46.5%]" mouse={retinaMouse} />
+          ) : null}
+          <button
+            type="button"
+            className="absolute bottom-3 left-3 h-10 w-24 cursor-pointer border bg-[#F7FDFD] text-[14px] font-medium md:h-[45px] md:w-[122px] md:text-[16px]"
+            onClick={() => setVideoOpen(true)}
+          >
+            Ver
+          </button>
+        </div>
+
+        <div className="flex min-w-0 w-full flex-col justify-between gap-6 md:gap-8 xl:my-2 xl:w-[390px] xl:shrink-0">
+          <div>
+            <div className="flex flex-wrap items-baseline gap-x-3">
+              <ScrambleText className="text-mono text-[26px] font-medium uppercase leading-none sm:text-[32px] xl:text-[40px]" text={selected?.name} step={6}/>
+              <ScrambleText className="text-mono text-[26px] font-light uppercase leading-none sm:text-[32px] xl:text-[40px]" text={"0" + selected.id} step={6}/>
+            </div>
+            <p className="mt-3 max-w-[390px] whitespace-pre-line text-[12px] font-light md:text-[14px]">{selected.misc}</p>
           </div>
-          <div className="flex flex-col gap-1">
-            {PROJECTS.map((project) => (
-              <button
-                key={project.mini}
-                type="button"
-                onClick={() => setSelected(project)}
-                className={`flex items-center gap-2 cursor-pointer transition-opacity duration-500 ${selected === project ? "opacity-100" : "opacity-70"}`}
-              >
-                (<div className={`h-[10px] w-[10px] ${project.color}`}/>)
-                <span>{project.name}</span>
-              </button>
-            ))}
-            <p className="mt-10 font-light">{selected.duration}</p>
-          </div>
+
+          <ScrambleText className="w-full max-w-[393px] font-mono text-[14px] font-light leading-[20px] tracking-[1%] md:text-[15px]" step={8} text={selected.description}/>
+        </div>
+      </div>
+
+      <div className="mt-6 flex flex-wrap items-center justify-between gap-4">
+        <div className="flex h-8 w-[190px] items-center justify-between border px-2">
+          {PROJECTS.map((project) => (
+            <button
+              key={project.id}
+              type="button"
+              aria-label={project.name}
+              onClick={() => setSelected(project)}
+              className="flex h-8 w-8 cursor-pointer items-center justify-center"
+            >
+              <div
+                className={`h-[10px] w-[10px] rounded-full border transition duration-500 ${selected.id === project.id ? "bg-gray-400" : "bg-transparent"}`}
+              />
+            </button>
+          ))}
+        </div>
+
+        <div className="ml-auto flex items-center gap-1 font-mono">
+          <button
+            type="button"
+            aria-label="Proyecto anterior"
+            onClick={() => go(-1)}
+            className="cursor-pointer px-2 py-2 text-[20px] leading-none"
+          >
+            ←
+          </button>
+          <span className="min-w-[4.5rem] text-center text-[13px] font-light">
+            {String(index + 1).padStart(2, "0")} / {String(PROJECTS.length).padStart(2, "0")}
+          </span>
+          <button
+            type="button"
+            aria-label="Proyecto siguiente"
+            onClick={() => go(1)}
+            className="cursor-pointer px-2 py-2 text-[20px] leading-none"
+          >
+            →
+          </button>
         </div>
       </div>
     </section>
