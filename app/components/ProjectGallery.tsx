@@ -70,12 +70,12 @@ export default function ProjectGallery() {
             <p className="mt-3 max-w-[390px] whitespace-pre-line text-[12px] font-light md:text-[14px]">{selected.misc}</p>
           </div>
 
-          <ScrambleText className="w-full max-w-[393px] font-mono text-[14px] font-light leading-[20px] tracking-[1%] md:text-[15px]" step={8} text={selected.description}/>
+          <ScrambleText className="w-full max-w-[393px] font-mono text-[12px] font-light leading-[20px] tracking-[1%] md:text-[15px]" step={8} text={selected.description}/>
         </div>
       </div>
 
       <div className="mt-6 flex flex-wrap items-center justify-between gap-4">
-        <div className="flex h-8 w-[190px] items-center justify-between border px-2">
+        <div className="flex h-8 w-[140px] md:w-[190px] items-center justify-between border px-2">
           {PROJECTS.map((project) => (
             <button
               key={project.id}
