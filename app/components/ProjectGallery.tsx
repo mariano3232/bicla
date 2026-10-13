@@ -71,7 +71,7 @@ export default function ProjectGallery() {
         </div>
       </div>
 
-      <div className="mt-6 flex flex-wrap items-center justify-between gap-4">
+      <div className="mt-6 flex flex-wrap items-center gap-4">
         <div className="flex h-8 w-[140px] md:w-[190px] items-center justify-between border px-2">
           {PROJECTS.map((project) => (
             <button
@@ -88,7 +88,7 @@ export default function ProjectGallery() {
           ))}
         </div>
 
-        <div className="ml-auto flex items-center gap-1 font-mono">
+        <div className=" flex items-center gap-1 font-mono">
           <button
             type="button"
             aria-label="Proyecto anterior"
