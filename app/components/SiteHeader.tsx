@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type MouseEvent } from "react";
 
 import { useGame } from "../context/GameContext";
 
@@ -22,28 +22,15 @@ const SECTION_LABELS: Record<string, string> = {
 const TRACKED_SECTIONS = Object.keys(SECTION_LABELS);
 
 function MenuIcon({ open }: { open: boolean }) {
+  const line =
+    "absolute left-0 block h-[1.5px] w-4 bg-current transition-[transform,opacity] duration-[400ms] ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none";
+
   return (
-    <svg
-      width="22"
-      height="22"
-      viewBox="0 0 22 22"
-      fill="none"
-      aria-hidden="true"
-    >
-      {open ? (
-        <path
-          d="M5 5l12 12M17 5L5 17"
-          stroke="currentColor"
-          strokeWidth="1.5"
-        />
-      ) : (
-        <path
-          d="M3 6h16M3 11h16M3 16h16"
-          stroke="currentColor"
-          strokeWidth="1.5"
-        />
-      )}
-    </svg>
+    <span className="relative block h-[11px] w-4" aria-hidden="true">
+      <span className={`${line} top-0 ${open ? "translate-y-[4.75px] rotate-45" : ""}`} />
+      <span className={`${line} top-[4.75px] ${open ? "opacity-0" : "opacity-100"}`} />
+      <span className={`${line} top-[9.5px] ${open ? "-translate-y-[4.75px] -rotate-45" : ""}`} />
+    </span>
   );
 }
 
@@ -158,12 +145,33 @@ export default function SiteHeader() {
     ? NAV_ITEMS
     : NAV_ITEMS.filter(({ id }) => id !== activeSection);
 
-  const closeMenu = () => setMenuOpen(false);
+  const scrollToSection = (id: string) => {
+    const target = document.getElementById(id);
+    const header = headerRef.current;
+    if (!target || !header) return;
+
+    const bar = header.querySelector("[data-nav-bar]");
+    const offset = bar instanceof HTMLElement ? bar.offsetHeight : 0;
+    const top = target.getBoundingClientRect().top + window.scrollY - offset;
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    setMenuOpen(false);
+    window.scrollTo({
+      top: Math.max(0, top),
+      behavior: reduceMotion ? "auto" : "smooth",
+    });
+    history.pushState(null, "", `#${id}`);
+  };
+
+  const onNavigate = (event: MouseEvent<HTMLAnchorElement>, id: string) => {
+    event.preventDefault();
+    scrollToSection(id);
+  };
 
   return (
     <header ref={headerRef} className="fixed top-0 z-99 w-full bg-[#B8F5EE]">
       <nav className="font-mono">
-        <div className="flex h-[51px] items-center justify-between px-5 md:px-10 xl:px-20">
+        <div data-nav-bar className="flex h-[51px] items-center justify-between px-5 md:px-10 xl:px-20">
           <h1 className="font-sans text-[14px] font-medium md:text-[16px]">
             Bicla:diseñoweb
           </h1>
@@ -182,7 +190,9 @@ export default function SiteHeader() {
           <ul className="hidden items-center gap-10 text-[15px] md:flex">
             {visibleNavItems.map(({ label, id }) => (
               <li key={id}>
-                <a href={`#${id}`}>{label}</a>
+                <a href={`#${id}`} onClick={(event) => onNavigate(event, id)}>
+                  {label}
+                </a>
               </li>
             ))}
             <li className="flex items-center px-[10px]">
@@ -191,25 +201,31 @@ export default function SiteHeader() {
           </ul>
         </div>
 
-        <ul
+        <div
           id="site-nav-menu"
-          className={`${menuOpen ? "flex" : "hidden"} mx-5 flex-col border-t border-black-text py-2 text-[14px] md:hidden`}
+          className={`grid transition-[grid-template-rows] duration-[400ms] ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none md:hidden ${menuOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}
         >
-          {visibleNavItems.map(({ label, id }) => (
-            <li key={id}>
-              <a
-                href={`#${id}`}
-                className="flex min-h-11 items-center"
-                onClick={closeMenu}
-              >
-                {label}
-              </a>
-            </li>
-          ))}
-          <li className="flex min-h-11 items-center">
-            <SectionMarker label={selectedLabel} />
-          </li>
-        </ul>
+          <div className="min-h-0 overflow-hidden" inert={!menuOpen}>
+            <ul
+              className={`mx-5 flex flex-col border-t border-black-text py-2 text-[14px] transition-opacity duration-[400ms] ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none ${menuOpen ? "opacity-100" : "opacity-0"}`}
+            >
+              {visibleNavItems.map(({ label, id }) => (
+                <li key={id}>
+                  <a
+                    href={`#${id}`}
+                    className="flex min-h-11 items-center"
+                    onClick={(event) => onNavigate(event, id)}
+                  >
+                    {label}
+                  </a>
+                </li>
+              ))}
+              <li className="flex min-h-11 items-center">
+                <SectionMarker label={selectedLabel} />
+              </li>
+            </ul>
+          </div>
+        </div>
       </nav>
       {showDivider && (
         <div className="mx-5 h-px bg-black-text md:mx-10 xl:mx-20" />
