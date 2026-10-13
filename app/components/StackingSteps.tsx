@@ -237,7 +237,7 @@ export default function StackingSteps({ steps }: { steps: Step[] }) {
     <section
       id="inicio"
       ref={sectionRef}
-      className="mt-25 pb-30"
+      className="mt-5 pb-30"
       // style={{ paddingBottom: stackTopBase + (steps.length - 1) * STACK_GAP }}
     >
       <StepsCarousel steps={steps} />

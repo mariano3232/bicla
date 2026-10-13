@@ -40,9 +40,6 @@ export default function Services() {
   return (
     <section id="servicios" className="mx-5 md:mx-10 xl:mx-20">
       <div className="mx-auto w-full max-w-[1440px]">
-      <div className="flex justify-end mb-25">
-        <p>Servicios</p>
-      </div>
       <div className="flex flex-col gap-y-[51px] font-mono text-[13px] md:text-[15px]">
         <div className="grid grid-cols-1 gap-y-[51px] md:grid-cols-2 md:gap-x-6 xl:flex xl:justify-between">
           <ServiceItem

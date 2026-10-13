@@ -7,6 +7,7 @@ import SiteHeader from "./components/SiteHeader";
 import { GameProvider } from "./context/GameContext";
 import ContactForm from "./components/ContactForm";
 import Services from "./components/Services";
+import StepLine from "./components/StepLine";
 
 export default function Home() {
   return (
@@ -24,12 +25,15 @@ export default function Home() {
         </section>
         </div>
 
-        {/* SEPARADOR */}
-        <div className="mx-5 mb-5 mt-10 h-[1px] bg-black-text md:mx-10 xl:mx-20"></div>
+        <StepLine text="SERVICIOS"/>
 
-        <div className="mx-5 mb-10 flex justify-end font-mono text-[14px] md:mx-10 xl:mx-20">
-          <p>¿Por qué contratarnos?</p>
-        </div>
+        <Services />
+
+        <StepLine text="PASO A PASO"/>
+
+        <StackingSteps steps={steps} />
+
+        <StepLine text="VENTAJAS"/>
 
         <section id="inicio" className="mx-5 grid grid-cols-1 gap-x-8 gap-y-15 font-mono sm:grid-cols-2 md:mx-10 xl:mx-20 xl:grid-cols-4 xl:gap-x-40">
           {benefits.map((benefit, i) => (
@@ -42,25 +46,13 @@ export default function Home() {
             </div>
           ))}
         </section>
-        {/* SEPARADOR */}
-        <div className="mx-5 mb-5 mt-16 h-[1px] bg-black-text md:mx-10 xl:mx-20 xl:mt-30"></div>
-        <div className="mx-5 flex justify-end md:mx-10 xl:mx-20">
-          <p>Paso a paso</p>
-        </div>
         
-        <StackingSteps steps={steps} />
-        
-        {/* SEPARADOR */}
-        <div className="mx-5 mb-5 mt-0 h-[1px] bg-black-text md:mx-10 xl:mx-20"></div>
+        <StepLine text="PROYECTOS"/>
+
         <ProjectGallery />
         
-        {/* SEPARADOR */}
-        <div className="mx-5 mb-5 mt-10 h-[1px] bg-black-text md:mx-10 xl:mx-20"></div>
+        <StepLine text="CONTACTO"/>
 
-        <Services />
-            
-        {/* SEPARADOR */}
-        <div className="mx-5 mb-5 mt-20 h-[1px] bg-black-text md:mx-10 xl:mx-20 xl:mt-50"></div>
         <ContactForm/>
       </main>
 
