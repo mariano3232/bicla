@@ -29,10 +29,7 @@ export default function ProjectGallery() {
   }, [])
 
   return (
-    <section id="proyectos" className="mx-5 md:mx-10 xl:mx-20">
-      <div className="mb-8 flex justify-end md:mb-12">
-        <p>Proyectos</p>
-      </div>
+    <section id="proyectos" className="mx-2 md:mx-10 xl:mx-20">
 
       {selected.video ? (
         <VideoPlayer
