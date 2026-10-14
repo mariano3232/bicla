@@ -207,7 +207,7 @@ export default function SiteHeader() {
         >
           <div className="min-h-0 overflow-hidden" inert={!menuOpen}>
             <ul
-              className={`mx-5 flex flex-col border-t border-black-text py-2 text-[14px] transition-opacity duration-[400ms] ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none ${menuOpen ? "opacity-100" : "opacity-0"}`}
+              className={`mx-5 flex flex-col items-end border-t border-black-text py-2 text-[14px] transition-opacity duration-[400ms] ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none ${menuOpen ? "opacity-100" : "opacity-0"}`}
             >
               {visibleNavItems.map(({ label, id }) => (
                 <li key={id}>
@@ -220,7 +220,7 @@ export default function SiteHeader() {
                   </a>
                 </li>
               ))}
-              <li className="flex min-h-11 items-center">
+              <li className="absolute left-4 top-15 flex min-h-11 items-center">
                 <SectionMarker label={selectedLabel} />
               </li>
             </ul>

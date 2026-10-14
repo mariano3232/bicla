@@ -46,7 +46,7 @@ export default function ProjectGallery() {
             alt=""
             className={`h-auto w-full ${selected.id === 4 ? "" : "border"}`}
           />
-          {selected.id === 4 ? (
+          {selected.id === 3 ? (
             <FollowEye className="absolute top-[33%] left-[46.5%]" mouse={retinaMouse} />
           ) : null}
           <button
@@ -67,7 +67,16 @@ export default function ProjectGallery() {
             <p className="mt-3 max-w-[390px] whitespace-pre-line text-[12px] font-light md:text-[14px]">{selected.misc}</p>
           </div>
 
-          <ScrambleText className="w-full max-w-[393px] font-mono text-[12px] font-light leading-[20px] tracking-[1%] md:text-[15px]" step={8} text={selected.description}/>
+          <ScrambleText
+            className="w-full max-w-[393px] font-mono text-[12px] font-light leading-[20px] tracking-[1%] md:text-[15px]"
+            step={8}
+            text={
+              typeof window !== "undefined" && window.innerWidth < 768 && selected.descriptionMobile
+                ? selected.descriptionMobile
+                : selected.description
+            }
+          />
+    
         </div>
       </div>
 
