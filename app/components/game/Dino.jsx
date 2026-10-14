@@ -24,6 +24,8 @@ const ENEMY_TYPES = [
 ];
 
 let gameMusic = null;
+let musicMuted = false;
+let soundMuted = false;
 
 function getGameMusic() {
   if (typeof window === "undefined") return null;
@@ -40,7 +42,7 @@ function getGameMusic() {
 
 export function playGameMusic() {
   const music = getGameMusic();
-  if (!music || !music.paused) return;
+  if (!music || !music.paused || musicMuted) return;
 
   music.play().catch(() => {});
 }
@@ -55,14 +57,16 @@ export function stopGameMusic() {
 
 
 function jumpAudio() {
-  const audio = new Audio('/blip.wav');
+  if (soundMuted) return;
+  const audio = new Audio("/blip.wav");
   audio.volume = 0.5;
-  audio.play();
+  audio.play().catch(() => {});
 }
 function hitAudio() {
-  const audio = new Audio('/hit.wav');
+  if (soundMuted) return;
+  const audio = new Audio("/hit.wav");
   audio.volume = 0.5;
-  audio.play();
+  audio.play().catch(() => {});
 }
 
 function crossDuration(score) {
@@ -102,6 +106,32 @@ export default function Dino({ gameStatus, setGameStatus, score, setScore }) {
   const scoreRef = useRef(0);
 
   const [runId, setRunId] = useState(0);
+  const [soundOn, setSoundOn] = useState(!soundMuted);
+  const [musicOn, setMusicOn] = useState(!musicMuted);
+
+  const toggleSound = useCallback((event) => {
+    event.stopPropagation();
+    soundMuted = !soundMuted;
+    setSoundOn(!soundMuted);
+  }, []);
+
+  const toggleMusic = useCallback(
+    (event) => {
+      event.stopPropagation();
+      musicMuted = !musicMuted;
+      setMusicOn(!musicMuted);
+
+      if (musicMuted) {
+        getGameMusic()?.pause();
+        return;
+      }
+
+      if (gameStatus === "playing" || gameStatus === "starting") {
+        playGameMusic();
+      }
+    },
+    [gameStatus],
+  );
 
   const jump = useCallback(() => {
     const dino = dinoRef.current;
@@ -161,7 +191,9 @@ export default function Dino({ gameStatus, setGameStatus, score, setScore }) {
     const onKeyDown = (event) => {
       if (
         event.target instanceof HTMLInputElement ||
-        event.target instanceof HTMLTextAreaElement
+        event.target instanceof HTMLTextAreaElement ||
+        event.target instanceof HTMLButtonElement ||
+        (event.target instanceof Element && event.target.closest("button"))
       ) {
         return;
       }
@@ -292,8 +324,38 @@ export default function Dino({ gameStatus, setGameStatus, score, setScore }) {
       <div className="flex w-full shrink-0 justify-between pr-3">
         <p className={styles.score}>Score: {score}</p>
         <div className="flex gap-2">
-          <img src="/sonido.png" alt="" className="h-[14px] md:h-[20px]" />
-          <img src="/musica.png" alt="" className="h-[14px] md:h-[20px]" />
+          <button
+            type="button"
+            onClick={toggleSound}
+            aria-pressed={!soundOn}
+            aria-label={soundOn ? "Silenciar efectos" : "Activar efectos"}
+            className="relative cursor-pointer"
+          >
+            <img
+              src="/sonido.png"
+              alt=""
+              className={`h-[14px] md:h-[20px] ${soundOn ? "" : "opacity-40"}`}
+            />
+            {!soundOn && (
+              <span className="pointer-events-none absolute inset-x-[-2px] top-1/2 h-[1.5px] -translate-y-1/2 -rotate-45 bg-black-text" />
+            )}
+          </button>
+          <button
+            type="button"
+            onClick={toggleMusic}
+            aria-pressed={!musicOn}
+            aria-label={musicOn ? "Silenciar música" : "Activar música"}
+            className="relative cursor-pointer"
+          >
+            <img
+              src="/musica.png"
+              alt=""
+              className={`h-[14px] md:h-[20px] ${musicOn ? "" : "opacity-40"}`}
+            />
+            {!musicOn && (
+              <span className="pointer-events-none absolute inset-x-[-2px] top-1/2 h-[1.5px] -translate-y-1/2 -rotate-45 bg-black-text" />
+            )}
+          </button>
         </div>
       </div>
 
