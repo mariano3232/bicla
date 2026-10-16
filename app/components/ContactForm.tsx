@@ -34,7 +34,7 @@ export default function ContactForm() {
   }
 
   return (
-    <form id="contacto" ref={form} onSubmit={sendEmail} className="mb-15 px-5 md:px-10 xl:px-20">
+    <form ref={form} onSubmit={sendEmail} className="mb-15 px-5 md:px-10 xl:px-20">
       <div className="flex flex-col gap-4 md:flex-row md:justify-between">
         <p className="text-2xl font-medium md:text-[60px]">CHARLEMOS :)</p>
         <p className="font-mono text-[13px] md:text-base md:text-end">¿TENÉS UN PROYECTO EN MENTE?<br/>/ CONTANOS TU IDEA</p>

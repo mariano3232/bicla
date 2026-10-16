@@ -1,6 +1,12 @@
 "use client";
 
-import { useEffect, useRef, useState, type MouseEvent } from "react";
+import {
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+  type MouseEvent,
+} from "react";
 
 import { useGame } from "../context/GameContext";
 
@@ -49,6 +55,43 @@ export default function SiteHeader() {
   const [activeSection, setActiveSection] = useState("inicio");
   const [showDivider, setShowDivider] = useState(true);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [isDesktopNav, setIsDesktopNav] = useState<boolean | null>(null);
+
+  const scrollToSection = useCallback((id: string) => {
+    const target = document.getElementById(id);
+    const header = headerRef.current;
+    if (!target || !header) return;
+
+    const offset = header.offsetHeight;
+    const top = target.getBoundingClientRect().top + window.scrollY - offset;
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+
+    setMenuOpen(false);
+    window.scrollTo({
+      top: Math.max(0, top),
+      behavior: reduceMotion ? "auto" : "smooth",
+    });
+    history.pushState(null, "", `#${id}`);
+  }, []);
+
+  useEffect(() => {
+    const media = window.matchMedia("(min-width: 768px)");
+    const sync = () => setIsDesktopNav(media.matches);
+    sync();
+    media.addEventListener("change", sync);
+    return () => media.removeEventListener("change", sync);
+  }, []);
+
+  useEffect(() => {
+    const hash = window.location.hash.slice(1);
+    if (!hash || !TRACKED_SECTIONS.includes(hash)) return;
+
+    requestAnimationFrame(() => {
+      scrollToSection(hash);
+    });
+  }, [scrollToSection]);
 
   useEffect(() => {
     const sections = TRACKED_SECTIONS.map((id) =>
@@ -145,32 +188,17 @@ export default function SiteHeader() {
     ? NAV_ITEMS
     : NAV_ITEMS.filter(({ id }) => id !== activeSection);
 
-  const scrollToSection = (id: string) => {
-    const target = document.getElementById(id);
-    const header = headerRef.current;
-    if (!target || !header) return;
-
-    const bar = header.querySelector("[data-nav-bar]");
-    const offset = bar instanceof HTMLElement ? bar.offsetHeight : 0;
-    const top = target.getBoundingClientRect().top + window.scrollY - offset;
-    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-    setMenuOpen(false);
-    window.scrollTo({
-      top: Math.max(0, top),
-      behavior: reduceMotion ? "auto" : "smooth",
-    });
-    history.pushState(null, "", `#${id}`);
-  };
-
   const onNavigate = (event: MouseEvent<HTMLAnchorElement>, id: string) => {
     event.preventDefault();
     scrollToSection(id);
   };
 
   return (
-    <header ref={headerRef} className="fixed top-0 z-99 w-full bg-[#B8F5EE]">
-      <nav className="font-mono">
+    <header
+      ref={headerRef}
+      className="fixed top-0 z-99 isolate w-full bg-[#B8F5EE]"
+    >
+      <nav className="relative z-10 font-mono">
         <div data-nav-bar className="flex h-[51px] items-center justify-between px-5 md:px-10 xl:px-20">
           <h1 className="font-sans text-[14px] font-medium md:text-[16px]">
             Bicla:diseñoweb
@@ -187,7 +215,10 @@ export default function SiteHeader() {
             <MenuIcon open={menuOpen} />
           </button>
 
-          <ul className="hidden items-center gap-10 text-[15px] md:flex">
+          <ul
+            className="hidden items-center gap-10 text-[15px] md:flex"
+            {...(isDesktopNav === false ? { inert: true } : {})}
+          >
             {visibleNavItems.map(({ label, id }) => (
               <li key={id}>
                 <a href={`#${id}`} onClick={(event) => onNavigate(event, id)}>

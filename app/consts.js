@@ -97,7 +97,7 @@ export const PROJECTS = [
     type: "Website Comex",
     color: "bg-[#98BCCF]",
     mini: "/gif/zrngif.gif",
-    video: "/videos/zrn.mov",
+    video: "/videos/zrn.mp4",
     img: "/gif/zrngif2.gif",
     className: "border",
     site:"https://www.zrncomex.com/",

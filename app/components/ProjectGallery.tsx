@@ -29,7 +29,7 @@ export default function ProjectGallery() {
   }, [])
 
   return (
-    <section id="proyectos" className="mx-2 md:mx-10 xl:mx-20">
+    <section className="mx-2 md:mx-10 xl:mx-20">
 
       {selected.video ? (
         <VideoPlayer

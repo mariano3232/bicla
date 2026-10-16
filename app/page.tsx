@@ -25,17 +25,17 @@ export default function Home() {
         </section>
         </div>
 
-        <StepLine text="SERVICIOS"/>
+        <StepLine text="SERVICIOS" id="servicios"/>
 
         <Services />
 
-        <StepLine text="PASO A PASO"/>
+        <StepLine text="PASO A PASO" />
 
         <StackingSteps steps={steps} />
 
-        <StepLine text="DIFERENCIALES"/>
+        <StepLine text="DIFERENCIALES" />
 
-        <section id="inicio" className="mx-5 grid grid-cols-1 gap-x-8 gap-y-15 font-mono sm:grid-cols-2 md:mx-10 xl:mx-20 xl:grid-cols-4 xl:gap-x-40">
+        <section className="mx-5 grid grid-cols-1 gap-x-8 gap-y-15 font-mono sm:grid-cols-2 md:mx-10 xl:mx-20 xl:grid-cols-4 xl:gap-x-40">
           {benefits.map((benefit, i) => (
             <div key={i} className="flex w-full flex-col gap-2 items-center text-center md:text-start md:items-start">
               <img
@@ -53,11 +53,11 @@ export default function Home() {
           ))}
         </section>
         
-        <StepLine text="PROYECTOS"/>
+        <StepLine text="PROYECTOS" id="proyectos"/>
 
         <ProjectGallery />
         
-        <StepLine text="CONTACTO"/>
+        <StepLine text="CONTACTO" id="contacto"/>
 
         <ContactForm/>
       </main>

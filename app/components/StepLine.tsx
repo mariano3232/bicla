@@ -1,6 +1,15 @@
-export default function StepLine({ text }: { text: string }) {
+export default function StepLine({
+  text,
+  id,
+}: {
+  text: string;
+  id?: string;
+}) {
   return (
-    <div className="mx-5 mb-10 md:mx-10 mt-10 xl:mx-20">
+    <div
+      className="mx-5 mb-10 mt-10 scroll-mt-[51px] md:mx-10 xl:mx-20"
+      {...(id ? { id } : {})}
+    >
       <svg
         viewBox="0 -28 320 36"
         className="w-full md:hidden"
