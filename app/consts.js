@@ -173,7 +173,7 @@ export const services=[
   {
     name:"animación web",
     description:"Damos movimiento a tu sitio a través de animaciones simples o complejas para hacerlo dinámico (Hover, efectos visuales, etc.)",
-    img:"/gif/AnimacionWEB.gif",
+    img:"/gif/AnimacionWEB2.mp4",
     big:true,
   },
   {
