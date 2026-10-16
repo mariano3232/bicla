@@ -200,7 +200,7 @@ export default function SiteHeader() {
     >
       <nav className="relative z-10 font-mono">
         <div data-nav-bar className="flex h-[51px] items-center justify-between px-5 md:px-10 xl:px-20">
-          <h1 className="font-sans text-[14px] font-medium md:text-[16px]">
+          <h1 className="font-sans text-[14px] font-medium md:text-[15px]">
             Bicla:diseñoweb
           </h1>
 

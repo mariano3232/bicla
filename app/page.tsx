@@ -62,7 +62,7 @@ export default function Home() {
         <ContactForm/>
       </main>
 
-      <footer className="mx-5 flex min-h-15 flex-wrap items-center justify-between gap-x-6 gap-y-2 border-t-2 border-gray-400 py-3 font-mono text-[13px] md:mx-10 md:text-base xl:mx-20">
+      <footer className="mx-5 flex min-h-15 flex-wrap items-center justify-between gap-x-6 gap-y-2 border-t-2 border-gray-400 py-3 font-mono text-[12px] md:mx-10 xl:mx-20">
         <p className="hidden md:block">02·ruedas</p>
         <LiveClock />
         <a href={"mailto:somos@biclaweb.com"}>somos@biclaweb.com</a>
