@@ -15,7 +15,7 @@ export default function Hero() {
   return (
     <section
       id="inicio"
-      className="col-span-3 col-start-1 row-start-1 bg-[#B8F5EE] pb-12 pt-36 md:pb-16 md:pt-48 xl:grid xl:grid-cols-subgrid xl:pb-20 xl:pt-60"
+      className="col-span-3 col-start-1 row-start-1 scroll-mt-[51px] bg-[#B8F5EE] pb-12 pt-36 md:pb-16 md:pt-48 xl:grid xl:grid-cols-subgrid xl:pb-20 xl:pt-60"
     >
       <div className="hero-content px-5 md:px-10 xl:col-start-2 xl:px-0">
           <h1 className="max-w-[1256px] font-sans text-[32px] font-medium leading-[1.15] md:text-[clamp(48px,7.29vw,105px)] md:leading-[1.24]">

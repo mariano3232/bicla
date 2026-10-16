@@ -29,7 +29,7 @@ export default function ProjectGallery() {
   }, [])
 
   return (
-    <section id="proyectos" className="mx-2 md:mx-10 xl:mx-20">
+    <section className="mx-2 md:mx-10 xl:mx-20">
 
       {selected.video ? (
         <VideoPlayer
@@ -39,8 +39,8 @@ export default function ProjectGallery() {
         />
       ) : null}
 
-      <div className="flex flex-col gap-8 font-mono text-[13px] md:gap-10 md:text-[15px] xl:flex-row xl:items-start">
-        <div className="relative w-full min-w-0 max-w-[740px] xl:flex-[1.4]">
+      <div className="flex flex-col gap-8 font-mono text-[13px] md:gap-10 md:text-[15px] xl:flex-row xl:items-stretch">
+        <div className="relative w-full min-w-0 max-w-[700px] xl:flex-[1.4]">
           <img
             src={selected.img}
             alt=""
@@ -56,13 +56,36 @@ export default function ProjectGallery() {
           >
             Ver
           </button>
+          {"site" in selected && selected.site ? (
+            <a
+              href={selected.site}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Visitar el sitio de ${selected.name}`}
+              className="absolute bottom-3 right-3 flex h-10 w-10 cursor-pointer items-center justify-center border bg-[#F7FDFD] md:h-[45px] md:w-[45px]"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.75"
+                className="h-[20px] w-[20px]"
+                aria-hidden="true"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d="M14 5h5v5" />
+                <path strokeLinecap="round" strokeLinejoin="round" d="M19 5 10 14" />
+                <path strokeLinecap="round" strokeLinejoin="round" d="M19 13.5V18a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h4.5" />
+              </svg>
+            </a>
+          ) : null}
         </div>
 
-        <div className="flex min-w-0 w-full flex-col justify-between gap-6 md:gap-8 xl:my-2 xl:w-[390px] xl:shrink-0">
+        <div className="flex min-w-0 w-full flex-col justify-between gap-6 md:gap-8 xl:w-[390px] xl:shrink-0 xl:self-stretch xl:mb-5">
           <div>
             <div className="flex flex-wrap items-baseline gap-x-3">
+              <ScrambleText className="text-mono text-[26px] font-light uppercase leading-none sm:text-[32px] xl:text-[40px]" text={"0" + selected.id +':'} step={6}/>
               <ScrambleText className="text-mono text-[26px] font-medium uppercase leading-none sm:text-[32px] xl:text-[40px]" text={selected?.name} step={6}/>
-              <ScrambleText className="text-mono text-[26px] font-light uppercase leading-none sm:text-[32px] xl:text-[40px]" text={"0" + selected.id} step={6}/>
             </div>
             <p className="mt-3 max-w-[390px] whitespace-pre-line text-[12px] font-light md:text-[14px]">{selected.misc}</p>
           </div>
@@ -76,7 +99,6 @@ export default function ProjectGallery() {
                 : selected.description
             }
           />
-    
         </div>
       </div>
 

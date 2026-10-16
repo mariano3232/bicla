@@ -38,7 +38,7 @@ const wideImage = "mt-[11px]  w-full border border-black-text object-cover md:h-
 
 export default function Services() {
   return (
-    <section id="servicios" className="mx-5 md:mx-10 xl:mx-20">
+    <section className="mx-5 md:mx-10 xl:mx-20">
       <div className="mx-auto w-full max-w-[1440px]">
       <div className="flex flex-col gap-y-[51px] font-mono text-[13px] md:text-[15px]">
         <div className="grid grid-cols-1 gap-y-[51px] md:grid-cols-2 md:gap-x-6 xl:flex xl:justify-between">
@@ -46,7 +46,7 @@ export default function Services() {
             name="Identidad/Branding"
             number="01"
             image={<img src="/gif/ZRN.gif" className={narrowImage + " px-6"} />}
-            description="Construimos la identidad de tu marca, desde el concepto y la comunicación hasta su sistema visual. (paleta de colores, tono de voz, etc)"
+            description="Construimos la identidad de tu marca, desde el concepto y la comunicación hasta su sistema visual."
           />
           <ServiceItem
             name="Diseño Web"
@@ -69,12 +69,12 @@ export default function Services() {
             number="04"
             wide
             image={<img src="/gif/AnimacionWEB.gif" className={wideImage} />}
-            description="Damos movimiento a tu sitio a través de animaciones simples o complejas para hacerlo dinámico (Hover, efectos visuales, etc.)"
+            description={"Damos movimiento a tu sitio a través de animaciones simples o complejas para hacerlo dinámico\n(Hover, efectos visuales, etc.)"}
           />
           <ServiceItem
             name="UX / UI"
             number="05"
-            image={<img src="/gif/uxui.gif" className={narrowImage} />}
+            image={<img src="/gif/UXUIFINAL.gif" className={narrowImage} />}
             description="Diseñamos interfaces intuitivas y experiencias de usuario pensadas para que navegar sea simple."
           />
           <ServiceItem
@@ -82,7 +82,7 @@ export default function Services() {
             number="06"
             image={<img src="/gif/online.gif" className={"border-0 " + narrowImage} />}
             imageMobile={<img src="/gif/onlineMobile.gif" className={narrowImage} />}
-            description="Ponemos tu sitio online y nos ocupamos de que funcione correctamente. (Dominio, hosting, instalación, etc.)"
+            description={'Ponemos tu sitio online\ny nos ocupamos de que funcione correctamente. (Dominio, hosting, instalación, etc.)'}
           />
         </div>
         <div className="grid grid-cols-1 gap-y-[51px] md:grid-cols-2 md:gap-x-6 xl:flex xl:justify-between">
