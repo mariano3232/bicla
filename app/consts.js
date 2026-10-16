@@ -112,7 +112,7 @@ export const PROJECTS = [
     type: "Revista Digital",
     color: "bg-[#A92F26]",
     mini: "/revista.png",
-    video: "/videos/aurea.mp4",
+    video: "/videos/laura.MOV",
     img: "/gif/aureagif.gif",
     className: "border",
     misc: "PROYECTO 02 / DISEÑO WEB 01\n/ UX/UI 03 / ANIMACIÓN 04 ",

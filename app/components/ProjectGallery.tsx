@@ -81,7 +81,7 @@ export default function ProjectGallery() {
           ) : null}
         </div>
 
-        <div className="flex min-w-0 w-full flex-col justify-between gap-6 md:gap-8 xl:w-[390px] xl:shrink-0 xl:self-stretch xl:mb-5">
+        <div className="flex min-w-0 w-full flex-col justify-end gap-6 md:gap-8 xl:w-[390px] xl:shrink-0 xl:self-stretch xl:mb-5">
           <div>
             <div className="flex flex-wrap items-baseline gap-x-3">
               <ScrambleText className="text-mono text-[26px] font-light uppercase leading-none sm:text-[32px] xl:text-[40px]" text={"0" + selected.id +':'} step={6}/>
