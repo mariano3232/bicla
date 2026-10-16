@@ -114,10 +114,6 @@ export default function StackingSteps({ steps }: { steps: Step[] }) {
           const cardHeight = card.getBoundingClientRect().height || 369
           const clipBottom =
             cardHeight > gap ? (100 * (cardHeight - gap)) / cardHeight : 0
-          const isLast = i === cards.length - 1
-          // El último no tiene otra card que lo frene: sin este pin el sticky
-          // lo empuja hacia arriba mientras el resto sigue clavado.
-          const lastHold = Math.round(Math.max(cardHeight, window.innerHeight * 0.45))
 
           gsap.fromTo(
             bar,
@@ -131,22 +127,11 @@ export default function StackingSteps({ steps }: { steps: Step[] }) {
                 start: `top ${stickTop + SCROLL_START_OFFSET}px`,
                 end: next
                   ? `top ${nextStickTop + SCROLL_START_OFFSET}px`
-                  : `+=${lastHold}`,
+                  : `bottom ${stickTop}px`,
                 scrub: true,
               },
             },
           )
-
-          if (isLast) {
-            ScrollTrigger.create({
-              trigger: containers[i],
-              start: `top ${stickTop}px`,
-              end: `+=${lastHold}`,
-              pin: true,
-              pinSpacing: true,
-              anticipatePin: 1,
-            })
-          }
 
           if (!next || clipBottom <= 0) return
 
@@ -189,13 +174,14 @@ export default function StackingSteps({ steps }: { steps: Step[] }) {
 
   return (
     <section
+      id="inicio"
       ref={sectionRef}
       className="mt-5 pb-30"
     >
       {steps.map((step, i) => (
         <div
           key={step.title}
-          className={`js-stacking-card-container${i === steps.length - 1 ? "" : " sticky"}`}
+          className="js-stacking-card-container sticky"
           style={{ top: stackTopBase + i * stackGap, zIndex: i + 1 }}
         >
           <div className="js-stacking-card">
