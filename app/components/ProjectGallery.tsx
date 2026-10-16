@@ -56,6 +56,29 @@ export default function ProjectGallery() {
           >
             Ver
           </button>
+          {"site" in selected && selected.site ? (
+            <a
+              href={selected.site}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Visitar el sitio de ${selected.name}`}
+              className="absolute bottom-3 right-3 flex h-10 w-10 cursor-pointer items-center justify-center border bg-[#F7FDFD] md:h-[45px] md:w-[45px]"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.75"
+                className="h-[20px] w-[20px]"
+                aria-hidden="true"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d="M14 5h5v5" />
+                <path strokeLinecap="round" strokeLinejoin="round" d="M19 5 10 14" />
+                <path strokeLinecap="round" strokeLinejoin="round" d="M19 13.5V18a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h4.5" />
+              </svg>
+            </a>
+          ) : null}
         </div>
 
         <div className="flex min-w-0 w-full flex-col justify-between gap-6 md:gap-8 xl:w-[390px] xl:shrink-0 xl:self-stretch xl:mb-5">
