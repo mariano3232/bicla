@@ -90,7 +90,7 @@ export default function Services() {
             name="Kit Instagram"
             number="07"
             image={<img src="/gif/ig.gif" className={narrowImage + " object-cover"} />}
-            description="Diseñamos la presencia visual de tu marca en IG. (Feed, destacadas, foto de perfil,adaptados a tus necesidades.)"
+            description="Diseñamos la presencia visual de tu marca en IG. (Feed, destacadas, foto de perfil)"
             extra={<p className="text-[10px] leading-[13px] tracking-[-0.02em] underline">*Servicio adicional</p>}
           />
 
