@@ -39,8 +39,8 @@ export default function ProjectGallery() {
         />
       ) : null}
 
-      <div className="flex flex-col gap-8 font-mono text-[13px] md:gap-10 md:text-[15px] xl:flex-row xl:items-start">
-        <div className="relative w-full min-w-0 max-w-[740px] xl:flex-[1.4]">
+      <div className="flex flex-col gap-8 font-mono text-[13px] md:gap-10 md:text-[15px] xl:flex-row xl:items-stretch">
+        <div className="relative w-full min-w-0 max-w-[700px] xl:flex-[1.4]">
           <img
             src={selected.img}
             alt=""
@@ -58,11 +58,11 @@ export default function ProjectGallery() {
           </button>
         </div>
 
-        <div className="flex min-w-0 w-full flex-col justify-between gap-6 md:gap-8 xl:my-2 xl:w-[390px] xl:shrink-0">
+        <div className="flex min-w-0 w-full flex-col justify-between gap-6 md:gap-8 xl:w-[390px] xl:shrink-0 xl:self-stretch xl:mb-5">
           <div>
             <div className="flex flex-wrap items-baseline gap-x-3">
+              <ScrambleText className="text-mono text-[26px] font-light uppercase leading-none sm:text-[32px] xl:text-[40px]" text={"0" + selected.id +':'} step={6}/>
               <ScrambleText className="text-mono text-[26px] font-medium uppercase leading-none sm:text-[32px] xl:text-[40px]" text={selected?.name} step={6}/>
-              <ScrambleText className="text-mono text-[26px] font-light uppercase leading-none sm:text-[32px] xl:text-[40px]" text={"0" + selected.id} step={6}/>
             </div>
             <p className="mt-3 max-w-[390px] whitespace-pre-line text-[12px] font-light md:text-[14px]">{selected.misc}</p>
           </div>
@@ -76,7 +76,6 @@ export default function ProjectGallery() {
                 : selected.description
             }
           />
-    
         </div>
       </div>
 

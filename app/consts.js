@@ -4,48 +4,56 @@ export const benefits = [
       description:
         "Hablás directamente con\nquienes trabajan en tu\nproyecto.",
       img: "/benefits/comments-solid.png",
+      ml:"15px",
     },
     {
       title: "02.Diseños Personalizados",
       description:
-        "Cada sitio se diseña\ndesde 0 y se adapta a tu\nmarca.",
+        "Cada sitio se diseña\ndesde 0 y se adapta a tu marca.",
       img: "/benefits/lightbulb-solid.png",
+      ml:"30px",
     },
     {
       title: "03.Desarrollo\nIntegral",
       description:
-        "Nos ocupamos de todo el\nproyecto, de principio a\nfin.",
+        "Nos ocupamos de todo el\nproyecto, de principio a fin.",
       img: "/benefits/box-heart-solid.png",
+      ml:"30px",
     },
     {
       title: "04.Sitios\nSeguros",
       description:
         "Incluimos certificados\nSSL para proteger tu\nsitio y a sus usuarios.",
       img: "/benefits/lock.png",
+      ml:"30px",
     },
     {
       title: "05.Fácil\nNavegación",
       description:
         "Creamos estructuras\nclaras y fáciles de\nrecorrer.",
       img: "/benefits/click.png",
+      ml:"15px",
     },
     {
       title: "06.Diseño\nResponsive",
       description:
         "Tu sitio se adapta a\ncualquier pantalla y/o\ndispositivo.",
       img: "/benefits/pc.png",
+      ml:"30px",
     },
     {
       title: "07.Servicio\nde SEO",
       description:
         "Hacemos tu sitio más\nfácil de encontrar por\nbuscadores.",
       img: "/benefits/search.png",
+      ml:"30px",
     },
     {
       title: "08.Velocidad\nde Carga",
       description:
         "Priorizamos un sitio\nágil, con tiempos de\ncarga reducidos.",
       img: "/benefits/thunder.png",
+      ml:"30px",
     },
   ];
 

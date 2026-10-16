@@ -1,6 +1,6 @@
 export default function StepLine({ text }: { text: string }) {
   return (
-    <div className="mx-5 my-10 md:mx-10 md:my-20 xl:mx-20">
+    <div className="mx-5 mb-10 md:mx-10 mt-10 xl:mx-20">
       <svg
         viewBox="0 -28 320 36"
         className="w-full md:hidden"
