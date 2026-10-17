@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react"
 import { PROJECTS } from "../consts";
 import FollowEye from "./FollowEye";
+import ScrambleButton from "./ScrambleButton";
 import ScrambleText from "./ScrambleText";
 import { VideoPlayer } from "./VideoPlayer";
 
@@ -49,13 +50,13 @@ export default function ProjectGallery() {
           {selected.id === 3 ? (
             <FollowEye className="absolute top-[33%] left-[46.5%]" mouse={retinaMouse} />
           ) : null}
-          <button
+          {/* <button
             type="button"
             className="absolute bottom-3 left-3 h-10 w-24 cursor-pointer border bg-[#F7FDFD] text-[14px] font-medium md:h-[45px] md:w-[122px] md:text-[16px]"
             onClick={() => setVideoOpen(true)}
           >
             Ver
-          </button>
+          </button> */}
           {"site" in selected && selected.site ? (
             <a
               href={selected.site}
@@ -81,23 +82,30 @@ export default function ProjectGallery() {
           ) : null}
         </div>
 
-        <div className="flex min-w-0 w-full flex-col justify-start gap-6 md:gap-8 xl:w-[390px] xl:shrink-0 xl:self-stretch xl:mb-5">
-          <div>
-            <div className="flex flex-wrap items-baseline gap-x-3 relative bottom-1">
-              <ScrambleText className="text-mono text-[26px] font-light uppercase leading-none sm:text-[32px] xl:text-[40px]" text={"0" + selected.id +':'} step={6}/>
-              <ScrambleText className="text-mono text-[26px] font-regular uppercase leading-none sm:text-[32px] xl:text-[40px]" text={selected?.name} step={6}/>
+        <div className= "flex flex-col justify-between">
+          <div className="flex min-w-0 w-full flex-col justify-start gap-6 md:gap-8 xl:w-[390px] xl:shrink-0 xl:self-stretch xl:mb-5">
+            <div>
+              <div className="flex flex-wrap items-baseline relative bottom-1">
+                <ScrambleText className="text-mono text-[26px] font-light uppercase leading-none sm:text-[32px] xl:text-[40px]" text={"0" + selected.id +':'} step={6}/>
+                <ScrambleText className="text-mono text-[26px] font-regular uppercase leading-none sm:text-[32px] xl:text-[40px]" text={selected?.name} step={6}/>
+              </div>
+              <p className="mt-3 max-w-[375px] tracking-[-2%] text-justify whitespace-pre-line text-[12px] font-light md:text-[14px]">{selected.misc}</p>
             </div>
-            <p className="mt-3 max-w-[390px] whitespace-pre-line text-[12px] font-light md:text-[14px]">{selected.misc}</p>
-          </div>
 
-          <ScrambleText
-            className="w-full max-w-[393px] font-mono text-[12px] font-light leading-[20px] tracking-[1%] md:text-[15px]"
-            step={8}
-            text={
-              typeof window !== "undefined" && window.innerWidth < 768 && selected.descriptionMobile
-                ? selected.descriptionMobile
-                : selected.description
-            }
+            <ScrambleText
+              className="w-full max-w-[375px] font-mono text-[12px] font-light leading-[20px] tracking-[0%] md:text-[15px]"
+              step={8}
+              text={
+                typeof window !== "undefined" && window.innerWidth < 768 && selected.descriptionMobile
+                  ? selected.descriptionMobile
+                  : selected.description
+              }
+            />         
+          </div>
+          <ScrambleButton
+            text="ver:prototipo"
+            className="h-10 w-full tracking-[3%] text-[14px] font-mono md:h-[45px] md:text-[16px]"
+            onClick={() => setVideoOpen(true)}
           />
         </div>
       </div>
