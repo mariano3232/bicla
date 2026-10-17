@@ -42,7 +42,7 @@ function MenuIcon({ open }: { open: boolean }) {
 
 function SectionMarker({ label }: { label: string }) {
   return (
-    <span className="flex items-center gap-1">
+    <span className="flex items-center text-[14px] gap-1">
       (<img src="/enter.png" alt="" className="h-[10px]" />
       {label})
     </span>
@@ -216,12 +216,12 @@ export default function SiteHeader() {
           </button>
 
           <ul
-            className="hidden items-center gap-10 text-[15px] md:flex"
+            className="hidden items-center gap-10 md:flex"
             {...(isDesktopNav === false ? { inert: true } : {})}
           >
             {visibleNavItems.map(({ label, id }) => (
               <li key={id}>
-                <a href={`#${id}`} onClick={(event) => onNavigate(event, id)}>
+                <a href={`#${id}`} onClick={(event) => onNavigate(event, id)} className="text-[14px]">
                   {label}
                 </a>
               </li>
