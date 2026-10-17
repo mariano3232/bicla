@@ -25,8 +25,8 @@ function ServiceItem({
       </div>
       {imageMobile ? <div className="md:hidden">{imageMobile}</div> : null}
       <div className={imageMobile ? "hidden md:block" : undefined}>{image}</div>
-      <div className="relative mt-3 flex min-h-[96px] flex-col border border-black-text px-3 pt-3 pb-2 text-[12px] leading-[16px] tracking-[-0.02em] md:mt-[23px] md:min-h-[138px] md:pt-[18px] md:text-[15px] md:leading-[20px] xl:h-[138px]">
-        <p className={extra ? "leading-[18px]" : undefined}>{description}</p>
+      <div className="relative mt-3 flex min-h-[96px] flex-col border border-black-text px-3 pt-3 pb-2 text-[12px] leading-[16px] tracking-[-2%] md:mt-[23px] md:min-h-[138px] md:pt-[18px] md:text-[15px] md:leading-[20px] xl:h-[138px]">
+        <p className={"min-w-[245px] max-w-[468px] whitespace-pre-line " + (extra ? "leading-[18px]" : undefined)}>{description}</p>
         {extra ? <div className="mt-auto self-end">{extra}</div> : null}
       </div>
     </div>
@@ -53,14 +53,14 @@ export default function Services() {
             number="02"
             wide
             image={<img src="/gif/diseñoweb.gif" className={wideImage} />}
-            description="Diseño de sitios personalizados desde 0, combinando estética, funcionalidad y adaptados a las necesidades de la marca"
+            description="Diseño de sitios personalizados desde 0, combinando estética, funcionalidad y una experiencia pensada para adaptarse a las necesidades de cada marca."
           />
           <ServiceItem
             name="Re-diseños"
             number="03"
             image={<img src="/gif/rediseño.gif" className={narrowImage} />}
             // imageMobile={<img src="/gif/rediseñoMobile.gif" className={narrowImage} />}
-            description="Actualizamos y transformamos sitios existentes para adaptarlos a nuevas necesidades."
+            description="Actualizamos tu sitio web para adaptarlo a nuevas necesidades, mejorando su diseño y estructura."
           />
         </div>
         <div className="grid grid-cols-1 gap-y-[51px] md:grid-cols-2 md:gap-x-6 xl:flex xl:justify-between">
@@ -75,14 +75,14 @@ export default function Services() {
             name="UX / UI"
             number="05"
             image={<img src="/gif/UXUIFINAL.gif" className={narrowImage} />}
-            description="Diseñamos interfaces intuitivas y experiencias de usuario pensadas para que navegar sea simple."
+            description="Interfaces intuitivas y experiencias de usuario pensadas para que navegar sea simple."
           />
           <ServiceItem
             name="Hosting y Dominio"
             number="06"
             image={<img src="/gif/online.gif" className={"border-0 " + narrowImage} />}
             imageMobile={<img src="/gif/onlineMobile.gif" className={narrowImage} />}
-            description={'Ponemos tu sitio online\ny nos ocupamos de que funcione correctamente. (Dominio, hosting, instalación, etc.)'}
+            description={'Ponemos tu sitio online,\nnos ocupamos de que funcione correctamente y este listo para recibir usuarios.'}
           />
         </div>
         <div className="grid grid-cols-1 gap-y-[51px] md:grid-cols-2 md:gap-x-6 xl:flex xl:justify-between">
@@ -99,14 +99,14 @@ export default function Services() {
             number="08"
             wide
             image={<img src="/gif/seobig.gif" className={wideImage} />}
-            description="Optimizamos tu sitio para que los buscadores puedan entenderlo y encontrarlo."
+            description="Optimizamos tu sitio para que los buscadores puedan entenderlo, encontrarlo y mostrarlo de manera más efectiva en sus resultados."
           />
           
           <ServiceItem
             name="Desarrollo a medida"
             number="09"
             image={<img src="/gif/desarrollointegral.gif" className={narrowImage} />}
-            description="Creamos funcionalidades y soluciones específicas para las necesidades de cada proyecto. (Paneles, formularios, etc.)."
+            description="Creamos soluciones adaptadas a las necesidades de cada proyecto. (Paneles de admin, formularios, etc.)"
           />
         </div>
       </div>
