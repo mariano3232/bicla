@@ -12,7 +12,7 @@ export function WhatsAppButton() {
       <img
         src="/wsp1.png"
         alt=""
-        className="z-99 fixed right-5 bottom-5 h-11 w-11 cursor-pointer transition hover:scale-105 sm:right-7 sm:bottom-7 sm:h-15 sm:w-15"
+        className="z-99 fixed right-5 bottom-18 h-11 w-11 cursor-pointer transition hover:scale-105 sm:right-7 sm:bottom-7 sm:h-15 sm:w-15"
       />
     </a>
   );
