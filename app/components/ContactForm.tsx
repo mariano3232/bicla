@@ -37,7 +37,7 @@ export default function ContactForm() {
     <form ref={form} onSubmit={sendEmail} className="mb-15 px-5 md:px-10 xl:px-20">
       <div className="flex flex-col gap-4 md:flex-row md:justify-between">
         <p className="text-2xl font-medium md:text-[60px]">CHARLEMOS :)</p>
-        <p className="font-mono text-[13px] md:text-base md:text-end">¿TENÉS UN PROYECTO EN MENTE?<br/>/ CONTANOS TU IDEA</p>
+        <p className="font-mono text-[13px] md:text-[15px] md:text-end">¿TENÉS UN PROYECTO EN MENTE?<br/>/ CONTANOS TU IDEA</p>
       </div>
       <div className="mt-10 mb-5 grid grid-cols-1 justify-between gap-x-3 gap-y-5 md:grid-cols-2">
         <input name="nombre" type="text" required className="h-[50px] w-full min-w-0 border-1 border-[#1E1E1E] px-4 md:px-10" placeholder="Nombre" />

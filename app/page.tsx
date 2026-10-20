@@ -41,8 +41,8 @@ export default function Home() {
               <img
                 src={benefit.img}
                 alt=""
-                className='mb-2 h-[60px] w-auto max-w-[100px] md:mb-4 md:h-[70px] md:max-w-[140px]'
-                style={{ objectFit: "contain", marginLeft: benefit.ml }}
+                className="mb-2 h-[60px] w-auto max-w-[100px] md:mb-3 md:h-[70px] md:max-w-[140px] xl:[margin-left:var(--icon-ml)]"
+                style={{ objectFit: "contain", "--icon-ml": benefit.ml } as React.CSSProperties}
               />
         
               <h3 className="text-[16px] font-medium whitespace-pre-line md:text-[20px]">
@@ -62,7 +62,7 @@ export default function Home() {
         <ContactForm/>
       </main>
 
-      <footer className="mx-5 flex min-h-15 flex-wrap items-center justify-between gap-x-6 gap-y-2 border-t-2 border-gray-400 py-3 font-mono text-[12px] md:mx-10 xl:mx-20">
+      <footer className="mx-5 flex min-h-15 flex-wrap items-center justify-between gap-x-6 gap-y-2 border-t-2 border-gray-400 py-3 font-mono text-[14px] md:mx-10 xl:mx-20">
         <p className="hidden md:block">02·ruedas</p>
         <LiveClock />
         <a href={"mailto:somos@biclaweb.com"}>somos@biclaweb.com</a>

@@ -11,21 +11,21 @@ export const benefits = [
       description:
         "Cada sitio se diseña\ndesde 0 y se adapta a tu marca.",
       img: "/benefits/lightbulb-solid.png",
-      ml:"30px",
+      ml:"20px",
     },
     {
       title: "03.Desarrollo\nIntegral",
       description:
         "Nos ocupamos de todo el\nproyecto, de principio a fin.",
       img: "/benefits/box-heart-solid.png",
-      ml:"30px",
+      ml:"20px",
     },
     {
-      title: "04.Sitios\nSeguros",
+      title: "04.Navegación\nSegura",
       description:
         "Incluimos certificados\nSSL para proteger tu\nsitio y a sus usuarios.",
       img: "/benefits/lock.png",
-      ml:"30px",
+      ml:"20px",
     },
     {
       title: "05.Fácil\nNavegación",
@@ -39,14 +39,14 @@ export const benefits = [
       description:
         "Tu sitio se adapta a\ncualquier pantalla y/o\ndispositivo.",
       img: "/benefits/pc.png",
-      ml:"30px",
+      ml:"20px",
     },
     {
       title: "07.Servicio\nde SEO",
       description:
         "Hacemos tu sitio más\nfácil de encontrar por\nbuscadores.",
       img: "/benefits/search.png",
-      ml:"30px",
+      ml:"20px",
     },
     {
       title: "08.Velocidad\nde Carga",
@@ -136,7 +136,7 @@ export const PROJECTS = [
   },
   {
     id: 4,
-    name: "Kiosco el 11",
+    name: "Super kiosco",
     type: "Web Móvil",
     color: "bg-[#3C4AAB]",
     mini: "/gif/superkiosco.gif",
