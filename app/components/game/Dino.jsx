@@ -69,6 +69,13 @@ function hitAudio() {
   audio.play().catch(() => {});
 }
 
+function horseAudio() {
+  if (soundMuted) return;
+  const audio = new Audio("/horse.mp3");
+  audio.volume = 0.3;
+  audio.play().catch(() => {});
+}
+
 function crossDuration(score) {
   return Math.max(MIN_CROSS_MS, BASE_CROSS_MS - score * 2);
 }
@@ -236,6 +243,7 @@ export default function Dino({ gameStatus, setGameStatus, score, setScore }) {
       el.style.right = `${right}px`;
       root.appendChild(el);
       obstacles.push({ el, right, w: width });
+      if (type.src === "/caballo.png") horseAudio();
     };
 
     const tick = (now) => {

@@ -103,7 +103,7 @@ export default function ProjectGallery() {
             />         
           </div>
           <ScrambleButton
-            text="ver:prototipo"
+            text="Vista previa"
             className="h-10 w-full tracking-[3%] text-[14px] font-mono md:h-[45px] md:text-[16px]"
             onClick={() => setVideoOpen(true)}
           />

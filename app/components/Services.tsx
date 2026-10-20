@@ -75,14 +75,14 @@ export default function Services() {
             name="UX / UI"
             number="05"
             image={<img src="/gif/UXUIFINAL.gif" className={narrowImage} />}
-            description="Interfaces intuitivas y experiencias de usuario pensadas para que navegar sea simple."
+            description="Interfaces intuitivas y experiencias de usuario pensadas para navegar de forma simple."
           />
           <ServiceItem
             name="Hosting y Dominio"
             number="06"
             image={<img src="/gif/online.gif" className={"border-0 " + narrowImage} />}
             imageMobile={<img src="/gif/onlineMobile.gif" className={narrowImage} />}
-            description={'Ponemos tu sitio online,\nnos ocupamos de que funcione correctamente y este listo para recibir usuarios.'}
+            description={'Ponemos tu sitio online,\nnos ocupamos de que funcione y este listo para recibir usuarios.'}
           />
         </div>
         <div className="grid grid-cols-1 gap-y-[51px] md:grid-cols-2 md:gap-x-6 xl:flex xl:justify-between">
