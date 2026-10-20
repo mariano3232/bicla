@@ -6,6 +6,7 @@ function ServiceItem({
   image,
   imageMobile = null,
   description,
+  descriptionMobile = "",
   wide = false,
   extra = null,
 }: {
@@ -14,6 +15,7 @@ function ServiceItem({
   image: ReactNode
   imageMobile?: ReactNode
   description: string
+  descriptionMobile?: string
   wide?: boolean
   extra?: ReactNode
 }) {
@@ -26,7 +28,8 @@ function ServiceItem({
       {imageMobile ? <div className="md:hidden">{imageMobile}</div> : null}
       <div className={imageMobile ? "hidden md:block" : undefined}>{image}</div>
       <div className="relative mt-3 flex min-h-[96px] flex-col border border-black-text px-3 pt-3 pb-2 text-[12px] leading-[16px] tracking-[-2%] md:mt-[23px] md:min-h-[138px] md:pt-[18px] md:text-[15px] md:leading-[20px] xl:h-[138px]">
-        <p className={"min-w-[245px] max-w-[468px] whitespace-pre-line " + (extra ? "leading-[18px]" : undefined)}>{description}</p>
+        <p className={`min-w-[245px] max-w-[468px] whitespace-normal hidden md:block md:whitespace-pre-line${extra ? " leading-[18px]" : ""}`}>{description}</p>
+        <p className={`min-w-[245px] max-w-[468px] whitespace-normal md:hidden md:whitespace-pre-line${extra ? " leading-[18px]" : ""}`}>{descriptionMobile || description}</p>
         {extra ? <div className="mt-auto self-end">{extra}</div> : null}
       </div>
     </div>
@@ -46,7 +49,7 @@ export default function Services() {
             name="Identidad/Branding"
             number="01"
             image={<img src="/gif/ZRN.gif" className={narrowImage + " px-6"} />}
-            description="Construimos la identidad de tu marca, desde el concepto y la comunicación hasta su sistema visual."
+            description="Construimos la identidad de tu marca, desde el concepto y la comunicación hasta su sistema visual para darle una imagen propia."
           />
           <ServiceItem
             name="Diseño Web"
@@ -54,6 +57,7 @@ export default function Services() {
             wide
             image={<img src="/gif/diseñoweb.gif" className={wideImage} />}
             description="Diseño de sitios personalizados desde 0, combinando estética, funcionalidad y una experiencia pensada para adaptarse a las necesidades de cada marca."
+            descriptionMobile="Diseño de sitios desde 0, combinando estética, funcionalidad y una experiencia pensada para adaptarse a las necesidades de cada marca."
           />
           <ServiceItem
             name="Re-diseños"
@@ -61,6 +65,7 @@ export default function Services() {
             image={<img src="/gif/rediseño.gif" className={narrowImage} />}
             // imageMobile={<img src="/gif/rediseñoMobile.gif" className={narrowImage} />}
             description="Actualizamos tu sitio web para adaptarlo a nuevas necesidades, mejorando su diseño y estructura."
+            descriptionMobile="Actualizamos tu sitio para adaptarlo a nuevas necesidades, mejorando su diseño y estructura para ofrecer una experiencia mas clara."
           />
         </div>
         <div className="grid grid-cols-1 gap-y-[51px] md:grid-cols-2 md:gap-x-6 xl:flex xl:justify-between">
@@ -107,6 +112,7 @@ export default function Services() {
             number="09"
             image={<img src="/gif/desarrollointegral.gif" className={narrowImage} />}
             description="Creamos soluciones adaptadas a las necesidades de cada proyecto. (Paneles de admin, formularios, etc.)"
+            descriptionMobile="Creamos soluciones adaptadas a las necesidades de cada proyecto. (Paneles de administración, formularios, etc.)"
           />
         </div>
       </div>
