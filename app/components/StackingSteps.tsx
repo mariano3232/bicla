@@ -65,7 +65,7 @@ function StepCard({ step, index }: { step: Step; index: number }) {
         <p className="min-w-0 self-start font-mono text-[13px] font-normal leading-[18px] whitespace-normal md:text-[16px] md:leading-[21px] xl:whitespace-pre-line">
           {step.description1}
         </p>
-        <p className="min-w-0 self-start font-mono text-[13px] font-normal leading-[18px] whitespace-normal md:text-[16px] md:leading-[21px] xl:whitespace-pre-line">
+        <p className="hidden md:block min-w-0 self-start font-mono text-[13px] font-normal leading-[18px] whitespace-normal md:text-[16px] md:leading-[21px] xl:whitespace-pre-line">
           {step.description2}
         </p>
       </div>
