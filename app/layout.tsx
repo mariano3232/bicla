@@ -17,7 +17,7 @@ const ibmPlexMono = IBM_Plex_Mono({
 
 export const metadata: Metadata = {
   title: "Bicla",
-  description: "Agencia web. Diseño, desarrollo y mantenimiento de sitios.",
+  description: "Equipo de diseño y desarrollo web",
   
 };
 
